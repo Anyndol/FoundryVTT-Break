@@ -1,0 +1,99 @@
+{
+  "SETTINGS.SimpleMacroShorthandN": "Shortened Macro Syntax",
+  "SETTINGS.SimpleMacroShorthandL": "Enable a shortened macro syntax which allows referencing aptitudes directly, for example @str instead of @aptitudes.str.value. Disable this setting if you need the ability to reference the full aptitude model, for example @aptitudes.str.label.",
+  "SETTINGS.SimpleInitFormulaN": "Initiative Formula",
+  "SETTINGS.SimpleInitFormulaL": "Enter an initiative formula, such as d20+@dex",
+
+  "SIMPLE.ItemCreate": "Create Item",
+  "SIMPLE.ItemEdit": "Edit Item",
+  "SIMPLE.ItemDelete": "Delete Item",
+  "SIMPLE.ItemNew": "New Item",
+
+  "SIMPLE.NotifyInitFormulaUpdated": "Initiative formula was updated to",
+  "SIMPLE.NotifyInitFormulaInvalid": "Initiative formula was invalid",
+  "SIMPLE.NotifyGroupDuplicate": "Attribute group already exists.",
+  "SIMPLE.NotifyGroupAttrDuplicate": "Attribute group already exists as an aptitude.",
+  "SIMPLE.NotifyGroupAlphanumeric": "Attribute group names may not contain spaces or periods.",
+  "SIMPLE.NotifyGroupReserved": "Attribute group \"{key}\" is reserved and cannot be used.",
+  "SIMPLE.NotifyAttrDuplicate": "Attribute key already exists as a group.",
+  "SIMPLE.NotifyAttrInvalid": "Attribute keys may not contain spaces or periods.",
+
+  "SIMPLE.ResourceMin": "Min",
+  "SIMPLE.ResourceValue": "Value",
+  "SIMPLE.ResourceMax": "Max",
+
+  "SIMPLE.DefineTemplate": "Define as Template",
+  "SIMPLE.UnsetTemplate": "Unset Template",
+  "SIMPLE.NoTemplate": "No Template",
+
+  "SIMPLE.AttributeKey": "Attribute Key",
+  "SIMPLE.AttributeValue": "Value",
+  "SIMPLE.AttributeLabel": "Label",
+  "SIMPLE.AttributeDtype": "Data Type",
+
+  "SIMPLE.DeleteGroup": "Delete group?",
+  "SIMPLE.DeleteGroupContent": "Do you wish to delete this group? This will delete the following group and all aptitudes included in it: ",
+
+  "SIMPLE.Create": "Create",
+  "SIMPLE.New": "New",
+
+  "TYPES": {
+    "Actor": {
+      "gmc": "GMC",
+      "character": "Player Character (PC)"
+    },
+    "Item": {
+      "gear": "Item",
+      "quirk": "Quirk",
+      "ability": "Ability",
+      "calling": "Calling"
+    }
+  },
+
+  "BREAK.Aptitude": "Aptitude",
+  "BREAK.Aptitudes": "Aptitudes",
+  "BREAK.Identity": "Identity",
+  "BREAK.Calling": "Calling",
+  "BREAK.Species": "Species",
+  "BREAK.Homeland": "Homeland",
+  "BREAK.Languages": "Languages",
+  "BREAK.History": "History",
+  "BREAK.Description": "Description",
+  "BREAK.Purviews": "Purviews",
+  "BREAK.Base": "Base",
+  "BREAK.Name": "Name",
+  "BREAK.Trait": "Trait",
+  "BREAK.Quirk": "Quirk",
+  "BREAK.Abilities": "Abilities",
+  "BREAK.Ability": "Ability",
+  "BREAK.RankXp": "Rank & XP",
+  "BREAK.Allegiance": "Allegiance",
+  "BREAK.Rank": "Rank",
+  "BREAK.CurrentXp": "Current XP",
+  "BREAK.TotalXpNextRank": "Total XP for next rank",
+  "BREAK.DarkAllegiancePoints": "Dark allegiance points",
+  "BREAK.BrightAllegiancePoints": "Bright allegiance points",
+  "BREAK.Dark": "Dark",
+  "BREAK.Twilight": "Twilight",
+  "BREAK.Bright": "Bright",
+  "BREAK.BonPen": "BON./PEN.",
+  "BREAK.None": "NONE",
+  "BREAK.AttackBonus": "Attack Bonus",
+  "BREAK.HeartsTotal": "Hearts Total",
+  "BREAK.HeartsDescription": "Protecting me from injury",
+  "BREAK.AttackBonusDescription": "Add to my Attack rolls",
+  "BREAK.CombatValues": "Combat Values",
+  "BREAK.DefenseRating": "Defense Rating",
+  "BREAK.DefenseRatingDescription": "Best this to strike me",
+  "BREAK.SpeedRating": "Speed Rating",
+  "BREAK.SLOW": "Slow",
+  "BREAK.AVERAGE": "Average",
+  "BREAK.FAST": "Fast",
+  "BREAK.VFAST": "V. Fast",
+  "BREAK.Area": "Area",
+  "BREAK.Areas": "Areas",
+  "BREAK.SpeedRatingDescription": "Decides how many Areas I can move",
+  "BREAK.Combat": "Combat",
+  "BREAK.Inventory": "Inventory"
+
+}

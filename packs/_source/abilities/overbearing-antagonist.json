@@ -1,0 +1,23 @@
+{
+  "folder": null,
+  "name": "Overbearing antagonist",
+  "type": "ability",
+  "_id": "mhYv6OWZ1y5OCPNR",
+  "img": "icons/svg/item-bag.svg",
+  "system": {},
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "break",
+    "systemVersion": "1.0",
+    "coreVersion": "11.315",
+    "createdTime": 1708990311607,
+    "modifiedTime": 1708991827912,
+    "lastModifiedBy": "breakbuilder0000"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!items!mhYv6OWZ1y5OCPNR"
+}

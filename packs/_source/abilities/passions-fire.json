@@ -1,0 +1,23 @@
+{
+  "folder": null,
+  "name": "Passion's fire",
+  "type": "ability",
+  "_id": "Ykipjjmytw3Hq3MQ",
+  "img": "icons/svg/item-bag.svg",
+  "system": {},
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "break",
+    "systemVersion": "1.0",
+    "coreVersion": "11.315",
+    "createdTime": 1708990579850,
+    "modifiedTime": 1708991827912,
+    "lastModifiedBy": "breakbuilder0000"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!items!Ykipjjmytw3Hq3MQ"
+}

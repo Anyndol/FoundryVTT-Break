@@ -1,0 +1,23 @@
+{
+  "folder": null,
+  "name": "Sentinel",
+  "type": "ability",
+  "_id": "6580YygDWuvSCti0",
+  "img": "icons/svg/item-bag.svg",
+  "system": {},
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "break",
+    "systemVersion": "1.0",
+    "coreVersion": "11.315",
+    "createdTime": 1708990293386,
+    "modifiedTime": 1708991827912,
+    "lastModifiedBy": "breakbuilder0000"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!items!6580YygDWuvSCti0"
+}

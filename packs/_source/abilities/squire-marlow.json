@@ -1,0 +1,23 @@
+{
+  "folder": null,
+  "name": "Squire marlow",
+  "type": "ability",
+  "_id": "iHk2hidV61Abq4vx",
+  "img": "icons/svg/item-bag.svg",
+  "system": {},
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "break",
+    "systemVersion": "1.0",
+    "coreVersion": "11.315",
+    "createdTime": 1708991279257,
+    "modifiedTime": 1708991827912,
+    "lastModifiedBy": "breakbuilder0000"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!items!iHk2hidV61Abq4vx"
+}

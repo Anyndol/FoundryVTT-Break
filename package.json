@@ -1,0 +1,29 @@
+{
+  "name": "break",
+  "version": "1.0.0",
+  "description": "CSS compiler for the BREAK!! system",
+  "scripts": {
+    "css": "gulp css",
+    "watch": "gulp",
+    "gulp": "gulp",
+    "build:db": "node ./utils/packs.mjs package pack",
+    "build:json": "node ./utils/packs.mjs package unpack"
+  },
+  "browserslist": [
+    "last 3 versions"
+  ],
+  "author": "",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.22.15",
+    "@foundryvtt/foundryvtt-cli": "^1.0.0-rc.4",
+    "@rollup/plugin-node-resolve": "^15.2.1",
+    "eslint-plugin-jsdoc": "^46.5.0",
+    "fancy-log": "^2.0.0",
+    "less": "^4.2.0",
+    "less-watch-compiler": "^1.16.3",
+    "rollup": "^3.28.1",
+    "yargs": "^17.7.2"
+  }
+}

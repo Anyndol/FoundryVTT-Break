@@ -1,0 +1,57 @@
+{
+  "id": "break",
+  "version": "1.0",
+  "title": "BREAK!!",
+  "url": "",
+  "description": "A BREAK!! TTRPG game system",
+  "license": "LICENSE.txt",
+  "authors": [
+    {
+      "name": "Anyndel"
+    }
+  ],
+  "esmodules": ["module/break.js"],
+  "styles": ["styles/break.css"],
+  "packs": [
+    {
+      "name": "abilities",
+      "label": "Abilities",
+      "system": "break",
+      "path": "packs/abilities",
+      "type": "Item",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "name": "quirks",
+      "label": "Quirks",
+      "system": "break",
+      "path": "packs/quirks",
+      "type": "Item",
+      "private": false,
+      "flags": {}
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json"
+    }
+  ],
+  "compatibility": {
+    "minimum": "10",
+    "verified": "11"
+  },
+  "gridDistance": 1,
+  "gridUnits": "area",
+  "primaryTokenAttribute": "hearts",
+  "secondaryTokenAttribute": "power",
+  "manifest": "",
+  "download": ""
+}

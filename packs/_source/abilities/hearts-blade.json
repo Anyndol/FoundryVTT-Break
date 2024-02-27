@@ -1,0 +1,29 @@
+{
+  "name": "Heart's blade",
+  "type": "ability",
+  "_id": "ZAjitrWpPet8bOng",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "description": "",
+    "quantity": 1,
+    "slots": 0,
+    "aptitudes": {},
+    "groups": {}
+  },
+  "effects": [],
+  "folder": null,
+  "flags": {},
+  "_stats": {
+    "systemId": "break",
+    "systemVersion": "1.0",
+    "coreVersion": "11.315",
+    "createdTime": 1708988892568,
+    "modifiedTime": 1708991827912,
+    "lastModifiedBy": "breakbuilder0000"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!items!ZAjitrWpPet8bOng"
+}

@@ -1,0 +1,100 @@
+{
+  "Actor": {
+    "types": ["character", "gmc"],
+    "htmlFields": ["biography"],
+    "templates":  {
+      "hearts": {
+        "value": 10,
+        "min": 0,
+        "max": 10,
+        "bon": 0
+      }
+    },
+    "character": {
+      "templates": ["hearts"],
+      "biography": "",
+      "defense": {
+        "value": 0,
+        "bon": 0
+      },
+      "attack": {
+        "value": 0,
+        "bon": 0
+      },
+      "aptitudes": {
+        "Might":{
+          "value": 10,
+          "description": "Smash, crush, lift",
+          "bon": 0,
+          "trait": 0,
+          "color": "rgb(238, 61, 52) !important"
+        },
+        "Deftness":{
+          "value": 10,
+          "description": "Dodge, sneak, leap",
+          "bon": 0,
+          "trait": 0,
+          "color":"rgb(244, 127, 38) !important;"
+        },
+        "Grit":{
+          "value": 10,
+          "description": "Cling, persist, press on",
+          "bon": 0,
+          "trait": 0,
+          "color":"rgb(93, 186, 72) !important"
+        },
+        "Insight":{
+          "value": 10,
+          "description": "Notice, know, remember",
+          "bon": 0,
+          "trait": 0,
+          "color":"rgb(23, 126, 194) !important"
+        },
+        "Aura":{
+          "value": 10,
+          "description": "Persuade, inspire, terrify",
+          "bon": 0,
+          "trait": 0,
+          "color":"rgb(108, 60, 148) !important"
+        }
+      },
+      "calling": "Champion",
+      "xp":{
+        "rank": 1,
+        "current": 0
+      },
+      "abilities": [],
+      "species": "Tenebrate",
+      "homeland": "Twilight Meridian",
+      "languages": "Low Speech, Fade Song",
+      "history": "Shadow Sea Pirate",
+      "description": "",
+      "purviews":"",
+      "quirk": "",
+      "groups": {},
+      "speed": {
+        "bon": 0,
+        "value": 1
+      }
+    },
+    "gmc": {
+      "biography": "",
+      "description": ""
+    }
+  },
+  "Item": {
+    "types": ["gear", "quirk", "ability", "calling"],
+    "htmlFields": ["description"],
+    "ability": {
+    },
+    "gear": {
+
+    },
+    "quirk": {
+
+    },
+    "calling": {
+
+    }
+  }
+}

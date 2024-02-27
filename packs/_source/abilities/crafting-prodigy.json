@@ -1,0 +1,23 @@
+{
+  "folder": null,
+  "name": "Crafting Prodigy",
+  "type": "ability",
+  "_id": "G79F0VdHTb0ZIipA",
+  "img": "icons/svg/item-bag.svg",
+  "system": {},
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "break",
+    "systemVersion": "1.0",
+    "coreVersion": "11.315",
+    "createdTime": 1708989829987,
+    "modifiedTime": 1708991827912,
+    "lastModifiedBy": "breakbuilder0000"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!items!G79F0VdHTb0ZIipA"
+}

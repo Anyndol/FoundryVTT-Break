@@ -1,0 +1,23 @@
+{
+  "folder": null,
+  "name": "Altgrave Ultima",
+  "type": "ability",
+  "_id": "yWDxsLxJm0W1AOHM",
+  "img": "icons/svg/item-bag.svg",
+  "system": {},
+  "effects": [],
+  "flags": {},
+  "_stats": {
+    "systemId": "break",
+    "systemVersion": "1.0",
+    "coreVersion": "11.315",
+    "createdTime": 1708991364742,
+    "modifiedTime": 1708991827912,
+    "lastModifiedBy": "breakbuilder0000"
+  },
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!items!yWDxsLxJm0W1AOHM"
+}
