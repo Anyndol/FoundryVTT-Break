@@ -12,7 +12,7 @@
       "name": "Anyndol"
     }
   ],
-  "esmodules": ["module/break.js"],
+  "esmodules": ["break.js"],
   "styles": ["styles/break.css"],
   "packs": [
     {
