@@ -4,13 +4,13 @@
  */
 
 // Import Modules
-import { BreakActor } from "./actors/actor.js";
-import { BreakItem } from "./items/item.js";
-import { BreakActorSheet } from "./actors/actor-sheet.js";
-import { preloadHandlebarsTemplates } from "./templates.js";
-import { createbreakMacro } from "./macro.js";
-import { BreakToken, BreakTokenDocument } from "./token.js";
-import { BreakAbilitySheet } from "./items/ability-sheet.js";
+import { BreakActor } from "./module/actors/actor.js";
+import { BreakItem } from "./module/items/item.js";
+import { BreakActorSheet } from "./module/actors/actor-sheet.js";
+import { preloadHandlebarsTemplates } from "./module/templates.js";
+import { createbreakMacro } from "./module/macro.js";
+import { BreakToken, BreakTokenDocument } from "./module/token.js";
+import { BreakAbilitySheet } from "./module/items/ability-sheet.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
