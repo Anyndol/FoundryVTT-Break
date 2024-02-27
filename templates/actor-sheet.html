@@ -1,25 +1,35 @@
 <form class="flexcol {{cssClass}} sheet" autocomplete="off">
     <section class="sheet-body">
-        <div class="tab description" data-group="primary" data-tab="identity">
-            <div style="display:flex; column-gap: 24px;">
-                {{> "systems/break/templates/parts/sheet-identity.html"}}
-                {{> "systems/break/templates/parts/sheet-aptitudes.html"}}
-            </div>
-        </div>
-        <div class="tab description" data-group="primary" data-tab="combat">
-            {{> "systems/break/templates/parts/sheet-combat.html"}}
-            {{> "systems/break/templates/parts/sheet-abilities.html"}}
-            <div style="display: flex; column-gap: 24px;margin-top: 12px;">
-                <div class="flexcol" style="width: 100%;">
-                    <div class="section-header">{{localize "BREAK.Quirk"}}</div>
-                    <input name="system.quirk" type="text" value="{{actor.system.quirk}}" placeholder="{{ localize 'BREAK.Quirk' }}" style="max-height: 32px;"/>
+        <div class="flexcol content" style="width: 100%;">
+            <div class="tab description" data-group="primary" data-tab="identity">
+                <div style="display:flex; column-gap: 24px;">
+                    {{> "systems/break/templates/parts/sheet-identity.html"}}
+                    {{> "systems/break/templates/parts/sheet-aptitudes.html"}}
                 </div>
-                {{> "systems/break/templates/parts/sheet-xp.html"}}
+                {{> "systems/break/templates/parts/sheet-allegiance.html"}}
             </div>
-            
-        </div>
-        <div class="tab description" data-group="primary" data-tab="inventory">
-
+            <div class="tab description" data-group="primary" data-tab="combat">
+                {{> "systems/break/templates/parts/sheet-combat.html"}}
+                {{> "systems/break/templates/parts/sheet-abilities.html"}}
+                <div style="display: flex; column-gap: 24px;margin-top: 12px;">
+                    <div class="flexcol" style="width: 100%;">
+                        <div class="section-header">{{localize "BREAK.Quirk"}}</div>
+                        <div style="display: flex;column-gap: 8px; flex-wrap: wrap;">
+                            {{#each quirks}}
+                                <div style="display: flex; margin-bottom: 6px;align-items: center; width: 33%;">
+                                    <label>{{this.name}}</label>
+                                    <button class="delete-quirk" data-id="{{this._id}}" style="max-width: 32px;margin-left: auto;"><i class="fas fa-trash" style="margin: 0px;"></i></button>
+                                </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                    {{> "systems/break/templates/parts/sheet-xp.html"}}
+                </div>
+                
+            </div>
+            <div class="tab description" data-group="primary" data-tab="inventory">
+    
+            </div>
         </div>
     </section>
     <nav class="tabs" data-group="primary">

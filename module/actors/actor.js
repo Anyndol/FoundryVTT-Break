@@ -18,11 +18,12 @@ export class BreakActor extends Actor {
     return this
   }
 
-  async deleteAbility(id) {
-    const ability = this.items.find(i => i._id == id);
-    if(ability) {
-      ability.delete()
+  async deleteItem(id) {
+    const item = this.items.find(i => i._id == id);
+    if(item) {
+      item.delete()
     }
     return this
   }
+
 }

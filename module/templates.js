@@ -10,10 +10,10 @@ export const preloadHandlebarsTemplates = async function() {
     // Attribute list partial.
     "systems/break/templates/parts/sheet-aptitudes.html",
     "systems/break/templates/parts/sheet-identity.html",
-    "systems/break/templates/parts/sheet-groups.html",
     "systems/break/templates/parts/sheet-combat.html",
     "systems/break/templates/parts/sheet-abilities.html",
     "systems/break/templates/parts/sheet-xp.html",
+    "systems/break/templates/parts/sheet-allegiance.html",
   ];
 
   // Load the template parts

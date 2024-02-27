@@ -69,6 +69,10 @@
       "homeland": "Twilight Meridian",
       "languages": "Low Speech, Fade Song",
       "history": "Shadow Sea Pirate",
+      "allegiance": {
+        "dark": 0,
+        "bright": 0
+      },
       "description": "",
       "purviews":"",
       "quirk": "",
@@ -84,7 +88,7 @@
     }
   },
   "Item": {
-    "types": ["gear", "quirk", "ability", "calling"],
+    "types": ["gear", "quirk", "ability", "calling", "gift"],
     "htmlFields": ["description"],
     "ability": {
     },

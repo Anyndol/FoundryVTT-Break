@@ -46,7 +46,8 @@
       "gear": "Objeto",
       "quirk": "Peculiaridad",
       "ability": "Habilidad",
-      "calling": "Vocación"
+      "calling": "Vocación",
+      "gift": "Don"
     }
   },
 
@@ -76,6 +77,7 @@
   "BREAK.Dark": "Oscuridad",
   "BREAK.Twilight": "Crepusculo",
   "BREAK.Bright": "Luminoso",
+  "BREAK.Gifts": "Dones",
   "BREAK.BonPen": "BON./PEN.",
   "BREAK.None": "NINGUNA",
   "BREAK.AttackBonus": "Bonus de ataque",

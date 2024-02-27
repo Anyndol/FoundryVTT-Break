@@ -46,7 +46,8 @@
       "gear": "Item",
       "quirk": "Quirk",
       "ability": "Ability",
-      "calling": "Calling"
+      "calling": "Calling",
+      "gift": "Gift"
     }
   },
 
@@ -76,6 +77,7 @@
   "BREAK.Dark": "Dark",
   "BREAK.Twilight": "Twilight",
   "BREAK.Bright": "Bright",
+  "BREAK.Gifts": "Gifts",
   "BREAK.BonPen": "BON./PEN.",
   "BREAK.None": "NONE",
   "BREAK.AttackBonus": "Attack Bonus",
