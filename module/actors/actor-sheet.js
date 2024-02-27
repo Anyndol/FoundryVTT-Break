@@ -56,7 +56,6 @@ export class BreakActorSheet extends ActorSheet {
     if ( !this.isEditable ) return;
 
     html.find(".aptitude-container").on("click", ".aptitude-trait", this._onSetTrait.bind(this));
-    html.find("#newability").on("click", this._onAddAbility.bind(this));
     html.find(".delete-ability").on("click", this._onDeleteAbility.bind(this));
 
     // Add draggable for Macro creation
@@ -88,11 +87,6 @@ export class BreakActorSheet extends ActorSheet {
     //this._onSubmit(event)
     //this.render(true)
     this.actor.setAptitudeTrait(aptitude, +value)
-  }
-
-  async _onAddAbility(event) {
-    event.preventDefault();
-    this.actor.addNewAbility();
   }
 
   async _onDeleteAbility(event) {

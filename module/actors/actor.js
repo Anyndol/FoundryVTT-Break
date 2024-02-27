@@ -18,23 +18,10 @@ export class BreakActor extends Actor {
     return this
   }
 
-  async addNewAbility() {
-    const abilities = [...this.system.abilities] ?? [];
-    abilities.push("");
-    const updates = {};
-    updates[`system.abilities`] = abilities;
-    await this.update(updates)
-    return this
-  }
-
-  async deleteAbility(index) {
-    const abilities = [...this.system.abilities] ?? [];
-    console.log(index);
-    if(abilities.length > index){
-      abilities.splice(index, 1);
-      const updates = {};
-      updates[`system.abilities`] = abilities;
-      await this.update(updates)
+  async deleteAbility(id) {
+    const ability = this.items.find(i => i._id == id);
+    if(ability) {
+      ability.delete()
     }
     return this
   }
