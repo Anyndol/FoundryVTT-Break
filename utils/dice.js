@@ -166,6 +166,7 @@ export async function roll(flavor, rollType, targetValue, advantageType, bonusTy
         rollFormula +=  customBonusResult > 0 ? " + " + customBonusResult : " "+customBonusResult;
     }
 
+    const resultText = rollType !== RollType.ATTACK ? getResultText(calculateRollResult(targetValue, definitiveRoll.total, definitiveRoll.total + statBonus + bonusTotal + customBonusResult)) : null;
     return definitiveRoll.toMessage({
         user: game.user.id,
         speaker: ChatMessage.getSpeaker({ actor: this }),
@@ -174,6 +175,7 @@ export async function roll(flavor, rollType, targetValue, advantageType, bonusTy
             rollFormula,
             failedRoll,
             rollTotal: definitiveRoll.total + statBonus + bonusTotal + customBonusResult,
+            outcome: resultText
         }),
         flavor,
     });
