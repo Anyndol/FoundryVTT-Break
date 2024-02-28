@@ -1,3 +1,5 @@
-# Simple break System
+# BREAK!! System
 
-A simple game system for Foundry VTT which allows for flexible definition of Actors and Items to assist with break or for running games which do not have a more complete system implementation available.
+A system to play the BREAK!! TTRPG on Foundry VTT.
+
+FoundryVTT-Break is an independent product published under BREAK!! RPG’s Non-Commercial License and is not affiliated with BREAK!!’s creators or publishers.
