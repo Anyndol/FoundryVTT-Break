@@ -25,35 +25,40 @@
       "aptitudes": {
         "Might":{
           "value": 10,
-          "description": "Smash, crush, lift",
+          "description": "BREAK.MightDesc",
+          "label": "BREAK.Might",
           "bon": 0,
           "trait": 0,
           "color": "rgb(238, 61, 52) !important"
         },
         "Deftness":{
           "value": 10,
-          "description": "Dodge, sneak, leap",
+          "description": "BREAK.DeftnessDesc",
+          "label": "BREAK.Deftness",
           "bon": 0,
           "trait": 0,
           "color":"rgb(244, 127, 38) !important;"
         },
         "Grit":{
           "value": 10,
-          "description": "Cling, persist, press on",
+          "description": "BREAK.GritDesc",
+          "label": "BREAK.Grit",
           "bon": 0,
           "trait": 0,
           "color":"rgb(93, 186, 72) !important"
         },
         "Insight":{
           "value": 10,
-          "description": "Notice, know, remember",
+          "description": "BREAK.InsightDesc",
+          "label": "BREAK.Insight",
           "bon": 0,
           "trait": 0,
           "color":"rgb(23, 126, 194) !important"
         },
         "Aura":{
           "value": 10,
-          "description": "Persuade, inspire, terrify",
+          "description": "BREAK.AuraDesc",
+          "label": "BREAK.Aura",
           "bon": 0,
           "trait": 0,
           "color":"rgb(108, 60, 148) !important"

@@ -68,9 +68,13 @@ export class BreakActorSheet extends ActorSheet {
     if ( !this.isEditable ) return;
 
     html.find(".aptitude-container").on("click", ".aptitude-trait", this._onSetTrait.bind(this));
+
+    html.find(".aptitude-value-circle.clickable").on("click", this._onRollAptitude.bind(this));
+
     html.find(".delete-ability").on("click", this._onDeleteItem.bind(this));
     html.find(".delete-gift").on("click", this._onDeleteItem.bind(this));
     html.find(".delete-quirk").on("click", this._onDeleteItem.bind(this));
+
 
     // Add draggable for Macro creation
     html.find(".aptitudes a.aptitude-roll").each((i, a) => {
@@ -109,6 +113,13 @@ export class BreakActorSheet extends ActorSheet {
     const id = button.dataset.id;
     console.log(id);
     this.actor.deleteItem(id);
+  }
+
+  async _onRollAptitude(event) {
+    event.preventDefault();
+    const button = event.currentTarget;
+    const aptitudeId = button.dataset.id;
+    this.actor.rollAptitude(aptitudeId)
   }
 
   /* -------------------------------------------- */
