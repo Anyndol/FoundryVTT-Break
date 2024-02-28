@@ -146,7 +146,7 @@ export async function roll(flavor, rollType, targetValue, advantageType, bonusTy
             if(rollType === RollType.CONTEST) {
                 bonusTotal = applyContestPenalty(definitiveRoll.total, targetValue, Math.abs(+bonusType));
             } else if(rollType === RollType.CHECK) {
-                bonusTotal = +bonusType;
+                bonusTotal = -bonusType;
             } else {
                 bonusTotal = +bonusType;
             }
