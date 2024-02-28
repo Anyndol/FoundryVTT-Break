@@ -120,5 +120,9 @@
   "BREAK.MinorPenalty": "Minor penalty",
   "BREAK.MajorPenalty": "Major penalty",
   "BREAK.CustomBonus": "Custom bonus",
-  "BREAK.Bonus": "Bonus"
+  "BREAK.Bonus": "Bonus",
+  "BREAK.Check": "Check",
+  "BREAK.Contest": "Contest",
+  "BREAK.RollType": "Roll type",
+  "BREAK.Attack": "Attack"
 }

@@ -120,5 +120,9 @@
   "BREAK.MinorPenalty": "Penalización menor",
   "BREAK.MajorPenalty": "Penalización mayor",
   "BREAK.CustomBonus": "Bonus personalizado",
-  "BREAK.Bonus": "Bonus"
+  "BREAK.Bonus": "Bonus",
+  "BREAK.Check": "Prueba",
+  "BREAK.Contest": "Contienda",
+  "BREAK.RollType": "Tipo de tirada",
+  "BREAK.Attack": "Atacar"
 }

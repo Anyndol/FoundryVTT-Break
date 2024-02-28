@@ -70,6 +70,7 @@ export class BreakActorSheet extends ActorSheet {
     html.find(".aptitude-container").on("click", ".aptitude-trait", this._onSetTrait.bind(this));
 
     html.find(".aptitude-value-circle.clickable").on("click", this._onRollAptitude.bind(this));
+    html.find(".combat-value-circle.clickable").on("click", this._onRollAttack.bind(this));
 
     html.find(".delete-ability").on("click", this._onDeleteItem.bind(this));
     html.find(".delete-gift").on("click", this._onDeleteItem.bind(this));
@@ -120,6 +121,12 @@ export class BreakActorSheet extends ActorSheet {
     const button = event.currentTarget;
     const aptitudeId = button.dataset.id;
     this.actor.rollAptitude(aptitudeId)
+  }
+
+  async _onRollAttack(event) {
+    event.preventDefault();
+    const button = event.currentTarget;
+    this.actor.rollAttack()
   }
 
   /* -------------------------------------------- */

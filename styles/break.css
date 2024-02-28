@@ -102,6 +102,18 @@
   -webkit-box-align: center;
   align-items: center;
 }
+.break.sheet .combat-value-circle {
+  border: 1px solid;
+  min-width: 48px;
+  height: 48px;
+  border-radius: 100px;
+  background-color: #e6e6e6;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
 .break.sheet .aptitude-value-inner-circle {
   width: 37.5px;
   height: 37.5px;

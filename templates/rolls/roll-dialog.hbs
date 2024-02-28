@@ -1,5 +1,18 @@
 <form style="display: flex; min-height:80px;padding-bottom:12px;">
-    <div style="border-right: 1px solid black;padding-right:12px;">
+    {{#if aptitude}}
+        <div style="border-right: 1px solid black;padding-right:12px;">
+            <label style="font-weight: bold;">{{localize "BREAK.RollType"}}</label>
+            <div>
+                <label>{{localize "BREAK.Check"}}</label>
+                <input name="rollType" type="radio" value="0" checked/>
+            </div>
+            <div style="margin-top:6px;">
+                <label>{{localize "BREAK.Contest"}}</label>
+                <input name="rollType" type="radio" value="1"/>
+            </div>
+        </div>
+    {{/if}}
+    <div style="border-right: 1px solid black;padding-right:12px;margin-left: 12px;">
         <label style="font-weight: bold;">{{localize "BREAK.Edge"}}</label>
         <div>
             <label>{{localize "BREAK.Edge"}}</label>
@@ -16,21 +29,21 @@
             <div style="display: flex; flex-direction:column; justify-content:center;margin-left:auto;row-gap:6px;">
                 <div>
                     <label>{{localize "BREAK.MinorBonus"}}</label>
-                    <input name="bonus" type="radio" value="1" />
+                    <input name="bonus" type="radio" value="{{bonuses.MINOR_BONUS}}" />
                 </div>
                 <div>
                     <label>{{localize "BREAK.MajorBonus"}}</label>
-                    <input name="bonus" type="radio" value="2" />
+                    <input name="bonus" type="radio" value="{{bonuses.MAJOR_BONUS}}" />
                 </div>
             </div>
             <div style="display: flex; flex-direction:column; justify-content:center;margin-right:auto;row-gap:6px;">
                 <div>
                     <label>{{localize "BREAK.MinorPenalty"}}</label>
-                    <input name="bonus" type="radio" value="3" />
+                    <input name="bonus" type="radio" value="{{bonuses.MINOR_PENALTY}}" />
                 </div>
                 <div>
                     <label>{{localize "BREAK.MajorPenalty"}}</label>
-                    <input name="bonus" type="radio" value="4" />
+                    <input name="bonus" type="radio" value="{{bonuses.MAJOR_PENALTY}}" />
                 </div>
             </div>
         </div>

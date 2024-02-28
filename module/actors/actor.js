@@ -1,4 +1,4 @@
-import { AdvantageTypes, calculateRollResult, getResultText, roll } from "../../utils/dice.js";
+import { AdvantageTypes, RollBonuses, RollType, calculateRollResult, getResultText, roll } from "../../utils/dice.js";
 import { EntitySheetHelper } from "../helper.js";
 
 /**
@@ -34,13 +34,31 @@ export class BreakActor extends Actor {
 
     new Dialog({
       title: "Roll " +game.i18n.localize(aptitude.label)+ " check",
-      content: await renderTemplate("systems/break/templates/rolls/roll-dialog.hbs",{}),
+      content: await renderTemplate("systems/break/templates/rolls/roll-dialog.hbs",{bonuses: RollBonuses, aptitude: true}),
       buttons: {
         roll: {
           label: game.i18n.localize("BREAK.Roll"),
           callback: async (html) => {
             const form = html[0].querySelector("form");
-            return roll(flavor, targetValue, form.edge.value, true, form.bonus.value, form.customBonus.value)
+            return roll(flavor, form.rollType.value, targetValue, form.edge.value, form.bonus.value, form.customBonus.value);
+          }
+        }
+      }
+    }).render(true);
+  }
+
+  async rollAttack() {
+    const attack = +this.system.attack.value + +this.system.attack.bon;
+    const flavor = game.i18n.format("BREAK.Attack");
+    new Dialog({
+      title: "Roll attack",
+      content: await renderTemplate("systems/break/templates/rolls/roll-dialog.hbs",{bonuses: RollBonuses}),
+      buttons: {
+        roll: {
+          label: game.i18n.localize("BREAK.Roll"),
+          callback: async (html) => {
+            const form = html[0].querySelector("form");
+            return roll(flavor, RollType.ATTACK, 0, form.edge.value, form.bonus.value, form.customBonus.value, attack);
           }
         }
       }

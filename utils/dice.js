@@ -1,22 +1,28 @@
 export const RollResults = {
-    SUCCESS: 0,
-    FAILURE: 1,
-    AUTOMATIC_FAILURE: 2,
-    SPECIAL_SUCCESS: 3
+    SUCCESS: "0",
+    FAILURE: "1",
+    AUTOMATIC_FAILURE: "2",
+    SPECIAL_SUCCESS: "3"
 }
 
 export const RollBonuses = {
-    NONE: 0,
-    MINOR_BONUS: 1,
-    MAJOR_BONUS: 2,
-    MINOR_PENALTY: 3,
-    MAJOR_PENALTY: 4
+    NONE: "0",
+    MINOR_BONUS: "2",
+    MAJOR_BONUS: "4",
+    MINOR_PENALTY: "-2",
+    MAJOR_PENALTY: "-4"
 }
 
 export const AdvantageTypes = {
-    NONE: 0,
-    EDGE: 1,
-    SNAG: 2
+    NONE: "0",
+    EDGE: "1",
+    SNAG: "2"
+}
+
+export const RollType = {
+    CHECK: "0",
+    CONTEST: "1",
+    ATTACK: "2"
 }
 
 export function calculateRollResult(targetValue, rollBase, rollTotal){
@@ -45,71 +51,130 @@ export function getResultText(result){
     }
 }
 
-export async function roll(flavor, targetValue, advantageType, isLowRoll, bonusType, customBonus) {
-    let rollFormula = "1d20";
+function applyContestBonus(base, target, range) {
+    console.log(`Bonus Base ${base} target ${target} with range ${range}`)
+    const difference = target-base;
+    if(Math.abs(difference) >= range) {
+        return Math.sign(difference)*range;
+    }
+    return difference;
+}
 
-    if(advantageType != null) {
-        switch(+advantageType) {
+function applyContestPenalty(base, target, range) {
+    console.log(`Penalty Base ${base} target ${target} with range ${range}`)
+    const difference = target-base;
+    if(base > target || Math.abs(difference) < range) {
+        return +range;
+    }
+    return -range;
+}
+
+export async function roll(flavor, rollType, targetValue, advantageType, bonusType, customBonus, statBonus = 0) {
+    let rollFormula = "1d20";
+    const baseRoll = new Roll("1d20")
+    await baseRoll.evaluate();
+    rollFormula = `${baseRoll.total}`;
+
+    let definitiveRoll = baseRoll;
+    let failedRoll = null;
+
+    if(advantageType != "") {
+        const advantageRoll = new Roll("1d20");
+        await advantageRoll.evaluate();
+        failedRoll = advantageRoll;
+        switch(advantageType) {
             case AdvantageTypes.EDGE:
-                if(isLowRoll)
-                    rollFormula = "2d20kl"
-                else
-                    rollFormula = "2d20kh"
+                if(rollType === RollType.CHECK) {
+                    if((advantageRoll.total == targetValue || advantageRoll.total < baseRoll.total) && baseRoll.total != targetValue) {
+                        definitiveRoll = advantageRoll;
+                        failedRoll = baseRoll;
+                        rollFormula = `${advantageRoll.total}`
+                    }
+                } else if(rollType === RollType.CONTEST) {
+                    if((advantageRoll.total == targetValue && baseRoll.total != targetValue) || (baseRoll.total > targetValue && advantageRoll.total < baseRoll.total) || (advantageRoll.total > baseRoll.total && advantageRoll.total < targetValue)) {
+                        definitiveRoll = advantageRoll;
+                        failedRoll = baseRoll;
+                        rollFormula = `${advantageRoll.total}`
+                    }
+                } else {
+                    if(advantageRoll.total > baseRoll.total) {
+                        definitiveRoll = advantageRoll;
+                        failedRoll = baseRoll;
+                        rollFormula = `${advantageRoll.total}`
+                    }
+                }
                 break;
             case AdvantageTypes.SNAG:
-                if(isLowRoll)
-                    rollFormula = "2d20kh"
-                else
-                    rollFormula = "2d20kl"
+                if(rollType === RollType.CHECK) {
+                    if(advantageRoll.total > baseRoll.total && advantageRoll.total != targetValue) {
+                        definitiveRoll = advantageRoll;
+                        failedRoll = baseRoll;
+                        rollFormula = `${advantageRoll.total}`
+                    }
+                } else if(rollType === RollType.CONTEST) {
+                    if(advantageRoll.total != targetValue && advantageRoll.total < baseRoll.total && baseRoll.total <= targetValue) {
+                        definitiveRoll = advantageRoll;
+                        failedRoll = baseRoll;
+                        rollFormula = `${advantageRoll.total}`
+                    }  
+                } else {
+                    if(advantageRoll.total < baseRoll.total){
+                        definitiveRoll = advantageRoll;
+                        failedRoll = baseRoll;
+                        rollFormula = `${advantageRoll.total}`
+                    }
+                }
                 break;
         }
     }
 
-    if(bonusType != null) {
-        switch(+bonusType){
-            case RollBonuses.MINOR_BONUS:
-                if(isLowRoll)
-                    rollFormula += " -2"
-                else
-                    rollFormula += " +2"
-                break;
-            case RollBonuses.MAJOR_BONUS:
-                if(isLowRoll)
-                    rollFormula += " -4"
-                else
-                    rollFormula += " +4"
-                break;
-            case RollBonuses.MINOR_PENALTY:
-                if(isLowRoll)
-                    rollFormula += " +2"
-                else
-                    rollFormula += " -2"
-                break;
-            case RollBonuses.MAJOR_PENALTY:
-                if(isLowRoll)
-                    rollFormula += " +4"
-                else
-                    rollFormula += " -4"
-                break;
+    if(statBonus != 0) {
+        rollFormula += statBonus > 0 ? " + " + statBonus : " "+statBonus;
+    }
+
+    let bonusTotal = 0;
+    if(bonusType != "" && definitiveRoll.total !== targetValue) {
+        if(bonusType === RollBonuses.MINOR_BONUS || bonusType === RollBonuses.MAJOR_BONUS) {
+            if(rollType === RollType.CONTEST) {
+                bonusTotal = applyContestBonus(definitiveRoll.total, targetValue, +bonusType);
+            } else if(rollType === RollType.CHECK) {
+                bonusTotal = -bonusType;
+            } else {
+                bonusTotal = +bonusType
+            }
+        } else {
+            if(rollType === RollType.CONTEST) {
+                bonusTotal = applyContestPenalty(definitiveRoll.total, targetValue, Math.abs(+bonusType));
+            } else if(rollType === RollType.CHECK) {
+                bonusTotal = +bonusType;
+            } else {
+                bonusTotal = +bonusType;
+            }
         }
+        rollFormula +=  bonusTotal > 0 ? " + " + bonusTotal : " "+bonusTotal;
     }
 
-    if(customBonus != null) {
-        if(isLowRoll)
-            rollFormula += " - @customBonus"
-        else
-            rollFormula += " + @customBonus"
+    let customBonusResult = 0;
+    if(customBonus != "" && definitiveRoll.total != targetValue) {
+        if(rollType === RollType.CONTEST) {
+            customBonusResult = applyContestBonus(definitiveRoll.total+bonusTotal, targetValue, Math.abs(+customBonus));
+        } else if(rollType === RollType.CHECK) {
+            customBonusResult = -customBonus;
+        } else {
+            customBonusResult = +customBonus;
+        }
+        rollFormula +=  customBonusResult > 0 ? " + " + customBonusResult : " "+customBonusResult;
     }
 
-    const roll = new Roll(rollFormula, {customBonus})
-    await roll.evaluate();
-    const resultText = getResultText(calculateRollResult(targetValue, roll.total, roll.total))
-    return roll.toMessage({
+    const resultText = getResultText(calculateRollResult(targetValue, definitiveRoll.total, definitiveRoll.total + statBonus + bonusTotal + customBonusResult))
+    return definitiveRoll.toMessage({
         user: game.user.id,
         speaker: ChatMessage.getSpeaker({ actor: this }),
         content: await renderTemplate("systems/break/templates/rolls/roll-check.hbs", 
         {
-            roll: roll,
+            rollFormula,
+            failedRoll,
+            rollTotal: definitiveRoll.total + statBonus + bonusTotal + customBonusResult,
             outcome: resultText
         }),
         flavor,
