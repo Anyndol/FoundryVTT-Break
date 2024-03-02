@@ -93,7 +93,7 @@
     }
   },
   "Item": {
-    "types": ["gear", "quirk", "ability", "calling", "gift"],
+    "types": ["weapon", "armor", "shield", "outfit", "accesory", "wayfinding", "illumination", "kit", "book", "consumable", "combustible", "miscellaneous", "curiosity", "otherworld", "quirk", "ability", "calling", "gift"],
     "htmlFields": ["description"],
     "ability": {
     },
