@@ -7,8 +7,8 @@ export class BreakBaseItemSheet extends ItemSheet {
   /** @inheritdoc */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["break", "sheet", "ability"],
-      template: "systems/break/templates/ability-sheet.html",
+      classes: ["break", "sheet", "item"],
+      template: "systems/break/templates/base-item-sheet.html",
       width: 520,
       height: 480,
     });
