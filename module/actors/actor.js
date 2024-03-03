@@ -65,4 +65,12 @@ export class BreakActor extends Actor {
     }).render(true);
   }
 
+  async modifyHp(amount) {
+    if(this.system.hearts.value + amount >= 0 && this.system.hearts.value + amount <= (this.system.hearts.max + this.system.hearts.bon)) {
+      const updates = {"system.hearts.value": this.system.hearts.value+amount}
+      await this.update(updates)
+    }
+    return this
+  }
+
 }

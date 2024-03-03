@@ -15,7 +15,8 @@ export const preloadHandlebarsTemplates = async function() {
     "systems/break/templates/parts/sheet-xp.html",
     "systems/break/templates/parts/sheet-allegiance.html",
     "systems/break/templates/rolls/roll-check.hbs",
-    "systems/break/templates/rolls/roll-dialog.hbs"
+    "systems/break/templates/rolls/roll-dialog.hbs",
+    "systems/break/templates/items/item-header.hbs"
   ];
 
   // Load the template parts

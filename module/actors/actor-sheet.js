@@ -1,5 +1,8 @@
 import { EntitySheetHelper } from "../helper.js";
 import {ATTRIBUTE_TYPES, RANK_XP} from "../constants.js";
+import { BreakItem } from "../items/item.js";
+
+const allowedItemTypes = ["quirk", "ability", "gift"]
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -16,11 +19,21 @@ export class BreakActorSheet extends ActorSheet {
       height: 850,
       tabs: [{navSelector: ".tabs", contentSelector: ".sheet-body", initial: "identity"}],
       scrollY: [".content"],
-      dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}]
+      dragDrop: [{dragSelector: null, dropSelector: null, permissions: {drop: () => false}}]
     });
   }
 
   /* -------------------------------------------- */
+
+  /** @override */
+  async _onDropItem(event, data) {
+    if ( !this.actor.isOwner ) return false;
+    const item = await Item.implementation.fromDropData(data);
+    if(!allowedItemTypes.includes(item.type)) {return false;}
+    if(this.actor.items.some(i => i._id === item._id)) {return false;}
+
+    return BreakItem.createDocuments([item], {pack: this.actor.pack, parent: this.actor, keepId: true});
+  }
 
   /** @inheritdoc */
   async getData(options) {
@@ -76,6 +89,8 @@ export class BreakActorSheet extends ActorSheet {
     html.find(".delete-gift").on("click", this._onDeleteItem.bind(this));
     html.find(".delete-quirk").on("click", this._onDeleteItem.bind(this));
 
+    html.find("button.hearts.clickable").on("click", this._onModifyHearts.bind(this));
+
 
     // Add draggable for Macro creation
     html.find(".aptitudes a.aptitude-roll").each((i, a) => {
@@ -127,6 +142,12 @@ export class BreakActorSheet extends ActorSheet {
     event.preventDefault();
     const button = event.currentTarget;
     this.actor.rollAttack()
+  }
+
+  async _onModifyHearts(event) {
+    event.preventDefault();
+    const amount = event.currentTarget.dataset.amount;
+    this.actor.modifyHp(+amount);
   }
 
   /* -------------------------------------------- */

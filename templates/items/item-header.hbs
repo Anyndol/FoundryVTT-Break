@@ -1,0 +1,30 @@
+<header class="sheet-header" style="flex: 0;margin-bottom:12px;">
+    <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" style="height:100px;"/>
+    <div style="height: 100%;">
+        <div class="header-fields" style="display:flex; align-items:center;">
+            <h1 class="charname">
+                <input name="name" type="text" value="{{data.name}}" placeholder="Name" />
+            </h1>
+            <div style="align-items: center; display:flex; flex-direction:column;">
+                <input name="system.slots" type="number" class="aptitude-base-circle" style="text-align: center; margin-left:0px;" value="{{item.system.slots}}" placeholder="0"/>
+                <label style="text-transform: uppercase;">{{localize "BREAK.Slots"}}</label>
+            </div>
+        </div>
+        <div style="display: flex;align-items:center;">
+            <div style="flex: 1;">
+                {{#if isWeapon }}
+                    <label style="font-size:24px; font-weight:700;font-family:Montserrat;">Standard</label>
+                {{/if}}
+            </div>
+            
+            <div style="display: flex;align-items:center; flex: 1;justify-content:flex-end;">
+                <i class="fas fa-gem"></i>
+                <input name="system.value.gems" value="{{item.system.value.gems}}" placeholder="0" class="money-input" type="number"/>
+                <i class="fas fa-coins"></i>
+                <input name="system.value.coins" value="{{item.system.value.coins}}" placeholder="0" class="money-input" type="number"/>
+                <i class="fas fa-coin-vertical"></i>
+                <input name="system.value.stones" value="{{item.system.value.stones}}" placeholder="0" class="money-input" type="number"/>
+            </div>
+        </div>
+    </div>
+</header>

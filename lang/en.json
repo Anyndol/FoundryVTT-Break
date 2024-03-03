@@ -60,7 +60,8 @@
       "quirk": "Quirk",
       "ability": "Ability",
       "calling": "Calling",
-      "gift": "Gift"
+      "gift": "Gift",
+      "weapon-ability":"Weapon ability"
     }
   },
 
@@ -137,5 +138,8 @@
   "BREAK.Check": "Check",
   "BREAK.Contest": "Contest",
   "BREAK.RollType": "Roll type",
-  "BREAK.Attack": "Attack"
+  "BREAK.Attack": "Attack",
+  "BREAK.Slots": "Slots",
+  "BREAK.Details": "Details",
+  "BREAK.ExtraDamage": "Extra damage"
 }

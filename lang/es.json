@@ -61,7 +61,8 @@
       "quirk": "Peculiaridad",
       "ability": "Habilidad",
       "calling": "Vocación",
-      "gift": "Don"
+      "gift": "Don",
+      "weapon-ability":"Habilidad de arma"
     }
   },
 
@@ -138,5 +139,8 @@
   "BREAK.Check": "Prueba",
   "BREAK.Contest": "Contienda",
   "BREAK.RollType": "Tipo de tirada",
-  "BREAK.Attack": "Atacar"
+  "BREAK.Attack": "Atacar",
+  "BREAK.Slots": "Huecos",
+  "BREAK.Details": "Detalles",
+  "BREAK.ExtraDamage": "Daño extra"
 }

@@ -95,6 +95,16 @@
   "Item": {
     "types": ["weapon", "armor", "shield", "outfit", "accesory", "wayfinding", "illumination", "kit", "book", "consumable", "combustible", "miscellaneous", "curiosity", "otherworld", "quirk", "ability", "calling", "gift"],
     "htmlFields": ["description"],
+    "templates": {
+      "base": {
+        "slots": 0,
+        "value": {
+          "gems": 0,
+          "coins": 0,
+          "stones": 0
+        }
+      }
+    },
     "ability": {
     },
     "gear": {
@@ -105,6 +115,10 @@
     },
     "calling": {
 
+    },
+    "weapon": {
+      "templates": ["base"],
+      "extraDamage": 0
     }
   }
 }

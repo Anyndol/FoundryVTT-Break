@@ -11,6 +11,7 @@ import { preloadHandlebarsTemplates } from "./module/templates.js";
 import { createbreakMacro } from "./module/macro.js";
 import { BreakToken, BreakTokenDocument } from "./module/token.js";
 import { BreakAbilitySheet } from "./module/items/ability-sheet.js";
+import { BreakWeaponSheet } from "./module/items/weapon-sheet.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -47,6 +48,7 @@ Hooks.once("init", async function() {
   Actors.registerSheet("break", BreakActorSheet, {types:['character'], makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("break", BreakAbilitySheet, {types:['ability'], makeDefault: true });
+  Items.registerSheet("break", BreakWeaponSheet, {types:['weapon'], makeDefault: true });
 
   // Register system settings
   game.settings.register("break", "macroShorthand", {
