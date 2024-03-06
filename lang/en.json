@@ -40,7 +40,8 @@
   "TYPES": {
     "Actor": {
       "gmc": "GMC",
-      "character": "Player Character (PC)"
+      "character": "Player Character (PC)",
+      "adversary": "Adversary"
     },
     "Item": {
       "weapon": "Weapon",
@@ -61,7 +62,7 @@
       "ability": "Ability",
       "calling": "Calling",
       "gift": "Gift",
-      "weapon-ability":"Weapon ability"
+      "weapon-type": "Weapon type"
     }
   },
 
@@ -141,5 +142,26 @@
   "BREAK.Attack": "Attack",
   "BREAK.Slots": "Slots",
   "BREAK.Details": "Details",
-  "BREAK.ExtraDamage": "Extra damage"
+  "BREAK.ExtraDamage": "Extra damage",
+  "BREAK.Standard": "Standard",
+  "BREAK.Concealed": "Concealed",
+  "BREAK.Quick": "Quick",
+  "BREAK.Master": "Master",
+  "BREAK.Mighty": "Mighty",
+  "BREAK.Arc": "Arc",
+  "BREAK.Lash": "Lash",
+  "BREAK.Thrown": "Thrown",
+  "BREAK.Drawn": "Drawn",
+  "BREAK.MechanicalSmall": "Mechanical (Small)",
+  "BREAK.MechanicalLarge": "Mechanical (Large)",
+  "BREAK.Range": "Range",
+  "BREAK.Add": "Add",
+  "BREAK.Weapon": "Weapon",
+  "BREAK.Weapons": "Weapons",
+  "BREAK.Action": "Action",
+  "BREAK.LoadingTime": "Loading time",
+  "BREAK.Ranged": "Ranged",
+  "BREAK.RangedProperties": "Ranged properties",
+  "BREAK.MeleeProperties": "Melee properties",
+  "BREAK.ExtraAttackRollResult": "Extra damage!"
 }

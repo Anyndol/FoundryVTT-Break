@@ -1,0 +1,24 @@
+<form class="flexcol {{cssClass}}" autocomplete="off">
+    {{> "systems/break/templates/items/item-header.hbs"}}
+    <div style="display:flex;column-gap: 24px;">
+        <div class="flexcol" style="flex: 0.75;">
+            <div class="section-header">{{localize "BREAK.Details"}}</div>
+            <div style="display:flex; align-items: center;flex: 0;">
+                <label>{{localize "BREAK.ExtraDamage"}}</label>
+                <input name="system.extraDamage" value="{{item.system.extraDamage}}" placeholder="0" type="number" style="width:32px; text-align:center;margin-left: 6px;"/>
+            </div>
+            {{> "systems/break/templates/items/parts/weapon-details.hbs"}}
+            <div style="display:flex; align-items: center;flex: 0;">
+                <label>{{localize "BREAK.Ranged"}}</label>
+                <input type="checkbox" {{#if item.system.ranged}}checked{{/if}} name="system.ranged" />
+            </div>
+            {{> "systems/break/templates/items/parts/weapon-abilities.hbs"}}
+        </div>
+        <div class="flexcol" style="flex: 1;">
+            <div class="section-header">
+                {{localize "BREAK.Description"}}
+            </div>
+            {{editor descriptionHTML target="system.description" button=true owner=owner editable=editable}}
+        </div>
+    </div>
+</form>

@@ -1,3 +1,9 @@
+.break.sheet {
+  /* Tooltip container */
+  /* Tooltip text */
+  /* Tooltip arrow */
+  /* Show the tooltip text when you mouse over the tooltip container */
+}
 .break.sheet .window-content {
   height: 100%;
   padding: 5px;
@@ -362,6 +368,57 @@
   background: transparent;
   width: 48px;
   text-align: center;
+}
+.break.sheet .weapon-type-drag-slot {
+  flex: 1;
+  height: 100%;
+  border-right: 1px solid grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.break.sheet .weapon-card-column {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  border-right: 1px solid grey;
+  padding-right: 6px;
+}
+.break.sheet .tooltip {
+  position: relative;
+  display: inline-block;
+}
+.break.sheet .tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.break.sheet .tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+.break.sheet .tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
 .checkbox-with-label {
   display: flex;

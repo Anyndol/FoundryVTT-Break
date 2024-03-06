@@ -50,6 +50,15 @@
       "type": "Item",
       "private": false,
       "flags": {}
+    },
+    {
+      "name": "weapon-types",
+      "label": "Weapon types",
+      "system": "break",
+      "path": "packs/weapon-types",
+      "type": "Item",
+      "private": false,
+      "flags": {}
     }
   ],
   "languages": [

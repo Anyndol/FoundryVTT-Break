@@ -47,8 +47,8 @@ export class BreakActor extends Actor {
     }).render(true);
   }
 
-  async rollAttack() {
-    const attack = +this.system.attack.value + +this.system.attack.bon;
+  async rollAttack(bonus, extraDamage) {
+    const attack = +this.system.attack.value + +this.system.attack.bon + +bonus;
     const flavor = game.i18n.format("BREAK.Attack");
     new Dialog({
       title: "Roll attack",
@@ -58,7 +58,7 @@ export class BreakActor extends Actor {
           label: game.i18n.localize("BREAK.Roll"),
           callback: async (html) => {
             const form = html[0].querySelector("form");
-            return roll(flavor, RollType.ATTACK, 0, form.edge.value, form.bonus.value, form.customBonus.value, attack);
+            return roll(flavor, RollType.ATTACK, +extraDamage, form.edge.value, form.bonus.value, form.customBonus.value, attack);
           }
         }
       }

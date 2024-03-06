@@ -3,22 +3,28 @@
     <div style="display:flex;column-gap: 24px;">
         <div class="flexcol" style="flex: 0.75;">
             <div class="section-header">{{localize "BREAK.Details"}}</div>
-            <div style="display:flex; align-items: center;flex: 0;">
-                <label>{{localize "BREAK.ExtraDamage"}}</label>
-                <input name="system.extraDamage" value="{{item.system.extraDamage}}" placeholder="0" type="number" style="width:32px; text-align:center;margin-left: 6px;"/>
-            </div>
-            <div class="section-header" style="margin-top:12px;">{{localize "BREAK.Abilities"}}</div>
-            <div class="ability-list" style="display: flex; flex-wrap: wrap;">
-                {{#each abilities}}
-                    <div style="display: flex; margin-bottom: 6px;align-items: center; width: 25%;">
-                        <label>{{this.name}}</label>
-                        <button class="delete-ability" data-id="{{this._id}}" style="margin-left: auto; max-width: 32px; margin-right: 8px;"><i class="fas fa-trash" style="margin: 0px;"></i></button>
-                    </div>
-                {{/each}}
-            </div>
+            {{#if isMelee}}
+                <p style="flex: 0;font-weight:600;font-size:14px;">{{localize "BREAK.MeleeProperties"}}</p>
+                <div style="display:flex; align-items: center;flex: 0;">
+                    <label>{{localize "BREAK.ExtraDamage"}}</label>
+                    <input name="system.extraDamage" value="{{item.system.extraDamage}}" placeholder="0" type="number" style="width:32px; text-align:center;margin-left: 6px;"/>
+                </div>
+            {{/if}}
+            {{#if isRanged}}
+                <p style="flex: 0;font-weight:600;font-size:14px;">{{localize "BREAK.RangedProperties"}}</p>
+                <div style="display:flex; align-items: center;flex: 0;">
+                    <label>{{localize "BREAK.Ranged"}} {{localize "BREAK.ExtraDamage"}}</label>
+                    <input name="system.rangedExtraDamage" value="{{item.system.rangedExtraDamage}}" placeholder="0" type="number" style="width:32px; text-align:center;margin-left: 6px;"/>
+                </div>
+            {{/if}}
+            {{> "systems/break/templates/items/parts/weapon-details.hbs"}}
+            {{> "systems/break/templates/items/parts/weapon-abilities.hbs"}}
         </div>
         <div class="flexcol" style="flex: 1;">
-            <div class="section-header">{{localize "BREAK.Description"}}</div>
+            <div class="section-header">
+                {{localize "BREAK.Description"}}
+            </div>
+            {{editor descriptionHTML target="system.description" button=true owner=owner editable=editable}}
         </div>
     </div>
 </form>

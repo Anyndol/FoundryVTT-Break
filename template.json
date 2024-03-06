@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character", "gmc"],
+    "types": ["character", "gmc", "adversary"],
     "htmlFields": ["biography"],
     "templates":  {
       
@@ -93,10 +93,11 @@
     }
   },
   "Item": {
-    "types": ["weapon", "armor", "shield", "outfit", "accesory", "wayfinding", "illumination", "kit", "book", "consumable", "combustible", "miscellaneous", "curiosity", "otherworld", "quirk", "ability", "calling", "gift"],
+    "types": ["weapon", "armor", "shield", "outfit", "accesory", "wayfinding", "illumination", "kit", "book", "consumable", "combustible", "miscellaneous", "curiosity", "otherworld", "weapon-type", "quirk", "ability", "calling", "gift"],
     "htmlFields": ["description"],
     "templates": {
-      "base": {
+      "baseItem": {
+        "description":"",
         "slots": 0,
         "value": {
           "gems": 0,
@@ -106,9 +107,47 @@
       }
     },
     "ability": {
+      "subtype": "",
+      "description": ""
     },
-    "gear": {
-
+    "outfit": {
+      "templates": ["baseItem"]
+    },
+    "armor": {
+      "templates": ["baseItem"]
+    },
+    "shield": {
+      "templates": ["baseItem"]
+    },
+    "accesory": {
+      "templates": ["baseItem"]
+    },
+    "wayfinding": {
+      "templates": ["baseItem"]
+    },
+    "illumination": {
+      "templates": ["baseItem"]
+    },
+    "kit": {
+      "templates": ["baseItem"]
+    },
+    "book": {
+      "templates": ["baseItem"]
+    },
+    "consumable": {
+      "templates": ["baseItem"]
+    },
+    "combustible": {
+      "templates": ["baseItem"]
+    },
+    "miscellaneous": {
+      "templates": ["baseItem"]
+    },
+    "curiosity": {
+      "templates": ["baseItem"]
+    },
+    "otherworld": {
+      "templates": ["baseItem"]
     },
     "quirk": {
 
@@ -117,8 +156,22 @@
 
     },
     "weapon": {
-      "templates": ["base"],
-      "extraDamage": 0
+      "templates": ["baseItem"],
+      "extraDamage": 0,
+      "rangedExtraDamage": 0,
+      "range": 0,
+      "loadingTime": 0,
+      "weaponType1": null,
+      "weaponType2": null,
+      "abilities": []
+    },
+    "weapon-type": {
+      "templates": ["baseItem"],
+      "ranged": false,
+      "extraDamage": 0,
+      "range": 0,
+      "loadingTime": 0,
+      "abilities": []
     }
   }
 }

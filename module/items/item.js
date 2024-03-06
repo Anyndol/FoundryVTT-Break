@@ -1,5 +1,3 @@
-//import { EntitySheetHelper } from "../helper";
-
 /**
  * Extend the base Item document to support aptitudes and groups with a custom template creation dialog.
  * @extends {Item}

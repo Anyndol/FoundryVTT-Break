@@ -1,0 +1,12 @@
+{{#if isRanged}}
+    <div style="display:flex; align-items: center;flex: 0;">
+        <label>{{localize "BREAK.Range"}}</label>
+        <input name="system.range" value="{{item.system.range}}" placeholder="0" type="number" style="width:32px; text-align:center;margin-left: 6px;"/>
+        <label style="margin-left: 6px;">{{localize "BREAK.Areas"}}</label>
+    </div>
+    <div style="display:flex; align-items: center;flex: 0;">
+        <label>{{localize "BREAK.LoadingTime"}}</label>
+        <input name="system.loadingTime" value="{{item.system.loadingTime}}" placeholder="0" type="number" style="width:32px; text-align:center;margin-left: 6px;"/>
+        <label style="margin-left: 6px;">{{localize "BREAK.Action"}}</label>
+    </div>
+{{/if}}

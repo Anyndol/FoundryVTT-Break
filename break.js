@@ -12,6 +12,8 @@ import { createbreakMacro } from "./module/macro.js";
 import { BreakToken, BreakTokenDocument } from "./module/token.js";
 import { BreakAbilitySheet } from "./module/items/ability-sheet.js";
 import { BreakWeaponSheet } from "./module/items/weapon-sheet.js";
+import { BreakAdversarySheet } from "./module/actors/adversary-sheet.js";
+import { BreakWeaponTypeSheet } from "./module/items/weapon-type-sheet.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -46,9 +48,11 @@ Hooks.once("init", async function() {
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("break", BreakActorSheet, {types:['character'], makeDefault: true });
+  Actors.registerSheet("break", BreakAdversarySheet, {types:['adversary'], makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("break", BreakAbilitySheet, {types:['ability'], makeDefault: true });
   Items.registerSheet("break", BreakWeaponSheet, {types:['weapon'], makeDefault: true });
+  Items.registerSheet("break", BreakWeaponTypeSheet, {types:['weapon-type'], makeDefault: true });
 
   // Register system settings
   game.settings.register("break", "macroShorthand", {

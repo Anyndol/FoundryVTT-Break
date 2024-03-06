@@ -40,7 +40,8 @@
   "TYPES": {
     "Actor": {
       "gmc": "PMJ",
-      "character": "Personaje"
+      "character": "Personaje",
+      "adversary": "Adversario"
     },
     "Item": {
       "weapon": "Arma",
@@ -62,7 +63,7 @@
       "ability": "Habilidad",
       "calling": "Vocación",
       "gift": "Don",
-      "weapon-ability":"Habilidad de arma"
+      "weapon-type": "Tipo de arma"
     }
   },
 
@@ -142,5 +143,26 @@
   "BREAK.Attack": "Atacar",
   "BREAK.Slots": "Huecos",
   "BREAK.Details": "Detalles",
-  "BREAK.ExtraDamage": "Daño extra"
+  "BREAK.ExtraDamage": "Daño extra",
+  "BREAK.Standard": "Estandar",
+  "BREAK.Concealed": "Camuflada",
+  "BREAK.Quick": "Rapida",
+  "BREAK.Master": "Maestra",
+  "BREAK.Mighty": "Poderosa",
+  "BREAK.Arc": "Asta",
+  "BREAK.Lash": "Látigo",
+  "BREAK.Thrown": "Arrojadiza",
+  "BREAK.Drawn": "Tirada",
+  "BREAK.MechanicalSmall": "Mecánica (Pequeña)",
+  "BREAK.MechanicalLarge": "Mecánica (Grande)",
+  "BREAK.Range": "Rango",
+  "BREAK.Add": "Añadir",
+  "BREAK.Weapon": "Arma",
+  "BREAK.Weapons": "Armas",
+  "BREAK.Action": "Acción",
+  "BREAK.LoadingTime": "Tiempo de recarga",
+  "BREAK.Ranged": "A distancia",
+  "BREAK.RangedProperties": "Propiedades a distancia",
+  "BREAK.MeleeProperties": "Propiedades cuerpo a cuerpo",
+  "BREAK.ExtraAttackRollResult": "¡Daño extra!"
 }

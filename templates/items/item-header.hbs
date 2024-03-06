@@ -1,6 +1,6 @@
 <header class="sheet-header" style="flex: 0;margin-bottom:12px;">
-    <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" style="height:100px;"/>
-    <div style="height: 100%;">
+    <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" style="height:100px;max-width:33%"/>
+    <div style="height: 100%;display:flex;flex-direction:column;">
         <div class="header-fields" style="display:flex; align-items:center;">
             <h1 class="charname">
                 <input name="name" type="text" value="{{data.name}}" placeholder="Name" />
@@ -10,10 +10,25 @@
                 <label style="text-transform: uppercase;">{{localize "BREAK.Slots"}}</label>
             </div>
         </div>
-        <div style="display: flex;align-items:center;">
-            <div style="flex: 1;">
+        <div style="display: flex;align-items:center;height:100%;">
+            <div style="flex: 1; display:flex;height:100%">
                 {{#if isWeapon }}
-                    <label style="font-size:24px; font-weight:700;font-family:Montserrat;">Standard</label>
+                    <div class="weapon-type-drag-slot" id="weaponType1">
+                        {{#if item.system.weaponType1}}
+                            <label id="weaponType1" style="font-weight: 700;font-size:16px;">{{item.system.weaponType1.name}}</label>
+                        {{/if}}
+                        {{#unless item.system.weaponType1}}
+                            Drag a type
+                        {{/unless}}
+                    </div>
+                    <div class="weapon-type-drag-slot" id="weaponType2">
+                        {{#if item.system.weaponType2}}
+                            <label id="weaponType2" style="font-weight: 700;font-size:16px;">{{item.system.weaponType2.name}}</label>
+                        {{/if}}
+                        {{#unless item.system.weaponType2}}
+                            Drag a type
+                        {{/unless}}
+                    </div>
                 {{/if}}
             </div>
             

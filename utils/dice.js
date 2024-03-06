@@ -166,7 +166,9 @@ export async function roll(flavor, rollType, targetValue, advantageType, bonusTy
         rollFormula +=  customBonusResult > 0 ? " + " + customBonusResult : " "+customBonusResult;
     }
 
-    const resultText = rollType !== RollType.ATTACK ? getResultText(calculateRollResult(targetValue, definitiveRoll.total, definitiveRoll.total + statBonus + bonusTotal + customBonusResult)) : null;
+    const resultText = rollType !== RollType.ATTACK ? 
+    getResultText(calculateRollResult(targetValue, definitiveRoll.total, definitiveRoll.total + statBonus + bonusTotal + customBonusResult)) 
+    : targetValue > 0 && definitiveRoll.total+statBonus+bonusTotal+customBonusResult > targetValue ? game.i18n.format("BREAK.ExtraAttackRollResult") : null;
     return definitiveRoll.toMessage({
         user: game.user.id,
         speaker: ChatMessage.getSpeaker({ actor: this }),

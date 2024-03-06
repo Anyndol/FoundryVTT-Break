@@ -1,4 +1,4 @@
-import {ATTRIBUTE_TYPES} from "../constants.js";
+import BREAK from "../constants.js";
 
 /**
  * Extend the basic ItemSheet with some very simple modifications
@@ -10,7 +10,7 @@ export class BreakAbilitySheet extends ItemSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["break", "sheet", "ability"],
-      template: "systems/break/templates/ability-sheet.html",
+      template: "systems/break/templates/items/ability-sheet.hbs",
       width: 520,
       height: 480,
     });
@@ -21,13 +21,11 @@ export class BreakAbilitySheet extends ItemSheet {
   /** @inheritdoc */
   async getData(options) {
     const context = await super.getData(options);
-    //EntitySheetHelper.getAttributeData(context.data);
-    context.systemData = context.data.system;
-    context.dtypes = ATTRIBUTE_TYPES;
-    context.descriptionHTML = await TextEditor.enrichHTML(context.systemData.description, {
+    context.descriptionHTML = await TextEditor.enrichHTML(context.item.system.description, {
       secrets: this.document.isOwner,
       async: true
     });
+    context.abilityTypes = BREAK.ability_types;
     return context;
   }
 
@@ -39,15 +37,6 @@ export class BreakAbilitySheet extends ItemSheet {
 
     // Everything below here is only needed if the sheet is editable
     if ( !this.isEditable ) return;
-
-    // Add draggable for Macro creation
-    html.find(".aptitudes a.aptitude-roll").each((i, a) => {
-      a.setAttribute("draggable", true);
-      a.addEventListener("dragstart", ev => {
-        let dragData = ev.currentTarget.dataset;
-        ev.dataTransfer.setData('text/plain', JSON.stringify(dragData));
-      }, false);
-    });
   }
 
   /* -------------------------------------------- */
