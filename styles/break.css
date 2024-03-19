@@ -420,6 +420,16 @@
   visibility: visible;
   opacity: 1;
 }
+.break.sheet .delete-weapon {
+  position: absolute;
+  left: 8px;
+  font-size: 18px;
+  visibility: hidden;
+  cursor: pointer;
+}
+.break.sheet .weapon-name:hover .delete-weapon {
+  visibility: visible;
+}
 .checkbox-with-label {
   display: flex;
   align-items: center;

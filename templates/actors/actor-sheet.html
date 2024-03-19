@@ -33,7 +33,13 @@
                 </div>
             </div>
             <div class="tab description" data-group="primary" data-tab="inventory">
-    
+                <div style="display:flex;column-gap:24px;">
+                    <div style="width: 100%;">
+                        {{> "systems/break/templates/actors/parts/sheet-equipment.hbs"}}
+                        {{> "systems/break/templates/actors/parts/sheet-bags.hbs"}}
+                    </div>
+                    {{> "systems/break/templates/actors/parts/sheet-bag-content.hbs"}}    
+                </div>
             </div>
         </div>
     </section>

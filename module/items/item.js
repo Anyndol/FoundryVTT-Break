@@ -9,19 +9,27 @@ export class BreakItem extends Item {
     super.prepareDerivedData();
   }
 
-  /*static async createDialog(data={}, options={}) {
-    // Create the dialog, temporarily changing the list of allowed items
-    console.log(game)
-    const original = game.system.documentTypes.Item;
-    try {
-        game.system.documentTypes.Item = original;
-        return super.createDialog(data, {
-            ...context,
-            classes: [...(context.classes ?? []), "dialog-item-create"],
-        });
-    } finally {
-        game.system.documentTypes.Item = original;
+  async onDeleteAbility(event) {
+    event.preventDefault();
+    const button = event.currentTarget;
+    const id = button.dataset.id;
+    const itemIndex = this.item.system.abilities?.findIndex(i => i._id == id);
+    if(itemIndex >= 0) {
+      this.item.system.abilities.splice(itemIndex, 1);
+      this.item.update({"system.abilities": this.item.system.abilities});
     }
-  }*/
+  }
+
+  mergeAndPruneAbilities(newAbilities) {
+    let abilityArray = this.system.abilities ?? [];
+    abilityArray = abilityArray.concat(newAbilities);
+    const prunedAbilities = [];
+    abilityArray.reduce((pa, a) => {
+      if(!pa.some(i => a._id === i._id))
+        pa.push(a);
+      return pa;
+    }, prunedAbilities);
+    return prunedAbilities;
+  }
 
 }

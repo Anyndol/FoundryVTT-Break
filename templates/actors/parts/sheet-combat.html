@@ -90,7 +90,7 @@
                 <div class="aptitude-value-circle">
                     <div class="aptitude-value-inner-circle">
                         <p class="aptitude-base-value">
-                            {{sum actor.system.defense.value actor.system.defense.bon 0}}
+                            {{defenseRating}}
                         </p>
                     </div>
                 </div>
@@ -111,19 +111,19 @@
                 </div>
             </div>
             <div style="display: flex; align-items: center;">
-                <div class="speed-rating {{#when 0 'eq' (sum actor.system.speed.value actor.system.speed.bon 0)}}active{{/when}}">
+                <div class="speed-rating {{#when 0 'eq' speedRating}}active{{/when}}">
                     <p style="text-transform: capitalize;">{{localize "BREAK.SLOW"}}</p>
                     <p>0 {{localize "BREAK.Areas"}}</p>
                 </div>
-                <div class="speed-rating {{#when 1 'eq' (sum actor.system.speed.value actor.system.speed.bon 0)}}active{{/when}}">
+                <div class="speed-rating {{#when 1 'eq' speedRating}}active{{/when}}">
                     <p style="text-transform: capitalize;">{{localize "BREAK.AVERAGE"}}</p>
                     <p>1 {{localize "BREAK.Areas"}}</p>
                 </div>
-                <div class="speed-rating {{#when 2 'eq' (sum actor.system.speed.value actor.system.speed.bon 0)}}active{{/when}}">
+                <div class="speed-rating {{#when 2 'eq' speedRating}}active{{/when}}">
                     <p style="text-transform: capitalize;">{{localize "BREAK.FAST"}}</p>
                     <p>2 {{localize "BREAK.Areas"}}</p>
                 </div>
-                <div class="speed-rating {{#when 3 'eq' (sum actor.system.speed.value actor.system.speed.bon 0)}}active{{/when}}">
+                <div class="speed-rating {{#when 3 'eq' speedRating}}active{{/when}}">
                     <p style="text-transform: capitalize;">{{localize "BREAK.VFAST"}}</p>
                     <p>3 {{localize "BREAK.Areas"}}</p>
                 </div>

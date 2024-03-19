@@ -62,7 +62,8 @@
       "ability": "Ability",
       "calling": "Calling",
       "gift": "Gift",
-      "weapon-type": "Weapon type"
+      "weapon-type": "Weapon type",
+      "armor-type": "Armor type"
     }
   },
 
@@ -163,5 +164,16 @@
   "BREAK.Ranged": "Ranged",
   "BREAK.RangedProperties": "Ranged properties",
   "BREAK.MeleeProperties": "Melee properties",
-  "BREAK.ExtraAttackRollResult": "Extra damage!"
+  "BREAK.ExtraAttackRollResult": "Extra damage!",
+  "BREAK.Armor": "Armor",
+  "BREAK.MaxSpeed": "Max. speed",
+  "BREAK.Equipment": "Equipment",
+  "BREAK.Outfit": "Outfit",
+  "BREAK.Accesories": "Accesories",
+  "BREAK.BagContent": "Bag content",
+  "BREAK.Bags": "Bags",
+  "BREAK.Total": "Total",
+  "BREAK.Free": "Free",
+  "BREAK.RightHand": "Right hand",
+  "BREAK.LeftHand": "Left hand"
 }

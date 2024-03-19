@@ -5,7 +5,8 @@ const BREAK = {}
 BREAK.ability_types = {
     calling: "BREAK.Calling",
     species: "BREAK.Species",
-    weapon: "BREAK.Weapon"
+    weapon: "BREAK.Weapon",
+    armor: "BREAK.Armor"
 }
 
 export default BREAK;

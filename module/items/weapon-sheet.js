@@ -19,8 +19,8 @@ export class BreakWeaponSheet extends ItemSheet {
   /** @inheritdoc */
   activateListeners(html) {
     super.activateListeners(html);
-    html.find(".delete-ability").on("click", this._onDeleteItem.bind(this));
     if ( !this.isEditable ) return;
+    html.find(".delete-ability").on("click", this.item.onDeleteAbility.bind(this));
   }
 
   /** @inheritdoc */
@@ -35,19 +35,7 @@ export class BreakWeaponSheet extends ItemSheet {
     context.isMelee = (context.item.system.weaponType1 && !context.item.system.weaponType1.system.ranged) || (context.item.system.weaponType2 && !context.item.system.weaponType2.system.ranged);
     context.abilities = context.item.system.abilities ?? [];
     return context;
-  }
-
-  async _onDeleteItem(event) {
-    event.preventDefault();
-    const button = event.currentTarget;
-    const id = button.dataset.id;
-    const itemIndex = this.item.system.abilities?.findIndex(i => i._id == id);
-    if(itemIndex >= 0) {
-      this.item.system.abilities.splice(itemIndex, 1);
-      this.item.update({"system.abilities": this.item.system.abilities});
-    }
-  }
-  
+  }  
 
   /** @inheritdoc */
   async _onDrop(event) {
@@ -60,27 +48,15 @@ export class BreakWeaponSheet extends ItemSheet {
       this.item.update({"system.abilities": abilityArray});
     } else if(draggedItem.type === "weapon-type") {
       if(event.target.id === "weaponType1" ){
-        const prunedAbilities = this._mergeAndPruneAbilities(draggedItem.system.abilities ?? []);
+        const prunedAbilities = this.item.mergeAndPruneAbilities(draggedItem.system.abilities ?? []);
         await this.item.update({"system.weaponType1": draggedItem.toObject(), "system.abilities": prunedAbilities});
         this._onSetWeaponType();
       } else if(event.target.id === "weaponType2"){
-        const prunedAbilities = this._mergeAndPruneAbilities(draggedItem.system.abilities ?? []);
+        const prunedAbilities = this.item.mergeAndPruneAbilities(draggedItem.system.abilities ?? []);
         await this.item.update({"system.weaponType2": draggedItem.toObject(), "system.abilities": prunedAbilities});
         this._onSetWeaponType();
       }
     }
-  }
-
-  _mergeAndPruneAbilities(newAbilities) {
-    let abilityArray = this.item.system.abilities ?? [];
-    abilityArray = abilityArray.concat(newAbilities);
-    const prunedAbilities = [];
-    abilityArray.reduce((pa, a) => {
-      if(!pa.some(i => a._id === i._id))
-        pa.push(a);
-      return pa;
-    }, prunedAbilities);
-    return prunedAbilities;
   }
 
   _onSetWeaponType() {

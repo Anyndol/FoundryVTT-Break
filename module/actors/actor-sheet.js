@@ -1,7 +1,7 @@
 import { RANK_XP} from "../constants.js";
 import { BreakItem } from "../items/item.js";
 
-const allowedItemTypes = ["quirk", "ability", "gift", "weapon"]
+const allowedItemTypes = ["quirk", "ability", "gift", "weapon", "armor"]
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -11,6 +11,8 @@ export class BreakActorSheet extends ActorSheet {
 
   /** @inheritdoc */
   static get defaultOptions() {
+    this.selectedBag = null;
+
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["break", "sheet", "actor"],
       template: "systems/break/templates/actors/actor-sheet.html",
@@ -18,11 +20,38 @@ export class BreakActorSheet extends ActorSheet {
       height: 850,
       tabs: [{navSelector: ".tabs", contentSelector: ".sheet-body", initial: "identity"}],
       scrollY: [".content"],
-      dragDrop: [{dragSelector: null, dropSelector: null, permissions: {drop: () => false}}]
+      dragDrop: [{dragSelector: ".directory-item.document", dropSelector: null, permissions: {drop: () => false}},
+        {dragSelector: ".bag-item", dropSelector: ".equipment-drag-slot"}]
     });
   }
 
-  /* -------------------------------------------- */
+  /** @inheritDoc */
+  _onDragStart(event) {
+    // Add another deferred deactivation to catch the second pointerenter event that seems to be fired on Firefox.
+    const data = event.target.closest(".bag-item")?.dataset ?? {};
+    if ( !data.type ) return super._onDragStart(event);
+    event.dataTransfer.setData("application/json", JSON.stringify(data));
+  }
+
+
+  /** @inheritDoc */
+  _canDragDrop(selector) {
+    return this.isEditable;
+  }
+
+  /** @inheritdoc */
+  async _onDrop(event) {
+    const t = event.target.closest(".equipment-drag-slot")
+    if(!event.target.closest(".equipment-drag-slot")) return super._onDrop(event);
+    const dragData = event.dataTransfer.getData("application/json");
+    if ( !dragData ) return super._onDrop(event);
+    const id = JSON.parse(dragData).id;
+    const item = this.actor.items.find(i => i._id == id);
+    this._onEquipItem(item);
+    
+    return true;
+  }
+
 
   /** @override */
   async _onDropItem(event, data) {
@@ -59,6 +88,7 @@ export class BreakActorSheet extends ActorSheet {
     context.weapons = context.actor.items.filter(i => i.type === "weapon");
     context.weapons = context.weapons.map(w => {
       return {
+        id: w._id,
         name: w.name,
         type: (w.system.weaponType1?.name ?? "") + " " + (w.system.weaponType2?.name ?? ""),
         isRanged: w.system.weaponType1?.system.ranged || w.system.weaponType2?.system.ranged,
@@ -69,6 +99,11 @@ export class BreakActorSheet extends ActorSheet {
     });
 
     context.attackBonus = context.actor.system.attack.value + context.actor.system.attack.bon;
+    context.defenseRating = +context.actor.system.defense.value + +context.actor.system.defense.bon + (context.actor.system.equipment.armor ? +context.actor.system.equipment.armor.system.defenseBonus : 0)
+    context.speedRating = context.actor.system.speed.value + context.actor.system.speed.bon;
+    if(context.actor.system.equipment.armor && context.actor.system.equipment.armor.system.speedLimit != null && context.actor.system.equipment.armor.system.speedLimit != "") {
+      context.speedRating = +context.actor.system.equipment.armor.system.speedLimit < context.speedRating ? +context.actor.system.equipment.armor.system.speedLimit : context.speedRating;
+    }
 
     if(+context.actor.system.allegiance.dark <= 1 && +context.actor.system.allegiance.bright <= 1){
       context.allegiance = 0;
@@ -79,6 +114,13 @@ export class BreakActorSheet extends ActorSheet {
     } else {
       context.allegiance = 2;
     }
+
+    const equipment = context.actor.system.equipment;
+    const equippedItemIds = [equipment.armor?._id, equipment.outfit?._id, equipment.rightHand?._id, equipment.leftHand?._id, ...equipment.accesories.map(i => i._id)];
+    context.bagContent = context.actor.items.filter(i => !["ability", "quirk", "gift"].includes(i.type)
+    && !equippedItemIds.includes(i._id) && i.bag == this.selectedBag).map(i => ({...i, _id: i._id, equippable: ["armor", "weapon", "outfit", "accesory", "shield"].includes(i.type)}));
+    context.freeInventorySlots = context.actor.system.slots - context.bagContent.reduce((ac, cv) => ac + cv.system.slots, 0);
+
     return context;
   }
 
@@ -105,6 +147,11 @@ export class BreakActorSheet extends ActorSheet {
 
     html.find("button.hearts.clickable").on("click", this._onModifyHearts.bind(this));
 
+    html.find("i.delete-weapon").on("click", this._onDeleteItem.bind(this));
+    html.find("i.remove-item").on("click", this._onDeleteItem.bind(this));
+    html.find("i.unequip-item").on("click", this._onUnequipItem.bind(this));
+
+
     // Add draggable for Macro creation
     html.find(".aptitudes a.aptitude-roll").each((i, a) => {
       a.setAttribute("draggable", true);
@@ -126,6 +173,26 @@ export class BreakActorSheet extends ActorSheet {
       return;
     }
     this.actor.setAptitudeTrait(aptitude, +value)
+  }
+
+  async _onEquipItem(item) {
+    switch(item.type){
+      case "armor":
+        this.actor.update({"system.equipment.armor": {...item, _id: item._id}});
+        return;
+      case "outfit":
+        //this.actor.update({"system.equipment.outfit": item});
+        return;
+    }
+  }
+
+  async _onUnequipItem(event) {
+    event.preventDefault();
+    const button = event.currentTarget;
+    const type = button.dataset.type;
+    const updates = {};
+    updates[`system.equipment.${type}`] = null;
+    this.actor.update(updates);
   }
 
   async _onDeleteItem(event) {

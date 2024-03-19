@@ -1,0 +1,15 @@
+<div class="flexcol" style="width: 100%;">
+    <div class="section-header">{{localize "BREAK.BagContent"}}</div>
+    {{#each bagContent}}
+        <div style="display:flex;flex: 0;" {{#if this.equippable}}class="bag-item"{{/if}} data-id="{{this._id}}" data-type="{{this.type}}">
+            <div style="text-align: center;width:40%;">
+                <p style="font-size: 16px;font-weight: 700;">{{this.name}}</p>
+                <p style="font-size: 12px;">{{this.type}}</p>
+            </div>
+            <div style="margin-left: auto;text-align:center;">
+                <p>{{this.system.slots}}  {{localize "BREAK.Slots"}}</p>
+                <i class="fas fa-trash clickable remove-item" data-id="{{this._id}}"></i>
+            </div>
+        </div>
+    {{/each}}
+</div>

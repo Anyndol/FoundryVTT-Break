@@ -14,6 +14,8 @@ import { BreakAbilitySheet } from "./module/items/ability-sheet.js";
 import { BreakWeaponSheet } from "./module/items/weapon-sheet.js";
 import { BreakAdversarySheet } from "./module/actors/adversary-sheet.js";
 import { BreakWeaponTypeSheet } from "./module/items/weapon-type-sheet.js";
+import { BreakArmorSheet } from "./module/items/armor-sheet.js";
+import { BreakArmorTypeSheet } from "./module/items/armor-type-sheet.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -52,7 +54,9 @@ Hooks.once("init", async function() {
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("break", BreakAbilitySheet, {types:['ability'], makeDefault: true });
   Items.registerSheet("break", BreakWeaponSheet, {types:['weapon'], makeDefault: true });
+  Items.registerSheet("break", BreakArmorSheet, {types:['armor'], makeDefault: true });
   Items.registerSheet("break", BreakWeaponTypeSheet, {types:['weapon-type'], makeDefault: true });
+  Items.registerSheet("break", BreakArmorTypeSheet, {types:['armor-type'], makeDefault: true });
 
   // Register system settings
   game.settings.register("break", "macroShorthand", {

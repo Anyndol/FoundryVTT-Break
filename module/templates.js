@@ -15,11 +15,16 @@ export const preloadHandlebarsTemplates = async function() {
     "systems/break/templates/actors/parts/sheet-xp.html",
     "systems/break/templates/actors/parts/sheet-allegiance.html",
     "systems/break/templates/actors/parts/sheet-weapon-card.hbs",
+    "systems/break/templates/actors/parts/sheet-equipment.hbs",
+    "systems/break/templates/actors/parts/sheet-bag-content.hbs",
+    "systems/break/templates/actors/parts/sheet-bags.hbs",
     "systems/break/templates/rolls/roll-check.hbs",
     "systems/break/templates/rolls/roll-dialog.hbs",
     "systems/break/templates/items/item-header.hbs",
-    "systems/break/templates/items/parts/weapon-abilities.hbs",
-    "systems/break/templates/items/parts/weapon-details.hbs"
+    "systems/break/templates/items/parts/item-abilities.hbs",
+    "systems/break/templates/items/parts/weapon-details.hbs",
+    "systems/break/templates/items/parts/armor-details.hbs",
+    "systems/break/templates/actors/parts/sheet-equipment-card.hbs"
   ];
 
   // Load the template parts

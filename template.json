@@ -81,10 +81,18 @@
       "description": "",
       "purviews":"",
       "quirk": "",
+      "slots": 0,
       "groups": {},
       "speed": {
         "bon": 0,
         "value": 1
+      },
+      "equipment": {
+        "armor": null,
+        "outfit": null,
+        "accesories": [],
+        "rightHand": null,
+        "leftHand": null
       }
     },
     "gmc": {
@@ -93,7 +101,7 @@
     }
   },
   "Item": {
-    "types": ["weapon", "armor", "shield", "outfit", "accesory", "wayfinding", "illumination", "kit", "book", "consumable", "combustible", "miscellaneous", "curiosity", "otherworld", "weapon-type", "quirk", "ability", "calling", "gift"],
+    "types": ["weapon", "armor", "shield", "outfit", "accesory", "wayfinding", "illumination", "kit", "book", "consumable", "combustible", "miscellaneous", "curiosity", "otherworld", "weapon-type", "armor-type", "quirk", "ability", "calling", "gift"],
     "htmlFields": ["description"],
     "templates": {
       "baseItem": {
@@ -114,7 +122,10 @@
       "templates": ["baseItem"]
     },
     "armor": {
-      "templates": ["baseItem"]
+      "templates": ["baseItem"],
+      "defenseBonus": 0,
+      "speedLimit": null,
+      "type": null
     },
     "shield": {
       "templates": ["baseItem"]
@@ -172,6 +183,11 @@
       "range": 0,
       "loadingTime": 0,
       "abilities": []
+    },
+    "armor-type": {
+      "templates": ["baseItem"],
+      "defenseBonus": 0,
+      "speedLimit": null
     }
   }
 }

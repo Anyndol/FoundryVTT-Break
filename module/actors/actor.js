@@ -73,4 +73,13 @@ export class BreakActor extends Actor {
     return this
   }
 
+  /** @inheritdoc */
+  async _onUpdate(data, options, userId) {
+    super._onUpdate(data, options, userId);
+    console.log(data);
+    if(data.system?.hearts?.bon != null && (this.system.hearts.max + data.system.hearts.bon) < this.system.hearts.value) {
+      this.update({"system.hearts.value": this.system.hearts.max + data.system.hearts.bon})
+    }
+  }
+
 }

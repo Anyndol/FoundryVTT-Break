@@ -1,0 +1,67 @@
+<div class="flexcol" style="width: 100%;">
+    <div class="section-header">{{localize "BREAK.Equipment"}}</div>
+    <div style="display:flex;column-gap:24px;border-bottom:1px solid grey;padding-bottom:8px;">
+        <div style="width:150px;border-right:1px solid grey;">
+            <p style="flex: 0;font-weight:600;font-size:16px;">{{localize "BREAK.LeftHand"}}</p>
+            <div class="equipment-drag-slot" id="lefthandslot">
+                {{#if actor.system.equipment.leftHand}}
+                    {{> "systems/break/templates/actors/parts/sheet-equipment-card.hbs" item=actor.system.equipment.leftHand}}
+                    <i class="fas fa-shield-slash clickable unequip-item" data-type="leftHand"></i>
+                {{/if}}
+                {{#unless actor.system.equipment.leftHand}}
+                    Drag an item
+                {{/unless}}
+            </div>
+        </div>
+        <div style="width:150px;">
+            <p style="flex: 0;font-weight:600;font-size:16px;">{{localize "BREAK.RightHand"}}</p>
+            <div class="equipment-drag-slot" id="righthandslot">
+                {{#if actor.system.equipment.rightHand}}
+                    {{> "systems/break/templates/actors/parts/sheet-equipment-card.hbs" item=actor.system.equipment.rightHand}}
+                    <i class="fas fa-shield-slash clickable unequip-item" data-type="rightHand"></i>
+                {{/if}}
+                {{#unless actor.system.equipment.rightHand}}
+                    Drag an item
+                {{/unless}}
+            </div>
+        </div>
+    </div>
+    <div style="display:flex;column-gap:24px;margin-top:16px;border-bottom:1px solid grey;padding-bottom:8px;">
+        <div style="width:150px;border-right:1px solid grey;">
+            <p style="flex: 0;font-weight:600;font-size:16px;">{{localize "BREAK.Armor"}}</p>
+            <div class="equipment-drag-slot" style="display:flex; align-items: center;" id="armorslot">
+                {{#if actor.system.equipment.armor}}
+                    {{> "systems/break/templates/actors/parts/sheet-equipment-card.hbs" item=actor.system.equipment.armor}}
+                    <i class="fas fa-shield-slash clickable unequip-item" style="margin-left:auto; margin-right:12px;" data-type="armor"></i>
+                {{/if}}
+                {{#unless actor.system.equipment.armor}}
+                    Drag an armor
+                {{/unless}}
+            </div>
+        </div>
+        <div style="width:150px;">
+            <p style="flex: 0;font-weight:600;font-size:16px;">{{localize "BREAK.Outfit"}}</p>
+            <div class="equipment-drag-slot" id="outfitslot">
+                {{#if actor.system.equipment.outfit}}
+                    {{> "systems/break/templates/actors/parts/sheet-equipment-card.hbs" item=actor.system.equipment.outfit}}
+                    <i class="fas fa-shield-slash clickable unequip-item" data-type="outfit"></i>
+                {{/if}}
+                {{#unless actor.system.equipment.outfit}}
+                    Drag an outfit
+                {{/unless}}
+            </div>
+        </div>
+    </div>
+    <p style="flex: 0;font-weight:600;font-size:16px;margin-top:16px;">{{localize "BREAK.Accesories"}}</p>
+    <div class="equipment-drag-slot" id="accesoriesslot" style="margin-bottom:16px;">
+        {{#if actor.system.equipment.accesories}}
+            {{#each actor.system.equipment.accesories}}
+                {{> "systems/break/templates/actors/parts/sheet-equipment-card.hbs" item=actor.system.equipment.accesories}}
+                <i class="fas fa-shield-slash clickable unequip-item"></i>
+            {{/each}}
+        {{/if}}
+        {{#unless actor.system.equipment.accesories}}
+            Drag an accesory
+        {{/unless}}
+    </div>
+</div>

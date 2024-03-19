@@ -63,7 +63,8 @@
       "ability": "Habilidad",
       "calling": "Vocación",
       "gift": "Don",
-      "weapon-type": "Tipo de arma"
+      "weapon-type": "Tipo de arma",
+      "armor-type": "Tipo de armadura"
     }
   },
 
@@ -164,5 +165,17 @@
   "BREAK.Ranged": "A distancia",
   "BREAK.RangedProperties": "Propiedades a distancia",
   "BREAK.MeleeProperties": "Propiedades cuerpo a cuerpo",
-  "BREAK.ExtraAttackRollResult": "¡Daño extra!"
+  "BREAK.ExtraAttackRollResult": "¡Daño extra!",
+  "BREAK.Armor": "Armadura",
+  "BREAK.MaxSpeed": "Max. de velocidad",
+  "BREAK.Equipment": "Equipo",
+  "BREAK.Outfit": "Atuendo",
+  "BREAK.Accesories": "Accesorios",
+  "BREAK.BagContent": "Contenido de la bolsa",
+  "BREAK.Bags": "Bolsas",
+  "BREAK.Total": "Total",
+  "BREAK.Free": "Libre",
+  "BREAK.RightHand": "Mano derecha",
+  "BREAK.LeftHand": "Mano izquierda"
+
 }
