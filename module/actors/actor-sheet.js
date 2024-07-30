@@ -25,6 +25,44 @@ export class BreakActorSheet extends ActorSheet {
     });
   }
 
+  _onOpenContextMenu(element) {
+    const item = this.document.items.get(element.dataset.id);
+    if ( !item || (item instanceof Promise) ) return;
+    ui.context.menuItems = this._getContextOptions(item, element);
+  }
+
+  _getContextOptions(item, element) {
+    // Standard Options
+    const options = [
+      {
+        name: "BREAK.ContextMenuEdit",
+        icon: "<i class='fas fa-edit fa-fw'></i>",
+        condition: () => item.isOwner,
+        callback: li => this._onDisplayItem(li[0])
+      },
+      {
+        name: "DND5E.ItemView",
+        icon: '<i class="fas fa-eye"></i>',
+        condition: () => !item.isOwner,
+        callback: li => this._onDisplayItem(li[0])
+      },
+      /*{
+        name: "DND5E.ContextMenuActionDuplicate",
+        icon: "<i class='fas fa-copy fa-fw'></i>",
+        condition: () => !item.system.metadata?.singleton && !["class", "subclass"].includes(item.type) && item.isOwner,
+        callback: li => this._onAction(li[0], "duplicate")
+      },*/
+      {
+        name: "BREAK.ContextMenuDelete",
+        icon: "<i class='fas fa-trash fa-fw'></i>",
+        condition: () => item.isOwner,
+        callback: li => this._onDeleteItem(li[0])
+      }
+    ];
+
+    return options;
+  }
+
   /** @inheritDoc */
   _onDragStart(event) {
     // Add another deferred deactivation to catch the second pointerenter event that seems to be fired on Firefox.
@@ -141,15 +179,14 @@ export class BreakActorSheet extends ActorSheet {
 
     html.find(".aptitude-container").on("click", ".aptitude-trait", this._onSetTrait.bind(this));
 
-    html.find(".delete-ability").on("click", this._onDeleteItem.bind(this));
     html.find(".delete-gift").on("click", this._onDeleteItem.bind(this));
     html.find(".delete-quirk").on("click", this._onDeleteItem.bind(this));
 
     html.find("button.hearts.clickable").on("click", this._onModifyHearts.bind(this));
 
     html.find("i.delete-weapon").on("click", this._onDeleteItem.bind(this));
-    html.find("i.remove-item").on("click", this._onDeleteItem.bind(this));
     html.find("i.unequip-item").on("click", this._onUnequipItem.bind(this));
+    html.find("a.item-link").on("click", this._onLinkItem.bind(this));
 
 
     // Add draggable for Macro creation
@@ -160,6 +197,19 @@ export class BreakActorSheet extends ActorSheet {
         ev.dataTransfer.setData('text/plain', JSON.stringify(dragData));
       }, false);
     });
+
+    html.find("[data-context-menu]").each((i, a) =>{
+      a.addEventListener("click", event => {
+        event.preventDefault();
+        event.stopPropagation();
+        const { clientX, clientY } = event;
+        event.currentTarget.closest("[data-id]").dispatchEvent(new PointerEvent("contextmenu", {
+          view: window, bubbles: true, cancelable: true, clientX, clientY
+        }));
+      });
+    })
+
+    new ContextMenu(html, "[data-id]", [], {onOpen: this._onOpenContextMenu.bind(this)});
   }
 
   /* -------------------------------------------- */
@@ -195,11 +245,23 @@ export class BreakActorSheet extends ActorSheet {
     this.actor.update(updates);
   }
 
-  async _onDeleteItem(event) {
-    event.preventDefault();
-    const button = event.currentTarget;
-    const id = button.dataset.id;
+  async _onDeleteItem(element) {
+    const id = element.dataset.id;
     this.actor.deleteItem(id);
+  }
+
+  async _onDisplayItem(element) {
+    const id = element.dataset.id;
+    const item = this.document.items.get(id);
+    item.sheet.render(true);
+  }
+
+  async _onLinkItem(event) {
+    event.preventDefault();
+    const button = event.currentTarget.closest("[data-id]");
+    const id = button.dataset.id;
+    const item = this.document.items.get(id);
+    ChatMessage.create({ content: `@Item[${id}]{${item.name}}` });
   }
 
   async _onRollAptitude(event) {
@@ -207,6 +269,7 @@ export class BreakActorSheet extends ActorSheet {
     const button = event.currentTarget;
     const aptitudeId = button.dataset.id;
     this.actor.rollAptitude(aptitudeId)
+    
   }
 
   async _onRollAttack(event) {

@@ -42,11 +42,11 @@
     <div class="input root">
         <label>{{ localize 'BREAK.Purviews' }}</label>
         <div class="input wrapper">
-            <input name="system.purviews" type="text" value="{{actor.system.purviews}}" placeholder="{{ localize 'BREAK.Purviews' }}"/>
+            <textarea rows="6" name="system.purviews" type="text" value="{{actor.system.purviews}}" placeholder="{{ localize 'BREAK.Purviews' }}"></textarea>
         </div>
     </div>
-    <div class="input root" style="min-height: 90px;">
+    <!--<div class="input root" style="min-height: 90px;">
         <label>{{ localize 'BREAK.Description' }}</label>
-        {{editor biographyHTML target="actor.system.biography" button=true owner=owner editable=editable}}
-    </div>
+        {{editor biographyHTML target="system.biography" button=true owner=owner editable=editable}}
+    </div>-->
 </div>

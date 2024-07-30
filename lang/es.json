@@ -176,6 +176,7 @@
   "BREAK.Total": "Total",
   "BREAK.Free": "Libre",
   "BREAK.RightHand": "Mano derecha",
-  "BREAK.LeftHand": "Mano izquierda"
-
+  "BREAK.LeftHand": "Mano izquierda",
+  "BREAK.ContextMenuDelete": "Eliminar",
+  "BREAK.ContextMenuEdit": "Editar"
 }

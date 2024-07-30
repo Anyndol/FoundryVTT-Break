@@ -3,12 +3,14 @@
     {{#each bagContent}}
         <div style="display:flex;flex: 0;" {{#if this.equippable}}class="bag-item"{{/if}} data-id="{{this._id}}" data-type="{{this.type}}">
             <div style="text-align: center;width:40%;">
-                <p style="font-size: 16px;font-weight: 700;">{{this.name}}</p>
+                <a style="font-size: 16px;font-weight: 700;cursor:pointer;" class="item-link">{{this.name}}</a>
                 <p style="font-size: 12px;">{{this.type}}</p>
             </div>
             <div style="margin-left: auto;text-align:center;">
                 <p>{{this.system.slots}}  {{localize "BREAK.Slots"}}</p>
-                <i class="fas fa-trash clickable remove-item" data-id="{{this._id}}"></i>
+                <a class="item-control interface-only" data-context-menu>
+                    <i class="fas fa-ellipsis-vertical"></i>
+                </a>
             </div>
         </div>
     {{/each}}

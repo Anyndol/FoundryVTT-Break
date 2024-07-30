@@ -49,9 +49,11 @@
             <label>{{localize "BREAK.Gifts"}}</label>
             <div style="display: flex; column-gap: 8px; flex-wrap: wrap;">
                 {{#each gifts}}
-                    <div style="display: flex; margin-bottom: 6px;align-items: center; width: 33%;">
-                        <label>{{this.name}}</label>
-                        <button class="delete-gift" data-id="{{this._id}}" style="max-width: 32px;margin-left: auto;"><i class="fas fa-trash" style="margin: 0px;"></i></button>
+                    <div style="display: flex; margin-bottom: 6px;align-items: center; width: 33%;" data-id="{{this._id}}">
+                        <a class="item-link">{{this.name}}</a>
+                        <a style="margin-left: 6px;" class="item-control interface-only" data-context-menu>
+                            <i class="fas fa-ellipsis-vertical"></i>
+                        </a>
                     </div>
                 {{/each}}
             </div>
