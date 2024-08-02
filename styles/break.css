@@ -149,9 +149,10 @@
   font-weight: 700;
 }
 .break.sheet .portrait {
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    background-color: #e6e6e6;
 }
 .break.sheet .aptitude-trait {
   display: flex;
