@@ -1,504 +1,504 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 .break.sheet {
-    .window-content {
-        height: 100%;
-        padding: 5px;
-        overflow-y: hidden;
+  .window-content {
+    height: 100%;
+    padding: 5px;
+    overflow-y: hidden;
+  }
+
+  .sheet-body {
+    background-color: white;
+    padding: 15px;
+  }
+
+  form {
+    height: 100%;
+  }
+
+  .section-header {
+    background-color: rgb(230, 230, 230);
+    border-radius: 0px 6px 6px 0px;
+    margin-bottom: 6px;
+    display: flex;
+    max-height: 24px;
+    min-height: 24px;
+    align-items: center;
+  }
+
+  .input {
+    &.root {
+      display: inline-flex;
+      flex-direction: column;
+      position: relative;
+      min-width: 0px;
+      padding: 0px;
+      border-right: 0px;
+      border-left: 0px;
+      border-image: initial;
+      vertical-align: top;
+      border-top: 1.5px solid;
+      border-bottom: none;
     }
 
-    .sheet-body {
-        background-color: white;
-        padding: 15px;
+    &.wrapper {
+      font-family: Montserrat;
+      font-weight: 400;
+      line-height: 1.4375em;
+      color: rgba(0, 0, 0, 0.87);
+      box-sizing: border-box;
+      cursor: text;
+      display: inline-flex;
+      -webkit-box-align: center;
+      align-items: center;
+      position: relative;
+      margin-left: 6px;
+      font-size: 14px;
     }
+  }
 
-    form {
-        height: 100%;
-    }
+  .aptitude-container {
+    border-bottom: 1px solid;
+    padding-bottom: 12px;
+  }
 
-    .section-header {
-        background-color: rgb(230, 230, 230);
-        border-radius: 0px 6px 6px 0px;
-        margin-bottom: 6px;
-        display: flex;
-        max-height: 24px;
-        min-height: 24px;
-        align-items: center;
-    }
+  .aptitude-upper {
+    display: flex;
+    margin-bottom: 8px;
+  }
 
-    .input {
-        &.root {
-            display: inline-flex;
-            flex-direction: column;
-            position: relative;
-            min-width: 0px;
-            padding: 0px;
-            border-right: 0px;
-            border-left: 0px;
-            border-image: initial;
-            vertical-align: top;
-            border-top: 1.5px solid;
-            border-bottom: none;
-        }
+  .aptitude-base-container {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-left: auto;
+  }
 
-        &.wrapper {
-            font-family: Montserrat;
-            font-weight: 400;
-            line-height: 1.4375em;
-            color: rgba(0, 0, 0, 0.87);
-            box-sizing: border-box;
-            cursor: text;
-            display: inline-flex;
-            -webkit-box-align: center;
-            align-items: center;
-            position: relative;
-            margin-left: 6px;
-            font-size: 14px;
-        }
-    }
+  .aptitude-description {
+    margin: 0px;
+    font-family: Montserrat;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 12px;
+  }
 
-    .aptitude-container {
-        border-bottom: 1px solid;
-        padding-bottom: 12px;
-    }
+  .aptitude-name {
+    margin: 0px;
+    font-family: Montserrat;
+    line-height: 1.5;
+    font-weight: 700;
+    font-size: 14px;
+  }
 
-    .aptitude-upper {
-        display: flex;
-        margin-bottom: 8px;
-    }
+  .aptitude-base-circle {
+    border: 1px solid;
+    width: 32px;
+    height: 32px;
+    border-radius: 100px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-left: 8px;
+  }
 
-    .aptitude-base-container {
-        display: flex;
-        -webkit-box-align: center;
-        align-items: center;
-        margin-left: auto;
-    }
+  .aptitude-base-value {
+    margin: 0px;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
 
-    .aptitude-description {
-        margin: 0px;
-        font-family: Montserrat;
-        font-weight: 400;
-        line-height: 1.5;
-        font-size: 12px;
-    }
+  .aptitude-value-circle {
+    border: 1px solid;
+    min-width: 48px;
+    height: 48px;
+    border-radius: 100px;
+    background-color: rgb(230, 230, 230);
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+  }
 
-    .aptitude-name {
-        margin: 0px;
-        font-family: Montserrat;
-        line-height: 1.5;
-        font-weight: 700;
-        font-size: 14px;
-    }
+  .combat-value-circle {
+    border: 1px solid;
+    min-width: 48px;
+    height: 48px;
+    border-radius: 100px;
+    background-color: rgb(230, 230, 230);
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+  }
 
-    .aptitude-base-circle {
-        border: 1px solid;
-        width: 32px;
-        height: 32px;
-        border-radius: 100px;
-        display: flex;
-        -webkit-box-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        align-items: center;
-        margin-left: 8px;
-    }
+  .aptitude-value-inner-circle {
+    width: 37.5px;
+    height: 37.5px;
+    background-color: white;
+    border-radius: 100px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+  }
 
-    .aptitude-base-value {
-        margin: 0px;
-        font-family: Montserrat;
-        font-weight: 400;
-        font-size: 1rem;
-        line-height: 1.5;
-    }
+  .aptitude-value {
+    margin: 0px;
+    font-family: Montserrat;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 700;
+  }
 
-    .aptitude-value-circle {
-        border: 1px solid;
-        min-width: 48px;
-        height: 48px;
-        border-radius: 100px;
-        background-color: rgb(230, 230, 230);
-        display: flex;
-        -webkit-box-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        align-items: center;
-    }
+  .portrait {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    background-color: #e6e6e6;
+  }
 
-    .combat-value-circle {
-        border: 1px solid;
-        min-width: 48px;
-        height: 48px;
-        border-radius: 100px;
-        background-color: rgb(230, 230, 230);
-        display: flex;
-        -webkit-box-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        align-items: center;
-    }
+  .aptitude-trait {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 20px;
+    margin-bottom: 0px;
+  }
 
-    .aptitude-value-inner-circle {
-        width: 37.5px;
-        height: 37.5px;
-        background-color: white;
-        border-radius: 100px;
-        display: flex;
-        -webkit-box-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        align-items: center;
-    }
+  .aptitude-trait-picker {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 20px;
+    margin-bottom: 0px;
+  }
 
-    .aptitude-value {
-        margin: 0px;
-        font-family: Montserrat;
-        font-size: 1rem;
-        line-height: 1.5;
-        font-weight: 700;
-    }
+  .aptitude-trait-label {
+    margin: 0px;
+    font-family: Montserrat;
+    line-height: 1.5;
+    font-size: 12px;
+    font-weight: 700;
+  }
 
-    .portrait {
-        border-radius: 50%;
-        width: 150px;
-        height: 150px;
-        background-color: #e6e6e6;
-    }
+  .aptitude-trait {
+    margin: 0px;
+    font-family: Montserrat;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 12px;
+    border: none;
+    border-radius: 100px;
+    min-width: 20px;
+    text-align: center;
+  }
 
-    .aptitude-trait {
-        display: flex;
-        margin-left: auto;
-        margin-right: auto;
-        gap: 20px;
-        margin-bottom: 0px;
-    }
+  .aptitude-picked-trait {
+    margin: 0px;
+    font-family: Montserrat;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 12px;
+    border: 1px solid;
+    border-radius: 100px;
+    width: 20px;
+    text-align: center;
+  }
 
-    .aptitude-trait-picker {
-        display: flex;
-        margin-left: auto;
-        margin-right: auto;
-        gap: 20px;
-        margin-bottom: 0px;
-    }
+  .aptitude-bar-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: -2px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 100%;
+  }
 
-    .aptitude-trait-label {
-        margin: 0px;
-        font-family: Montserrat;
-        line-height: 1.5;
-        font-size: 12px;
-        font-weight: 700;
-    }
+  .aptitude-bon-label {
+    margin: 2px 0px 0px;
+    font-family: Montserrat;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 12px;
+  }
 
-    .aptitude-trait {
-        margin: 0px;
-        font-family: Montserrat;
-        font-weight: 400;
-        line-height: 1.5;
-        font-size: 12px;
-        border: none;
-        border-radius: 100px;
-        min-width: 20px;
-        text-align: center;
-    }
+  .aptitude-bon-value {
+    margin: 2px 0px 0px 8px;
+    font-family: Montserrat;
+    line-height: 1.5;
+    font-size: 12px;
+    font-weight: normal;
+  }
 
-    .aptitude-picked-trait {
-        margin: 0px;
-        font-family: Montserrat;
-        font-weight: 400;
-        line-height: 1.5;
-        font-size: 12px;
-        border: 1px solid;
-        border-radius: 100px;
-        width: 20px;
-        text-align: center;
-    }
+  .trait-square-empty {
+    background-color: inherit;
+    border-top: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-image: initial;
+    border-left: none;
+    height: 16px;
+    width: 14px;
+  }
 
-    .aptitude-bar-container {
-        display: flex;
-        flex-direction: column;
-        margin-left: -2px;
-        -webkit-box-pack: center;
-        justify-content: center;
-        width: 100%;
-    }
+  .trait-square-full {
+    border-top: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-image: initial;
+    border-left: none;
+    height: 16px;
+    width: 14px;
+    background-color: rgb(238, 61, 52);
+  }
 
-    .aptitude-bon-label {
-        margin: 2px 0px 0px;
-        font-family: Montserrat;
-        font-weight: 400;
-        line-height: 1.5;
-        font-size: 12px;
-    }
+  .combat-values-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
 
-    .aptitude-bon-value {
-        margin: 2px 0px 0px 8px;
-        font-family: Montserrat;
-        line-height: 1.5;
-        font-size: 12px;
-        font-weight: normal;
-    }
+  #heart {
+    position: relative;
+    width: 25px;
+    height: 16px;
+    margin-top: 10px;
+  }
 
-    .trait-square-empty {
-        background-color: inherit;
-        border-top: 1px solid;
-        border-right: 1px solid;
-        border-bottom: 1px solid;
-        border-image: initial;
-        border-left: none;
-        height: 16px;
-        width: 14px;
-    }
+  #heart::before, #heart::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 16px;
+    border-radius: 50px 50px 0 0;
+  }
 
-    .trait-square-full {
-        border-top: 1px solid;
-        border-right: 1px solid;
-        border-bottom: 1px solid;
-        border-image: initial;
-        border-left: none;
-        height: 16px;
-        width: 14px;
-        background-color: rgb(238, 61, 52);
-    }
+  #heart.full::before, #heart.full::after {
+    background: red;
+  }
 
-    .combat-values-section {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-    }
+  #heart.empty::before, #heart.empty::after {
+    background: white;
+  }
 
-    #heart {
-        position: relative;
-        width: 25px;
-        height: 16px;
-        margin-top: 10px;
-    }
+  #heart::before {
+    left: 10px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+    border-left: 1px solid;
+    border-top: 1px solid;
+    border-right: 1px solid;
+  }
 
-    #heart::before, #heart::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        width: 10px;
-        height: 16px;
-        border-radius: 50px 50px 0 0;
-    }
+  #heart::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+  }
 
-    #heart.full::before, #heart.full::after {
-        background: red;
-    }
+  .aptitude-bon-input {
+    background-color: inherit;
+    /* width: 0%; */
+    text-align: center;
+    margin-left: 4px;
+    padding: 0px;
+    margin-top: 4px;
+    max-width: 42px;
+  }
 
-    #heart.empty::before, #heart.empty::after {
-        background: white;
-    }
+  nav.tabs {
+    position: absolute;
+    left: 100%;
+    top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    z-index: -1;
+  }
 
-    #heart::before {
-        left: 10px;
-        transform: rotate(-45deg);
-        transform-origin: 0 100%;
-        border-left: 1px solid;
-        border-top: 1px solid;
-        border-right: 1px solid;
-    }
+  nav.tabs > .item.active, .break nav.tabs > .item:hover {
+    text-shadow: none;
+    margin: 0;
+    border-color: white;
+    box-shadow: 0 0 6px white;
+  }
 
-    #heart::after {
-        left: 0;
-        transform: rotate(45deg);
-        transform-origin: 100% 100%;
-        border-right: 1px solid;
-        border-top: 1px solid;
-        border-bottom: 1px solid;
-    }
+  nav.tabs > .item {
+    width: 44px;
+    height: 40px;
+    position: relative;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 0.75rem;
+    background: black;
+    color: white;
+    --icon-fill: white;
+    border: 1px solid transparent;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    margin-left: calc((44px - 34px) * -1);
+    transition: all 250ms ease;
+  }
 
-    .aptitude-bon-input {
-        background-color: inherit;
-        /* width: 0%; */
-        text-align: center;
-        margin-left: 4px;
-        padding: 0px;
-        margin-top: 4px;
-        max-width: 42px;
-    }
+  .speed-rating {
+    border: 1px solid black;
+    font-family: Montserrat;
+    line-height: 0.75;
+    font-size: 12px;
+    font-weight: normal;
+    width: 25%;
+    padding-left: 6px;
 
-    nav.tabs {
-        position: absolute;
-        left: 100%;
-        top: 2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-        z-index: -1;
+    &.active {
+      font-weight: bold;
+      border: 2px solid black
     }
+  }
 
-    nav.tabs > .item.active, .break nav.tabs > .item:hover {
-        text-shadow: none;
-        margin: 0;
-        border-color: white;
-        box-shadow: 0 0 6px white;
-    }
+  .xp-label {
+    margin: 0px 0px 0px 4px;
+    font-family: Montserrat;
+    line-height: 1.5;
+    font-weight: 700;
+    font-size: 11px;
+  }
 
-    nav.tabs > .item {
-        width: 44px;
-        height: 40px;
-        position: relative;
-        display: flex;
-        justify-content: end;
-        align-items: center;
-        padding-right: 0.75rem;
-        background: black;
-        color: white;
-        --icon-fill: white;
-        border: 1px solid transparent;
-        border-radius: 0 8px 8px 0;
-        font-size: 14px;
-        margin-left: calc((44px - 34px) * -1);
-        transition: all 250ms ease;
-    }
+  .xp-box {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .speed-rating {
-        border: 1px solid black;
-        font-family: Montserrat;
-        line-height: 0.75;
-        font-size: 12px;
-        font-weight: normal;
-        width: 25%;
-        padding-left: 6px;
+  .circle-input {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+  }
 
-        &.active {
-            font-weight: bold;
-            border: 2px solid black
-        }
-    }
+  .clickable {
+    cursor: pointer;
 
-    .xp-label {
-        margin: 0px 0px 0px 4px;
-        font-family: Montserrat;
-        line-height: 1.5;
-        font-weight: 700;
-        font-size: 11px;
+    &:hover {
+      text-shadow: none;
+      border-color: white;
+      box-shadow: 0 0 6px white;
     }
+  }
 
-    .xp-box {
-        display: flex;
-        flex-direction: column;
-    }
+  button.clickable {
+    border-radius: 100%;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+  }
 
-    .circle-input {
-        width: 100%;
-        border: none;
-        background-color: transparent;
-        text-align: center;
-    }
+  .money-input {
+    border: none;
+    background: transparent;
+    width: 48px;
+    text-align: center;
+  }
 
-    .clickable {
-        cursor: pointer;
+  .weapon-type-drag-slot {
+    flex: 1;
+    height: 100%;
+    border-right: 1px solid grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-        &:hover {
-            text-shadow: none;
-            border-color: white;
-            box-shadow: 0 0 6px white;
-        }
-    }
+  .weapon-card-column {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    border-right: 1px solid grey;
+    padding-right: 6px;
+  }
+  /* Tooltip container */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  /* Tooltip arrow */
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
 
-    button.clickable {
-        border-radius: 100%;
-        width: 24px;
-        height: 24px;
-        text-align: center;
-        font-size: 24px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: none;
-    }
+  .delete-weapon {
+    position: absolute;
+    left: 8px;
+    font-size: 18px;
+    visibility: hidden;
+    cursor: pointer;
+  }
 
-    .money-input {
-        border: none;
-        background: transparent;
-        width: 48px;
-        text-align: center;
-    }
+  .weapon-name:hover .delete-weapon {
+    visibility: visible;
+  }
 
-    .weapon-type-drag-slot {
-        flex: 1;
-        height: 100%;
-        border-right: 1px solid grey;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .weapon-card-column {
-        display: flex;
-        flex-direction: column;
-        width: 25%;
-        border-right: 1px solid grey;
-        padding-right: 6px;
-    }
-    /* Tooltip container */
-    .tooltip {
-        position: relative;
-        display: inline-block;
-    }
-    /* Tooltip text */
-    .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 120px;
-        background-color: #555;
-        color: #fff;
-        text-align: center;
-        padding: 5px 0;
-        border-radius: 6px;
-        /* Position the tooltip text */
-        position: absolute;
-        z-index: 1;
-        bottom: 125%;
-        left: 50%;
-        margin-left: -60px;
-        /* Fade in tooltip */
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-    /* Tooltip arrow */
-    .tooltip .tooltiptext::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: #555 transparent transparent transparent;
-    }
-    /* Show the tooltip text when you mouse over the tooltip container */
-    .tooltip:hover .tooltiptext {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    .delete-weapon {
-        position: absolute;
-        left: 8px;
-        font-size: 18px;
-        visibility: hidden;
-        cursor: pointer;
-    }
-
-    .weapon-name:hover .delete-weapon {
-        visibility: visible;
-    }
-
-    .identity-header-label {
-        margin: 0px;
-        font-family: Montserrat;
-        font-weight: 700;
-        padding-bottom: 10px;
-        font-size: 13px;
-    }
+  .identity-header-label {
+    margin: 0px;
+    font-family: Montserrat;
+    font-weight: 700;
+    padding-bottom: 10px;
+    font-size: 13px;
+  }
 }
 
 .checkbox-with-label {
   display: flex;
-  align-items:center;
+  align-items: center;
 }
 
 :root {
-    --font-primary: Montserrat
+  --font-primary: Montserrat
 }
