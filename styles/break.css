@@ -132,8 +132,7 @@
 }
 .break.sheet .window-content {
   height: 100%;
-  padding: 5px;
-  overflow-y: hidden;
+  padding: 0px;
 }
 .break.sheet .sheet-body {
   background-color: white;
@@ -150,6 +149,7 @@
   max-height: 24px;
   min-height: 24px;
   align-items: center;
+  white-space: nowrap;
 }
 .break.sheet .input.root {
   display: inline-flex;

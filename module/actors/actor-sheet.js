@@ -1,3 +1,4 @@
+import { parseInputDelta } from "../../utils/utils.mjs";
 import { RANK_XP} from "../constants.js";
 import { BreakItem } from "../items/item.js";
 
@@ -157,8 +158,9 @@ export class BreakActorSheet extends ActorSheet {
     const equippedItemIds = [equipment.armor?._id, equipment.outfit?._id, equipment.rightHand?._id, equipment.leftHand?._id, ...equipment.accesories.map(i => i._id)];
     context.bagContent = context.actor.items.filter(i => !["ability", "quirk", "gift"].includes(i.type)
     && !equippedItemIds.includes(i._id) && i.bag == this.selectedBag).map(i => ({...i, _id: i._id, equippable: ["armor", "weapon", "outfit", "accesory", "shield"].includes(i.type)}));
-    context.freeInventorySlots = context.actor.system.slots - context.bagContent.reduce((ac, cv) => ac + cv.system.slots, 0);
-
+    context.freeInventorySlots = context.actor.system.slots - context.bagContent.reduce((ac, cv) => ac + cv.system.slots*cv.system.quantity, 0);
+    console.log(this);
+    console.log(this.actor.items);
     return context;
   }
 
@@ -188,6 +190,9 @@ export class BreakActorSheet extends ActorSheet {
     html.find("i.unequip-item").on("click", this._onUnequipItem.bind(this));
     html.find("a.item-link").on("click", this._onLinkItem.bind(this));
 
+    html.find("a.add-item-custom").on("click", this._onAddItemCustom.bind(this));
+    html.find("a.adjustment-button").on("click", this._onAdjustItemQuantity.bind(this));
+    html.find("input.item-quantity").on("change", this._onChangeItemInput.bind(this));
 
     // Add draggable for Macro creation
     html.find(".aptitudes a.aptitude-roll").each((i, a) => {
@@ -262,6 +267,37 @@ export class BreakActorSheet extends ActorSheet {
     const id = button.dataset.id;
     const item = this.document.items.get(id);
     ChatMessage.create({ content: `@Item[${id}]{${item.name}}` });
+  }
+
+  async _onAddItemCustom(event) {
+    event.preventDefault();
+    return Item.implementation.createDialog({}, {
+      parent: this.actor, pack: this.actor.pack, types: ["weapon", "armor", "shield", "outfit", "accesory", "wayfinding", "illumination", "kit", "book", "consumable", "combustible", "miscellaneous", "curiosity", "otherworld"]
+    });
+  }
+
+  async _onAdjustItemQuantity(event) {
+    event.preventDefault();
+    const button = event.currentTarget;
+    const { action } = button.dataset;
+    const input = button.parentElement.querySelector("input");
+    const min = input.min ? Number(input.min) : -Infinity;
+    const max = input.max ? Number(input.max) : Infinity;
+    let value = Number(input.value);
+    if ( isNaN(value) ) return;
+    value += action === "increase" ? 1 : -1;
+    input.value = Math.clamp(value, min, max);
+    input.dispatchEvent(new Event("change"));
+  }
+
+  async _onChangeItemInput(event) {
+    event.preventDefault();
+    const input = event.target;
+    const itemId = input.closest("[data-id]")?.dataset.id;
+    const item = this.document.items.get(itemId);
+    if ( !item ) return;
+    const result = parseInputDelta(input, item);
+    if ( result !== undefined ) item.update({ [input.dataset.name]: result });
   }
 
   async _onRollAptitude(event) {

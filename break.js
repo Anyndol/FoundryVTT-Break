@@ -108,6 +108,10 @@ Hooks.once("init", async function() {
     return value1+value2+value3
   });
 
+  Handlebars.registerHelper('mul', function(value1, value2) {
+    return value1*value2
+  });
+
   Handlebars.registerHelper('for', function(from, to, incr, block) {
     var accum = '';
     for(var i = from; i < to; i += incr)

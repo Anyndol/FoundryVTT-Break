@@ -111,7 +111,8 @@
           "gems": 0,
           "coins": 0,
           "stones": 0
-        }
+        },
+        "quantity": 1
       }
     },
     "ability": {

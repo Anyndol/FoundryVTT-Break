@@ -1,13 +1,30 @@
 <div class="flexcol" style="width: 100%;">
-    <div class="section-header">{{localize "BREAK.BagContent"}}</div>
-    {{#each bagContent}}
-        <div style="display:flex;flex: 0;" {{#if this.equippable}}class="bag-item"{{/if}} data-id="{{this._id}}" data-type="{{this.type}}">
+    <div class="section-header">
+        {{localize "BREAK.BagContent"}}
+        <div style="display:flex;width:100%;justify-content:flex-end;margin-right:12px;">
+            <a class="add-item-custom"><i class="fa-regular fa-plus"></i></a>
+        </div>
+    </div>
+    {{#each bagContent as |item|}}
+        <div style="display:flex;flex: 0;" {{#if item.equippable}}class="bag-item"{{/if}} data-id="{{item._id}}" data-type="{{item.type}}">
             <div style="text-align: center;width:40%;">
-                <a style="font-size: 16px;font-weight: 700;cursor:pointer;" class="item-link">{{this.name}}</a>
-                <p style="font-size: 12px;">{{this.type}}</p>
+                <a style="font-size: 16px;font-weight: 700;cursor:pointer;" class="item-link">{{item.name}}</a>
+                <p style="font-size: 12px;">{{item.type}}</p>
             </div>
-            <div style="margin-left: auto;text-align:center;">
-                <p>{{this.system.slots}}  {{localize "BREAK.Slots"}}</p>
+            <div style="display:flex; align-items:center;flex-grow:1;">
+                <label>{{localize "BREAK.Quantity"}}</label>
+                <div style="margin-left:auto;margin-right:auto;">
+                    <a class="adjustment-button" data-action="decrease" data-property="system.quantity">
+                        <i class="fa-regular fa-minus"></i>
+                    </a>
+                    <input class="item-quantity" value="{{ item.system.quantity }}" data-name="system.quantity" inputmode="numeric" pattern="[0-9+=\-]*" min="1" style="width:32px;text-align:center;background-color:white;" type="text" placeholder="0" data-dtype="Number"/>
+                    <a class="adjustment-button" data-action="increase" data-property="system.quantity">
+                        <i class="fa-regular fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+            <div style="margin-left: auto;text-align:center;width:20%;">
+                <p>{{mul item.system.slots item.system.quantity}}  {{localize "BREAK.Slots"}}</p>
                 <a class="item-control interface-only" data-context-menu>
                     <i class="fas fa-ellipsis-vertical"></i>
                 </a>
