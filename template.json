@@ -90,7 +90,7 @@
       "equipment": {
         "armor": null,
         "outfit": null,
-        "accesories": [],
+        "accessories": [],
         "rightHand": null,
         "leftHand": null
       }
@@ -101,7 +101,7 @@
     }
   },
   "Item": {
-    "types": ["weapon", "armor", "shield", "outfit", "accesory", "wayfinding", "illumination", "kit", "book", "consumable", "combustible", "miscellaneous", "curiosity", "otherworld", "weapon-type", "armor-type", "quirk", "ability", "calling", "gift"],
+    "types": ["weapon", "armor", "shield", "outfit", "accessory", "wayfinding", "illumination", "kit", "book", "consumable", "combustible", "miscellaneous", "curiosity", "otherworld", "weapon-type", "armor-type", "quirk", "ability", "calling", "gift"],
     "htmlFields": ["description"],
     "templates": {
       "baseItem": {
@@ -131,7 +131,7 @@
     "shield": {
       "templates": ["baseItem"]
     },
-    "accesory": {
+    "accessory": {
       "templates": ["baseItem"]
     },
     "wayfinding": {

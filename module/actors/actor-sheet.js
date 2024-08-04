@@ -155,9 +155,9 @@ export class BreakActorSheet extends ActorSheet {
     }
 
     const equipment = context.actor.system.equipment;
-    const equippedItemIds = [equipment.armor?._id, equipment.outfit?._id, equipment.rightHand?._id, equipment.leftHand?._id, ...equipment.accesories.map(i => i._id)];
+    const equippedItemIds = [equipment.armor?._id, equipment.outfit?._id, equipment.rightHand?._id, equipment.leftHand?._id, ...equipment.accessories.map(i => i._id)];
     context.bagContent = context.actor.items.filter(i => !["ability", "quirk", "gift"].includes(i.type)
-    && !equippedItemIds.includes(i._id) && i.bag == this.selectedBag).map(i => ({...i, _id: i._id, equippable: ["armor", "weapon", "outfit", "accesory", "shield"].includes(i.type)}));
+    && !equippedItemIds.includes(i._id) && i.bag == this.selectedBag).map(i => ({...i, _id: i._id, equippable: ["armor", "weapon", "outfit", "accessory", "shield"].includes(i.type)}));
     context.freeInventorySlots = context.actor.system.slots - context.bagContent.reduce((ac, cv) => ac + cv.system.slots*cv.system.quantity, 0);
     console.log(this);
     console.log(this.actor.items);
@@ -272,7 +272,7 @@ export class BreakActorSheet extends ActorSheet {
   async _onAddItemCustom(event) {
     event.preventDefault();
     return Item.implementation.createDialog({}, {
-      parent: this.actor, pack: this.actor.pack, types: ["weapon", "armor", "shield", "outfit", "accesory", "wayfinding", "illumination", "kit", "book", "consumable", "combustible", "miscellaneous", "curiosity", "otherworld"]
+      parent: this.actor, pack: this.actor.pack, types: ["weapon", "armor", "shield", "outfit", "accessory", "wayfinding", "illumination", "kit", "book", "consumable", "combustible", "miscellaneous", "curiosity", "otherworld"]
     });
   }
 
