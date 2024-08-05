@@ -93,6 +93,11 @@
         "accesories": [],
         "rightHand": null,
         "leftHand": null
+      },
+      "currency": {
+        "gems": 0,
+        "coins": 0,
+        "stones": 0
       }
     },
     "gmc": {
@@ -101,7 +106,7 @@
     }
   },
   "Item": {
-    "types": ["weapon", "armor", "shield", "outfit", "accesory", "wayfinding", "illumination", "kit", "book", "consumable", "combustible", "miscellaneous", "curiosity", "otherworld", "weapon-type", "armor-type", "quirk", "ability", "calling", "gift"],
+    "types": ["weapon", "armor", "shield", "outfit", "accesory", "wayfinding", "illumination", "kit", "book", "consumable", "combustible", "miscellaneous", "curiosity", "otherworld", "weapon-type", "armor-type", "quirk", "ability", "calling", "gift", "injury"],
     "htmlFields": ["description"],
     "templates": {
       "baseItem": {
@@ -189,6 +194,13 @@
       "templates": ["baseItem"],
       "defenseBonus": 0,
       "speedLimit": null
+    },
+    "injury": {
+      "description": "",
+      "duration": {
+        "value": 1,
+        "permanent": false
+      }
     }
   }
 }

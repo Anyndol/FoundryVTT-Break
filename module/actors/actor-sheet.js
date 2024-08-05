@@ -29,11 +29,10 @@ export class BreakActorSheet extends ActorSheet {
   _onOpenContextMenu(element) {
     const item = this.document.items.get(element.dataset.id);
     if ( !item || (item instanceof Promise) ) return;
-    ui.context.menuItems = this._getContextOptions(item, element);
+    ui.context.menuItems = this._getContextOptions(item);
   }
 
-  _getContextOptions(item, element) {
-    // Standard Options
+  _getContextOptions(item) {
     const options = [
       {
         name: "BREAK.ContextMenuEdit",
@@ -41,18 +40,6 @@ export class BreakActorSheet extends ActorSheet {
         condition: () => item.isOwner,
         callback: li => this._onDisplayItem(li[0])
       },
-      {
-        name: "DND5E.ItemView",
-        icon: '<i class="fas fa-eye"></i>',
-        condition: () => !item.isOwner,
-        callback: li => this._onDisplayItem(li[0])
-      },
-      /*{
-        name: "DND5E.ContextMenuActionDuplicate",
-        icon: "<i class='fas fa-copy fa-fw'></i>",
-        condition: () => !item.system.metadata?.singleton && !["class", "subclass"].includes(item.type) && item.isOwner,
-        callback: li => this._onAction(li[0], "duplicate")
-      },*/
       {
         name: "BREAK.ContextMenuDelete",
         icon: "<i class='fas fa-trash fa-fw'></i>",
@@ -138,11 +125,11 @@ export class BreakActorSheet extends ActorSheet {
     });
 
     context.attackBonus = context.actor.system.attack.value + context.actor.system.attack.bon;
-    context.defenseRating = +context.actor.system.defense.value + +context.actor.system.defense.bon + (context.actor.system.equipment.armor ? +context.actor.system.equipment.armor.system.defenseBonus : 0)
     context.speedRating = context.actor.system.speed.value + context.actor.system.speed.bon;
     if(context.actor.system.equipment.armor && context.actor.system.equipment.armor.system.speedLimit != null && context.actor.system.equipment.armor.system.speedLimit != "") {
       context.speedRating = +context.actor.system.equipment.armor.system.speedLimit < context.speedRating ? +context.actor.system.equipment.armor.system.speedLimit : context.speedRating;
     }
+    context.defenseRating = +context.actor.system.defense.value + +context.actor.system.defense.bon + (context.actor.system.equipment.armor ? +context.actor.system.equipment.armor.system.defenseBonus : 0) + (context.speedRating == 2 ? 2 : +context.speedRating >= 3 ? 4 : 0);
 
     if(+context.actor.system.allegiance.dark <= 1 && +context.actor.system.allegiance.bright <= 1){
       context.allegiance = 0;

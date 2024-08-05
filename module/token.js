@@ -28,6 +28,7 @@ export class BreakTokenDocument extends TokenDocument {
     }
     return super.getTrackedAptitudes(data);
   }
+
 }
 
 
@@ -49,4 +50,16 @@ export class BreakToken extends Token {
     }
     return super._drawBar(number, bar, data);
   }
+
+  _onControl(options = {}) {
+    game.break.activeEffectPanel.render();
+    return super._onControl(options);
+  }
+
+  _onRelease(options) {
+    game.break.activeEffectPanel.render();
+    return super._onRelease(options);
+  }
+
 }
+

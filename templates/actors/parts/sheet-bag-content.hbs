@@ -1,5 +1,16 @@
 <div class="flexcol" style="width: 100%;">
     <div class="section-header">
+        {{localize "BREAK.Currency"}}
+    </div>
+    <div style="display: flex;align-items:center; flex: 1;justify-content:center;flex-grow:0;margin-bottom:6px;">
+        <i class="fas fa-gem"></i>
+        <input name="system.currency.gems" value="{{actor.system.currency.gems}}" placeholder="0" class="money-input" type="number"/>
+        <i class="fas fa-coins"></i>
+        <input name="system.currency.coins" value="{{actor.system.currency.coins}}" placeholder="0" class="money-input" type="number"/>
+        <i class="fas fa-coin-vertical"></i>
+        <input name="system.currency.stones" value="{{actor.system.currency.stones}}" placeholder="0" class="money-input" type="number"/>
+    </div>
+    <div class="section-header">
         {{localize "BREAK.BagContent"}}
         <div style="display:flex;width:100%;justify-content:flex-end;margin-right:12px;">
             <a class="add-item-custom"><i class="fa-regular fa-plus"></i></a>

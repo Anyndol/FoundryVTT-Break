@@ -32,4 +32,12 @@ export class BreakItem extends Item {
     return prunedAbilities;
   }
 
+  async deleteEffect(id) {
+    const effect = this.effects.find(i => i._id == id);
+    if(effect) {
+      effect.delete()
+    }
+    return this
+  }
+
 }

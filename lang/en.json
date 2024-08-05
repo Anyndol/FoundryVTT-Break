@@ -63,7 +63,8 @@
       "calling": "Calling",
       "gift": "Gift",
       "weapon-type": "Weapon type",
-      "armor-type": "Armor type"
+      "armor-type": "Armor type",
+      "injury": "Injury"
     }
   },
 
@@ -178,5 +179,9 @@
   "BREAK.LeftHand": "Left hand",
   "BREAK.ContextMenuDelete": "Delete",
   "BREAK.ContextMenuEdit": "Edit",
-  "BREAK.Quantity": "Quantity"
+  "BREAK.Quantity": "Quantity",
+  "BREAK.Currency": "Currency",
+  "BREAK.Duration": "Duration",
+  "BREAK.Permanent": "Permanent",
+  "BREAK.Effects": "Effects"
 }

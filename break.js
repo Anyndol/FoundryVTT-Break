@@ -16,6 +16,8 @@ import { BreakAdversarySheet } from "./module/actors/adversary-sheet.js";
 import { BreakWeaponTypeSheet } from "./module/items/weapon-type-sheet.js";
 import { BreakArmorSheet } from "./module/items/armor-sheet.js";
 import { BreakArmorTypeSheet } from "./module/items/armor-type-sheet.js";
+import { BreakInjurySheet } from "./module/items/injury-sheet.js";
+import { ActiveEffectsPanel } from "./module/apps/active-effects-list.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -36,9 +38,18 @@ Hooks.once("init", async function() {
     decimals: 2
   };
 
+  if (document.querySelector("#ui-top") !== null) {
+    // Template element for effects-panel
+    const uiTop = document.querySelector("#ui-top");
+    const template = document.createElement("template");
+    template.setAttribute("id", "break-active-effects-panel");
+    uiTop?.insertAdjacentElement("afterend", template);
+  }
+
   game.break = {
     BreakActor,
-    createbreakMacro
+    createbreakMacro,
+    activeEffectPanel: new ActiveEffectsPanel()
   };
 
   // Define custom Document classes
@@ -57,6 +68,7 @@ Hooks.once("init", async function() {
   Items.registerSheet("break", BreakArmorSheet, {types:['armor'], makeDefault: true });
   Items.registerSheet("break", BreakWeaponTypeSheet, {types:['weapon-type'], makeDefault: true });
   Items.registerSheet("break", BreakArmorTypeSheet, {types:['armor-type'], makeDefault: true });
+  Items.registerSheet("break", BreakInjurySheet, {types:['injury'], makeDefault: true });
 
   // Register system settings
   game.settings.register("break", "macroShorthand", {
@@ -209,6 +221,27 @@ Hooks.on("getItemDirectoryEntryContext", (html, options) => {
     callback: li => {
       const item = game.items.get(li.data("documentId"));
       item.setFlag("break", "isTemplate", false);
+    }
+  });
+});
+
+Hooks.once('canvasInit', (canvas) => {
+  game.break.activeEffectPanel.render(true);
+  Hooks.on("dropCanvasData", (canvas, dropData) => {
+    if ( dropData.type === 'Item') {
+      const item = game.items.get(dropData.uuid.split('.')[1]);
+      const dropTarget = [...canvas.tokens.placeables]
+        .sort((a, b) => b.document.sort - a.document.sort)
+        .sort((a, b) => b.document.elevation - a.document.elevation)
+        .find((t) => t.bounds.contains(dropData.x, dropData.y));
+      const actor = dropTarget?.actor;
+      if(actor && item.type == "injury") {
+        item.effects.forEach(async (effect) => {
+          console.log(ActiveEffect);
+          const newEffect = ActiveEffect.create({...effect}, {parent: actor});
+          console.log(newEffect)
+        });
+      }
     }
   });
 });

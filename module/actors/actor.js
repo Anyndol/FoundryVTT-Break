@@ -12,6 +12,19 @@ export class BreakActor extends Actor {
     super.prepareDerivedData();
   }
 
+  prepareData(){
+    super.prepareData();
+
+    if(canvas.ready) {
+      const thisTokenIsControlled = canvas.tokens.controlled.some(
+        (t) => t.document.actorId == this._id);
+
+      if (thisTokenIsControlled) {
+        game.break.activeEffectPanel.render();
+      }
+    }
+  }
+  
   async setAptitudeTrait(aptitudeKey, traitValue) {
     const updates = {};
     updates[`system.aptitudes.${aptitudeKey}.trait`] = traitValue;

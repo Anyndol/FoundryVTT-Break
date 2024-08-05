@@ -21,10 +21,12 @@ export const preloadHandlebarsTemplates = async function() {
     "systems/break/templates/rolls/roll-check.hbs",
     "systems/break/templates/rolls/roll-dialog.hbs",
     "systems/break/templates/items/item-header.hbs",
+    "systems/break/templates/items/generic-header.hbs",
     "systems/break/templates/items/parts/item-abilities.hbs",
     "systems/break/templates/items/parts/weapon-details.hbs",
     "systems/break/templates/items/parts/armor-details.hbs",
-    "systems/break/templates/actors/parts/sheet-equipment-card.hbs"
+    "systems/break/templates/actors/parts/sheet-equipment-card.hbs",
+    "systems/break/templates/system/active-effects-panel.hbs"
   ];
 
   // Load the template parts
