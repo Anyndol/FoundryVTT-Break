@@ -1,0 +1,86 @@
+<div class="break chat-item">
+    <div class="border">
+
+        <div class="chat-item-header">
+            <!-- Icon -->
+            {{#if img}}
+            <img class="item-icon" src="{{img}}" title="{{name}}" />
+            {{/if}}
+
+            <div class="chat-item-header-infos">
+                <!-- Name -->
+                <h2 class="item-name">{{name}}</h2>
+
+                <!-- Type -->
+                <h4 class="item-type">{{localize (concat 'TYPES.Item.' itemType)}}</h4>
+
+                <!-- SubType -->
+                {{#if isWeapon}}
+                <h4 class="item-type">{{weaponType1.name}} {{#if weaponType2}} + {{weaponType2.name}} {{/if}} </h4>
+                {{/if}}
+
+                {{#if isArmor}}
+                <h4 class="item-type">{{localize type.name}}</h4>
+                {{/if}}
+
+                {{#if isAbility}}
+                <h4 class="item-type">{{localize (concat 'TYPES.Item.' subtype)}}</h4>
+                {{/if}}
+            </div>
+        </div>
+
+        <!-- Details -->
+        <!-- Price -->
+        {{#if isGear}}
+        <h3 class="title-section">{{localize "BREAK.GearProperties"}}</h3>
+        <div>
+            <span class="property-label">{{localize "BREAK.Price"}}: </span>
+            <i class="fas fa-gem"></i>
+            {{value.gems}}
+            <i class="fas fa-coins"></i>
+            {{value.coins}}
+            <i class="fas fa-coin-vertical"></i>
+            {{value.stones}}
+        </div>
+        {{/if}}
+        <!-- Weapon -->
+        {{#if isWeapon}}
+        {{#if isMelee}}
+        <h3 class="title-section">{{localize "BREAK.MeleeProperties"}}</h3>
+        <p><span class="property-label">{{localize "BREAK.ExtraDamage"}}: </span>{{extraDamage}}</p>
+        {{/if}}
+
+        {{#if isRanged}}
+        <h3 class="title-section">{{localize "BREAK.RangedProperties"}}</h3>
+        <p><span class="property-label">{{localize "BREAK.RangedExtraDamage"}}: </span>{{rangedExtraDamage}}</p>
+        <p><span class="property-label">{{localize "BREAK.Range"}}: </span>{{rangedExtraDamage}} {{localize "BREAK.Areas"}}</p>
+        <p><span class="property-label">{{localize "BREAK.LoadingTime"}}: </span>{{loadingTime}} {{localize "BREAK.Action"}}</p>
+        {{/if}}
+
+        <h3 class="title-section">{{localize "BREAK.Abilities"}}</h3>
+        {{#each abilities}}
+        <div style="display: flex; margin-bottom: 6px; flex-direction: column; width: 50%;">
+            <label class="property-label">{{this.name}}</label>
+            {{{this.system.description}}}
+        </div>
+        {{/each}}
+        {{/if}}
+
+        <!-- Armor -->
+        {{#if isArmor}}
+        <h3 class="title-section">{{localize "BREAK.ArmorProperties"}}</h3>
+        <p><span class="property-label">{{localize "BREAK.DefenseRating"}}: </span>{{defenseBonus}}</p>
+        {{#when "" 'eq' speedLimit}} <p><span class="property-label">{{localize "BREAK.MaxSpeed"}}: </span> {{localize "BREAK.None"}}</p> {{/when}}
+        {{#when "0" 'eq' speedLimit}} <p><span class="property-label">{{localize "BREAK.MaxSpeed"}}: </span> {{localize "BREAK.SLOW"}}</p> {{/when}}
+        {{#when "1" 'eq' speedLimit}} <p><span class="property-label">{{localize "BREAK.MaxSpeed"}}: </span> {{localize "BREAK.AVERAGE"}}</p> {{/when}}
+        {{#when "2" 'eq' speedLimit}} <p><span class="property-label">{{localize "BREAK.MaxSpeed"}}: </span> {{localize "BREAK.FAST"}}</p> {{/when}}
+        {{#when "3" 'eq' speedLimit}} <p><span class="property-label">{{localize "BREAK.MaxSpeed"}}: </span> {{localize "BREAK.VFAST"}}</p> {{/when}}
+        {{/if}}
+
+        <!-- Description -->
+        {{#if description}}
+        <h3 class="title-section">{{localize "BREAK.Description"}}:</h3>
+        {{{description}}}
+        {{/if}}
+    </div>
+</div>

@@ -1,10 +1,6 @@
-import BREAK from "../constants.js";
+import { BreakItemSheet } from "./item-sheet.js";
 
-/**
- * Extend the basic ItemSheet with some very simple modifications
- * @extends {ItemSheet}
- */
-export class BreakAbilitySheet extends ItemSheet {
+export class BreakAbilitySheet extends BreakItemSheet {
 
   /** @inheritdoc */
   static get defaultOptions() {

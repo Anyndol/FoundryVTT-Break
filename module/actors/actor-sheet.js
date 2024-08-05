@@ -266,7 +266,7 @@ export class BreakActorSheet extends ActorSheet {
     const button = event.currentTarget.closest("[data-id]");
     const id = button.dataset.id;
     const item = this.document.items.get(id);
-    ChatMessage.create({ content: `@Item[${id}]{${item.name}}` });
+    await item.sendToChat();
   }
 
   async _onAddItemCustom(event) {

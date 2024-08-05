@@ -1,9 +1,6 @@
+import { BreakItemSheet } from "./item-sheet.js";
 
-/**
- * Extend the basic ItemSheet with some very simple modifications
- * @extends {ItemSheet}
- */
-export class BreakWeaponTypeSheet extends ItemSheet {
+export class BreakWeaponTypeSheet extends BreakItemSheet {
 
   /** @inheritdoc */
   static get defaultOptions() {

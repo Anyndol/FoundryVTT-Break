@@ -54,7 +54,7 @@
       "kit": "Specialist's kit",
       "book": "Book",
       "consumable": "Consumable",
-      "combustible":"Combustible or chemical",
+      "combustible": "Combustible or chemical",
       "miscellaneous": "Miscellaneous",
       "curiosity": "Curiosity or gadget",
       "otherworld": "Otherworldly",
@@ -63,7 +63,8 @@
       "calling": "Calling",
       "gift": "Gift",
       "weapon-type": "Weapon type",
-      "armor-type": "Armor type"
+      "armor-type": "Armor type",
+      "species": "Species"
     }
   },
 
@@ -144,6 +145,7 @@
   "BREAK.Slots": "Slots",
   "BREAK.Details": "Details",
   "BREAK.ExtraDamage": "Extra damage",
+  "BREAK.RangedExtraDamage": "Ranged extra damage",
   "BREAK.Standard": "Standard",
   "BREAK.Concealed": "Concealed",
   "BREAK.Quick": "Quick",
@@ -164,6 +166,8 @@
   "BREAK.Ranged": "Ranged",
   "BREAK.RangedProperties": "Ranged properties",
   "BREAK.MeleeProperties": "Melee properties",
+  "BREAK.ArmorProperties": "Armor properties",
+  "BREAK.GearProperties": "Gear properties",
   "BREAK.ExtraAttackRollResult": "Extra damage!",
   "BREAK.Armor": "Armor",
   "BREAK.MaxSpeed": "Max. speed",
@@ -178,5 +182,6 @@
   "BREAK.LeftHand": "Left hand",
   "BREAK.ContextMenuDelete": "Delete",
   "BREAK.ContextMenuEdit": "Edit",
-  "BREAK.Quantity": "Quantity"
+  "BREAK.Quantity": "Quantity",
+  "BREAK.Price": "Price"
 }
