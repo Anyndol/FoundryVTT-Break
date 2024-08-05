@@ -52,16 +52,16 @@
             </div>
         </div>
     </div>
-    <p style="flex: 0;font-weight:600;font-size:16px;margin-top:16px;">{{localize "BREAK.Accesories"}}</p>
-    <div class="equipment-drag-slot" id="accesoriesslot" style="margin-bottom:16px;">
-        {{#if actor.system.equipment.accesories}}
-            {{#each actor.system.equipment.accesories}}
-                {{> "systems/break/templates/actors/parts/sheet-equipment-card.hbs" item=actor.system.equipment.accesories}}
+    <p style="flex: 0;font-weight:600;font-size:16px;margin-top:16px;">{{localize "BREAK.Accessories"}}</p>
+    <div class="equipment-drag-slot" id="accessoriesslot" style="margin-bottom:16px;">
+        {{#if actor.system.equipment.accessories}}
+            {{#each actor.system.equipment.accessories}}
+                {{> "systems/break/templates/actors/parts/sheet-equipment-card.hbs" item=actor.system.equipment.accessories}}
                 <i class="fas fa-shield-slash clickable unequip-item"></i>
             {{/each}}
         {{/if}}
-        {{#unless actor.system.equipment.accesories}}
-            Drag an accesory
+        {{#unless actor.system.equipment.accessories}}
+            Drag an accessory
         {{/unless}}
     </div>
 </div>
