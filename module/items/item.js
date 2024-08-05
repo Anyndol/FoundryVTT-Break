@@ -32,4 +32,33 @@ export class BreakItem extends Item {
     return prunedAbilities;
   }
 
+  async sendToChat() {
+    const itemData = foundry.utils.duplicate(this.system);
+    itemData.name = this.name;
+    itemData.itemType = this.type;
+    itemData.img = this.img;
+    itemData.isWeapon = this.type === "weapon";
+    itemData.isArmor = this.type === "armor";
+    itemData.isArmor = this.type === "armor";
+    itemData.isAbility = this.type === "ability";
+    itemData.isQuirk = this.type === "quirk";
+    itemData.isGift = this.type === "gift";
+    itemData.isRanged = this.system.weaponType1?.system.ranged || this.system.weaponType2?.system.ranged;
+    itemData.isMelee = (this.system.weaponType1 && !this.system.weaponType1.system.ranged) || (this.system.weaponType2 && !this.system.weaponType2.system.ranged);
+    itemData.isGear = this.type != "quirk" && this.type != "ability" && this.type != "calling" && this.type != "gift";
+
+    const html = await renderTemplate("systems/break/templates/chat/item.html", itemData);
+    const chatData = {
+      user: game.user.id,
+      rollMode: game.settings.get("core", "rollMode"),
+      content: html,
+    }
+
+    if (["gmroll", "blindroll"].includes(chatData.rollMode)) {
+      chatData.whisper = ChatMessage.getWhisperRecipients("GM");
+    } else if (chatData.rollMode === "selfroll") {
+      chatData.whisper = [game.user];
+    }
+    ChatMessage.create(chatData);
+  }
 }
