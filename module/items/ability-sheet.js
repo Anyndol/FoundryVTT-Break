@@ -1,3 +1,4 @@
+import BREAK from "../constants.js";
 import { BreakItemSheet } from "./item-sheet.js";
 
 export class BreakAbilitySheet extends BreakItemSheet {
