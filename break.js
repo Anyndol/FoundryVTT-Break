@@ -21,6 +21,16 @@ import { ActiveEffectsPanel } from "./module/apps/active-effects-list.js";
 import { BreakQuirkSheet } from "./module/items/quirk-sheet.js";
 import { BreakGiftSheet } from "./module/items/gift-sheet.js";
 import { BreakBookSheet } from "./module/items/book-sheet.js";
+import { BreakCombustibleSheet } from "./module/items/combustible-sheet.js";
+import { BreakConsumableSheet } from "./module/items/consumable-sheet.js";
+import { BreakCuriositySheet } from "./module/items/curiosity-sheet.js";
+import { BreakOtherworldSheet } from "./module/items/otherworld-sheet.js";
+import { BreakMiscellaneousSheet } from "./module/items/miscellaneous-sheet.js";
+import { BreakOutfitSheet } from "./module/items/outfit-sheet.js";
+import { BreakAccessorySheet } from "./module/items/accessory-sheet.js";
+import { BreakKitSheet } from "./module/items/kit-sheet.js";
+import { BreakWayfindingSheet } from "./module/items/wayfinding-sheet.js";
+import { BreakIlluminationSheet } from "./module/items/illumination-sheet.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -75,6 +85,16 @@ Hooks.once("init", async function() {
   Items.registerSheet("break", BreakQuirkSheet, { types: ['quirk'], makeDefault: true });
   Items.registerSheet("break", BreakGiftSheet, { types: ['gift'], makeDefault: true });
   Items.registerSheet("break", BreakBookSheet, { types: ['book'], makeDefault: true });
+  Items.registerSheet("break", BreakCombustibleSheet, { types: ['combustible'], makeDefault: true });
+  Items.registerSheet("break", BreakConsumableSheet, { types: ['consumable'], makeDefault: true });
+  Items.registerSheet("break", BreakCuriositySheet, { types: ['curiosity'], makeDefault: true });
+  Items.registerSheet("break", BreakOtherworldSheet, { types: ['otherworld'], makeDefault: true });
+  Items.registerSheet("break", BreakMiscellaneousSheet, { types: ['miscellaneous'], makeDefault: true });
+  Items.registerSheet("break", BreakOutfitSheet, { types: ['outfit'], makeDefault: true });
+  Items.registerSheet("break", BreakAccessorySheet, { types: ['accessory'], makeDefault: true });
+  Items.registerSheet("break", BreakKitSheet, { types: ['kit'], makeDefault: true });
+  Items.registerSheet("break", BreakWayfindingSheet, { types: ['wayfinding'], makeDefault: true });
+  Items.registerSheet("break", BreakIlluminationSheet, { types: ['illumination'], makeDefault: true });
 
   // Register system settings
   game.settings.register("break", "macroShorthand", {

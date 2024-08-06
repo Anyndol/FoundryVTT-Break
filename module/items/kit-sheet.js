@@ -1,12 +1,12 @@
 import { BreakItemSheet } from "./item-sheet.js";
 
-export class BreakBookSheet extends BreakItemSheet {
+export class BreakKitSheet extends BreakItemSheet {
 
   /** @inheritdoc */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["break", "sheet", "book"],
-      template: "systems/break/templates/items/book-sheet.hbs",
+      classes: ["break", "sheet", "kit"],
+      template: "systems/break/templates/items/kit-sheet.hbs",
       width: 600,
       height: 480,
       dragDrop: [{dragSelector: null, dropSelector: null}]
@@ -22,7 +22,7 @@ export class BreakBookSheet extends BreakItemSheet {
       secrets: this.document.isOwner,
       async: true
     });
-    context.isBook = true;
+    context.isCombustible = true;
     return context;
   }
 
