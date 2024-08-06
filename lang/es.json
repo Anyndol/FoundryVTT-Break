@@ -184,5 +184,6 @@
   "BREAK.Currency": "Divisas",
   "BREAK.Duration": "Duración",
   "BREAK.Permanent": "Permanente",
-  "BREAK.Effects": "Efectos"
+  "BREAK.Effects": "Efectos",
+  "BREAK.SendToChat": "Enviar al chat"
 }

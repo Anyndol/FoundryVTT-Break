@@ -24,13 +24,19 @@ export class ActiveEffectsPanel extends Application {
             };
         }
 
-        const effects = actor.effects ?? [];
-        console.log(effects)
+        const effects = this.actor.effects;
         return {effects};
     }
 
     activateListeners(html) {
         super.activateListeners(html);
-        
+        html.find("div.effect-item").on("contextmenu", this._removeEffect.bind(this));
     }
+
+    async _removeEffect(event) {
+        event.preventDefault();
+        const id = event.target.closest('[data-item-id]').dataset.itemId;
+        this.actor.deleteEmbeddedDocuments("ActiveEffect", [id]);
+    }
+
 }

@@ -1,13 +1,13 @@
 <article id="active-effects-panel">
     {{#each effects as |effect|}}
-        <div class="effect-item" data-item-id="{{effect.id}}" data-badge-type="{{effect.badge.type}}">
+        <div class="effect-item" data-item-id="{{effect._id}}">
             <div class="effect-info">
                 <h1>
                     {{effect.name}}
-                    <a data-action="send-to-chat" data-tooltip="{{localize "PF2E.NPC.SendToChat"}}"><i class="fa-solid fa-fw fa-comment-alt" ></i></a>
+                    <a data-action="send-to-chat" data-tooltip="{{localize "BREAK.SendToChat"}}"><i class="fa-solid fa-fw fa-comment-alt" ></i></a>
                 </h1>
                 <div class="description">
-                    {{effect.description}}
+                    {{{effect.description}}}
                 </div>
             </div>
             <div class="icon" style="background-image: url({{effect.img}})">

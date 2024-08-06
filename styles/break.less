@@ -554,3 +554,105 @@
 :root {
   --font-primary: Montserrat
 }
+
+#active-effects-panel {
+  pointer-events: initial;
+  position: absolute;
+  top: 5px;
+  right: 0;
+
+  .effect-item {
+      display: flex;
+      justify-content: end;
+      height: 52px;
+
+      &:hover {
+          .effect-info {
+              display: flex;
+              align-items: end;
+              flex-direction: column;
+          }
+      }
+
+      .effect-info {
+          background-color: rgba(0, 0, 0, 0.75);
+          color: var(--color-text-light-2);
+          display: none;
+          gap: 3px;
+          height: min-content;
+          margin-right: 0.5em;
+          max-width: 350px;
+          padding: 0.25em 0.5rem;
+
+          h1 {
+              border: none;
+              display: flex;
+              font-size: var(--font-size-14);
+              padding-top: 0.25em;
+              text-align: right;
+
+              a[data-action="send-to-chat"] i {
+                  font-size: var(--font-size-13);
+                  margin-left: 2px;
+              }
+          }
+
+          > a.inline-check {
+              font-size: var(--font-size-13);
+              font-weight: normal;
+              line-height: normal;
+              vertical-align: middle;
+          }
+
+          .description {
+              font-size: var(--font-size-12);
+          }
+
+          .description {
+              background: rgba(black, 0.7);
+              max-height: 16em;
+              overflow-y: auto;
+              padding: 0 0.5em;
+              text-align: left;
+
+              a,
+              span[data-pf2-effect-area] {
+                  color: var(--color-text-dark-primary);
+              }
+          }
+      }
+
+      > .icon {
+        align-items: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        box-shadow:
+            0 0 0 1px #c0c0c0,
+            0 0 0 2px #808080,
+            inset 0 0 4px rgba(0, 0, 0, 0.5);
+        color: transparent;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        margin: 2px 0;
+        height: 48px;
+        width: 48px;
+        background-color: rgba(0,0,0,0.5);
+
+        .expired {
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 100%;
+            padding: 2px 1px;
+            color: var(--text-light);
+            background-color: var(--primary);
+        }
+      }
+  }
+
+  > hr {
+      margin-right: 0;
+      width: 48px;
+  }
+}
