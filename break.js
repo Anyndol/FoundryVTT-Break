@@ -20,6 +20,7 @@ import { BreakInjurySheet } from "./module/items/injury-sheet.js";
 import { ActiveEffectsPanel } from "./module/apps/active-effects-list.js";
 import { BreakQuirkSheet } from "./module/items/quirk-sheet.js";
 import { BreakGiftSheet } from "./module/items/gift-sheet.js";
+import { BreakBookSheet } from "./module/items/book-sheet.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -73,6 +74,7 @@ Hooks.once("init", async function() {
   Items.registerSheet("break", BreakInjurySheet, {types:['injury'], makeDefault: true });
   Items.registerSheet("break", BreakQuirkSheet, { types: ['quirk'], makeDefault: true });
   Items.registerSheet("break", BreakGiftSheet, { types: ['gift'], makeDefault: true });
+  Items.registerSheet("break", BreakBookSheet, { types: ['book'], makeDefault: true });
 
   // Register system settings
   game.settings.register("break", "macroShorthand", {
