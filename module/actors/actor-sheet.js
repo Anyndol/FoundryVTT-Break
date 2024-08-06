@@ -2,7 +2,7 @@ import { parseInputDelta } from "../../utils/utils.mjs";
 import { RANK_XP} from "../constants.js";
 import { BreakItem } from "../items/item.js";
 
-const allowedItemTypes = ["quirk", "ability", "gift", "weapon", "armor"]
+const allowedItemTypes = ["quirk", "ability", "gift", "accessory", "armor", "book", "combustible", "consumable", "curiosity", "illumination", "kit", "miscellaneous", "otherworld", "outfit", "shield", "wayfinding", "weapon"]
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
