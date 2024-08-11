@@ -189,5 +189,7 @@
   "BREAK.Permanent": "Permanent",
   "BREAK.Effects": "Effects",
   "BREAK.Price": "Price",
-  "BREAK.SendToChat": "Send to chat"
+  "BREAK.SendToChat": "Send to chat",
+  "BREAK.Advantages": "Advantages",
+  "BREAK.Disadvantages": "Disadvantages"
 }

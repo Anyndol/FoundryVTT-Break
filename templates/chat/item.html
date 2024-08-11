@@ -78,6 +78,13 @@
         {{#when "3" 'eq' speedLimit}} <p><span class="property-label">{{localize "BREAK.MaxSpeed"}}: </span> {{localize "BREAK.VFAST"}}</p> {{/when}}
         {{/if}}
 
+        {{#if isQuirk}}
+        <h3 class="title-section">{{localize "BREAK.Advantages"}}:</h3>
+        {{{advantages}}}
+        <h3 class="title-section">{{localize "BREAK.Disadvantages"}}:</h3>
+        {{{disadvantages}}}
+        {{/if}}
+
         <!-- Description -->
         {{#if description}}
         <h3 class="title-section">{{localize "BREAK.Description"}}:</h3>

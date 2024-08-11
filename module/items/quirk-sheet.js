@@ -8,8 +8,8 @@ export class BreakQuirkSheet extends BreakItemSheet {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["break", "sheet", "quirk"],
       template: "systems/break/templates/items/quirk-sheet.hbs",
-      width: 520,
-      height: 480,
+      width: 580,
+      height: 540,
     });
   }
 
@@ -22,7 +22,14 @@ export class BreakQuirkSheet extends BreakItemSheet {
       secrets: this.document.isOwner,
       async: true
     });
-    context.abilityTypes = BREAK.ability_types;
+    context.advantagesHTML = await TextEditor.enrichHTML(context.item.system.advantages, {
+      secrets: this.document.isOwner,
+      async: true
+    });
+    context.disadvantagesHTML = await TextEditor.enrichHTML(context.item.system.disadvantages, {
+      secrets: this.document.isOwner,
+      async: true
+    });
     return context;
   }
 

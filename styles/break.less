@@ -1,14 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+  --background-primary: white;
+  --background-secondary: #e6e6e6;
+}
+
 .break.sheet {
   .window-content {
     height: 100%;
-    padding: 0px;
+    padding: 15px;
+    background: var(--background-primary);
+  }
+
+  .profile-img {
+    background: var(--background-secondary);
   }
 
   .sheet-body {
-    background-color: white;
-    padding: 15px;
+    background: var(--background-primary);
   }
 
   form {
@@ -16,14 +25,16 @@
   }
 
   .section-header {
-    background-color: rgb(230, 230, 230);
+    background-color: var(--background-secondary);
     border-radius: 0px 6px 6px 0px;
-    margin-bottom: 6px;
+    margin: 6px 0;
     display: flex;
     max-height: 24px;
     min-height: 24px;
     align-items: center;
     white-space: nowrap;
+    font-weight: 700;
+    padding: 5px;
   }
 
   .input {
@@ -116,7 +127,7 @@
     min-width: 48px;
     height: 48px;
     border-radius: 100px;
-    background-color: rgb(230, 230, 230);
+    background-color: var(--background-secondary);
     display: flex;
     -webkit-box-pack: center;
     justify-content: center;
@@ -129,7 +140,7 @@
     min-width: 48px;
     height: 48px;
     border-radius: 100px;
-    background-color: rgb(230, 230, 230);
+    background-color: var(--background-secondary);
     display: flex;
     -webkit-box-pack: center;
     justify-content: center;
@@ -140,7 +151,7 @@
   .aptitude-value-inner-circle {
     width: 37.5px;
     height: 37.5px;
-    background-color: white;
+    background-color: var(--background-primary);
     border-radius: 100px;
     display: flex;
     -webkit-box-pack: center;
@@ -161,7 +172,7 @@
     border-radius: 50%;
     width: 150px;
     height: 150px;
-    background-color: #e6e6e6;
+    background-color: var(--background-secondary);
   }
 
   .aptitude-trait {
@@ -286,7 +297,7 @@
   }
 
   #heart.empty::before, #heart.empty::after {
-    background: white;
+    background: var(--background-primary);
   }
 
   #heart::before {
@@ -498,7 +509,7 @@
   .item-icon {
     max-height: 65px;
     margin-right: 12px;
-    background-color: #e6e6e6;
+    background-color: var(--background-secondary);
   }
 
   .chat-item-header {
@@ -523,7 +534,7 @@
     font-weight: 600;
   }
 
-  .item-type{
+  .item-type {
     font-weight: 500;
     margin: 0;
   }
@@ -543,7 +554,7 @@
 }
 
 .chat-message {
-  background: white;
+  background: var(--background-primary);
 }
 
 .checkbox-with-label {
