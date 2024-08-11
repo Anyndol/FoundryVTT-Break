@@ -124,6 +124,10 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvC70w-.ttf) format('truetype');
 }
+:root {
+  --background-primary: white;
+  --background-secondary: #e6e6e6;
+}
 .break.sheet {
   /* Tooltip container */
   /* Tooltip text */
@@ -132,24 +136,29 @@
 }
 .break.sheet .window-content {
   height: 100%;
-  padding: 0px;
+  padding: 15px;
+  background: var(--background-primary);
+}
+.break.sheet .profile-img {
+  background: var(--background-secondary);
 }
 .break.sheet .sheet-body {
-  background-color: white;
-  padding: 15px;
+  background: var(--background-primary);
 }
 .break.sheet form {
   height: 100%;
 }
 .break.sheet .section-header {
-  background-color: #e6e6e6;
+  background-color: var(--background-secondary);
   border-radius: 0px 6px 6px 0px;
-  margin-bottom: 6px;
+  margin: 6px 0;
   display: flex;
   max-height: 24px;
   min-height: 24px;
   align-items: center;
   white-space: nowrap;
+  font-weight: 700;
+  padding: 5px;
 }
 .break.sheet .input.root {
   display: inline-flex;
@@ -230,7 +239,7 @@
   min-width: 48px;
   height: 48px;
   border-radius: 100px;
-  background-color: #e6e6e6;
+  background-color: var(--background-secondary);
   display: flex;
   -webkit-box-pack: center;
   justify-content: center;
@@ -242,7 +251,7 @@
   min-width: 48px;
   height: 48px;
   border-radius: 100px;
-  background-color: #e6e6e6;
+  background-color: var(--background-secondary);
   display: flex;
   -webkit-box-pack: center;
   justify-content: center;
@@ -252,7 +261,7 @@
 .break.sheet .aptitude-value-inner-circle {
   width: 37.5px;
   height: 37.5px;
-  background-color: white;
+  background-color: var(--background-primary);
   border-radius: 100px;
   display: flex;
   -webkit-box-pack: center;
@@ -271,7 +280,7 @@
   border-radius: 50%;
   width: 150px;
   height: 150px;
-  background-color: #e6e6e6;
+  background-color: var(--background-secondary);
 }
 .break.sheet .aptitude-trait {
   display: flex;
@@ -384,7 +393,7 @@
 }
 .break.sheet #heart.empty::before,
 .break.sheet #heart.empty::after {
-  background: white;
+  background: var(--background-primary);
 }
 .break.sheet #heart::before {
   left: 10px;
@@ -570,7 +579,7 @@
 .chat-item .item-icon {
   max-height: 65px;
   margin-right: 12px;
-  background-color: #e6e6e6;
+  background-color: var(--background-secondary);
 }
 .chat-item .chat-item-header {
   display: flex;
@@ -605,7 +614,7 @@
   margin: 0;
 }
 .chat-message {
-  background: white;
+  background: var(--background-primary);
 }
 .checkbox-with-label {
   display: flex;

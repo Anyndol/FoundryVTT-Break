@@ -146,8 +146,15 @@ Hooks.once("init", async function() {
     return value1+value2+value3
   });
 
-  Handlebars.registerHelper('mul', function(value1, value2) {
-    return value1*value2
+  Handlebars.registerHelper('mul', function(value1, value2, options) {
+    const result = value1 * value2;
+
+    // If a precision option is passed, round the result
+    const precision = options.hash.precision || 10; // default to 10 decimal places if not provided
+    const factor = Math.pow(10, precision);
+
+    // Round the result to the specified precision
+    return Math.round(result * factor) / factor;
   });
 
   Handlebars.registerHelper('for', function(from, to, incr, block) {
