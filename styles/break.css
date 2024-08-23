@@ -127,6 +127,9 @@
 :root {
   --background-primary: white;
   --background-secondary: #e6e6e6;
+  --background-tertiary: #585455;
+  --text-primary: black;
+  --text-secondary: white;
 }
 .break.sheet {
   /* Tooltip container */
@@ -575,6 +578,68 @@
   font-weight: 700;
   padding-bottom: 10px;
   font-size: 13px;
+}
+.break.sheet.adversary form {
+  display: flex;
+  flex-direction: row;
+}
+.break.sheet.adversary .adversary-aside {
+  background: var(--background-secondary);
+  max-width: 175px;
+}
+.break.sheet.adversary .adversary-aside .aside-section {
+  display: flex;
+}
+.break.sheet.adversary .adversary-aside .aside-section .aside-infos-section {
+  display: flex;
+  flex-direction: row;
+}
+.break.sheet.adversary .adversary-aside .aside-section .section-name {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  background-color: var(--background-tertiary);
+  padding: 10px;
+  margin-right: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+.break.sheet.adversary .adversary-aside .aside-section div {
+  margin-bottom: 10px;
+}
+.break.sheet.adversary .adversary-header {
+  background: var(--background-secondary);
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.break.sheet.adversary .adversary-header .adversary-header-sub-section {
+  display: flex;
+  align-items: center;
+}
+.break.sheet.adversary .description .editor {
+  height: 100%;
+}
+.break.sheet.adversary .adversary-misc-section {
+  display: flex;
+  column-gap: 24px;
+  padding-bottom: 24px;
+}
+.break.sheet.adversary .adversary-misc-section .adversary-misc-sub-section {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.break.sheet.adversary .adversary-misc-section .adversary-misc-sub-section textarea {
+  height: 100px;
+}
+.break.sheet.adversary .aptitude-bon-input {
+  margin-top: 0;
+}
+.break.sheet.adversary .aptitude-container {
+  padding-bottom: 0;
+  margin-bottom: 12px;
 }
 .chat-item .item-icon {
   max-height: 65px;

@@ -1,75 +1,87 @@
 {
   "Actor": {
-    "types": ["character", "gmc", "adversary"],
-    "htmlFields": ["biography"],
-    "templates":  {
-      
+    "types": [ "character", "gmc", "adversary" ],
+    "htmlFields": [ "biography" ],
+    "templates": {
+      "baseActor": {
+        "aptitudes": {
+          "Might": {
+            "value": 10,
+            "description": "BREAK.MightDesc",
+            "label": "BREAK.Might",
+            "bon": 0,
+            "trait": 0,
+            "color": "rgb(238, 61, 52) !important"
+          },
+          "Deftness": {
+            "value": 10,
+            "description": "BREAK.DeftnessDesc",
+            "label": "BREAK.Deftness",
+            "bon": 0,
+            "trait": 0,
+            "color": "rgb(244, 127, 38) !important;"
+          },
+          "Grit": {
+            "value": 10,
+            "description": "BREAK.GritDesc",
+            "label": "BREAK.Grit",
+            "bon": 0,
+            "trait": 0,
+            "color": "rgb(93, 186, 72) !important"
+          },
+          "Insight": {
+            "value": 10,
+            "description": "BREAK.InsightDesc",
+            "label": "BREAK.Insight",
+            "bon": 0,
+            "trait": 0,
+            "color": "rgb(23, 126, 194) !important"
+          },
+          "Aura": {
+            "value": 10,
+            "description": "BREAK.AuraDesc",
+            "label": "BREAK.Aura",
+            "bon": 0,
+            "trait": 0,
+            "color": "rgb(108, 60, 148) !important"
+          }
+        },
+        "defense": {
+          "value": 0,
+          "bon": 0
+        },
+        "hearts": {
+          "value": 10,
+          "min": 0,
+          "max": 10,
+          "bon": 0
+        },
+        "attack": {
+          "value": 0,
+          "bon": 0
+        },
+        "speed": {
+          "bon": 0,
+          "value": 1
+        },
+        "abilities": [],
+        "equipment": {
+          "armor": null,
+          "outfit": null,
+          "accessories": [],
+          "rightHand": null,
+          "leftHand": null
+        }
+      }
     },
     "character": {
-      "templates": [],
-      "biography": "",
-      "defense": {
-        "value": 0,
-        "bon": 0
-      },
-      "hearts": {
-        "value": 10,
-        "min": 0,
-        "max": 10,
-        "bon": 0
-      },
-      "attack": {
-        "value": 0,
-        "bon": 0
-      },
-      "aptitudes": {
-        "Might":{
-          "value": 10,
-          "description": "BREAK.MightDesc",
-          "label": "BREAK.Might",
-          "bon": 0,
-          "trait": 0,
-          "color": "rgb(238, 61, 52) !important"
-        },
-        "Deftness":{
-          "value": 10,
-          "description": "BREAK.DeftnessDesc",
-          "label": "BREAK.Deftness",
-          "bon": 0,
-          "trait": 0,
-          "color":"rgb(244, 127, 38) !important;"
-        },
-        "Grit":{
-          "value": 10,
-          "description": "BREAK.GritDesc",
-          "label": "BREAK.Grit",
-          "bon": 0,
-          "trait": 0,
-          "color":"rgb(93, 186, 72) !important"
-        },
-        "Insight":{
-          "value": 10,
-          "description": "BREAK.InsightDesc",
-          "label": "BREAK.Insight",
-          "bon": 0,
-          "trait": 0,
-          "color":"rgb(23, 126, 194) !important"
-        },
-        "Aura":{
-          "value": 10,
-          "description": "BREAK.AuraDesc",
-          "label": "BREAK.Aura",
-          "bon": 0,
-          "trait": 0,
-          "color":"rgb(108, 60, 148) !important"
-        }
-      },
+      "templates": [ "baseActor" ],
+      "biography": "",   
       "calling": "Champion",
-      "xp":{
+      "xp": {
         "rank": 1,
         "current": 0
       },
-      "abilities": [],
       "species": "Tenebrate",
       "homeland": "Twilight Meridian",
       "languages": "Low Speech, Fade Song",
@@ -79,21 +91,10 @@
         "bright": 0
       },
       "description": "",
-      "purviews":"",
+      "purviews": "",
       "quirk": "",
       "slots": 0,
       "groups": {},
-      "speed": {
-        "bon": 0,
-        "value": 1
-      },
-      "equipment": {
-        "armor": null,
-        "outfit": null,
-        "accessories": [],
-        "rightHand": null,
-        "leftHand": null
-      },
       "currency": {
         "gems": 0,
         "coins": 0,
@@ -103,6 +104,23 @@
     "gmc": {
       "biography": "",
       "description": ""
+    },
+    "adversary": {
+      "templates": [ "baseActor" ],
+      "htmlFields": [ "notes" ],
+      "menace": "",
+      "rank": 0,
+      "description": "",
+      "notes": "",
+      "misc": {
+        "habitat": "",
+        "gearInfo": "",
+        "communication": "",
+        "tactics": "",
+        "indicators": "",
+        "rpNote": "",
+        "customization": ""
+      }
     }
   },
   "Item": {
