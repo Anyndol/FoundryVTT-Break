@@ -22,7 +22,7 @@ export class BreakWayfindingSheet extends BreakItemSheet {
       secrets: this.document.isOwner,
       async: true
     });
-    context.isCombustible = true;
+    context.isWayfinding = true;
     return context;
   }
 
