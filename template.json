@@ -1,7 +1,7 @@
 {
   "Actor": {
     "types": ["character", "gmc", "adversary"],
-    "htmlFields": ["biography"],
+    "htmlFields": ["biography", "notes"],
     "templates":  {
       
     },
@@ -98,7 +98,8 @@
         "gems": 0,
         "coins": 0,
         "stones": 0
-      }
+      },
+      "notes": ""
     },
     "gmc": {
       "biography": "",
