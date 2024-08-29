@@ -189,12 +189,12 @@
   "BREAK.Permanent": "Permanente",
   "BREAK.Effects": "Efectos",
   "BREAK.SendToChat": "Enviar al chat",
-  "BREAK.Habitat": "",
-  "BREAK.Gear": "",
-  "BREAK.Communication": "",
-  "BREAK.Tactics": "",
-  "BREAK.Indicators": "",
-  "BREAK.RolePlayingNote": "",
-  "BREAK.Customization": "",
-  "BREAK.Notes": ""
+  "BREAK.Habitat": "Habitat",
+  "BREAK.Gear": "Equipo",
+  "BREAK.Communication": "Comunicación",
+  "BREAK.Tactics": "Tácticas",
+  "BREAK.Indicators": "Indicadores",
+  "BREAK.RolePlayingNote": "Notas de interpretación",
+  "BREAK.Customization": "Personalización",
+  "BREAK.Notes": "Notas"
 }
