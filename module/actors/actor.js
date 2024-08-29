@@ -12,6 +12,19 @@ export class BreakActor extends Actor {
     super.prepareDerivedData();
   }
 
+  async _preCreate(data, options, user) {
+
+    await super._preCreate(data, options, user);
+
+    let initData = {};
+
+    if (data.type === "character") {
+      initData["prototypeToken.actorLink"] = true;
+    }
+
+    this.updateSource(initData);
+  }
+
   prepareData(){
     super.prepareData();
 
