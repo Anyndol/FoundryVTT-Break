@@ -22,7 +22,7 @@ export class BreakOutfitSheet extends BreakItemSheet {
       secrets: this.document.isOwner,
       async: true
     });
-    context.isCombustible = true;
+    context.isOutfit = true;
     return context;
   }
 

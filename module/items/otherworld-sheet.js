@@ -22,7 +22,7 @@ export class BreakOtherworldSheet extends BreakItemSheet {
       secrets: this.document.isOwner,
       async: true
     });
-    context.isCombustible = true;
+    context.isOtherworld = true;
     return context;
   }
 

@@ -245,7 +245,7 @@ export class BreakActorSheet extends ActorSheet {
   }
 
   async _onDeleteItem(element) {
-    const id = element.dataset.id;
+    const id = element.dataset?.id ?? element.currentTarget?.attributes?.getNamedItem("data-id")?.value;
     this.actor.deleteItem(id);
   }
 
