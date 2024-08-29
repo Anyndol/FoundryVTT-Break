@@ -3,6 +3,9 @@
 :root {
   --background-primary: white;
   --background-secondary: #e6e6e6;
+  --background-tertiary: #585455;
+  --text-primary: black;
+  --text-secondary: white;
 }
 
 .break.sheet {
@@ -502,6 +505,87 @@
     font-weight: 700;
     padding-bottom: 10px;
     font-size: 13px;
+  }
+}
+
+.break.sheet.adversary {
+  form {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .adversary-aside {
+    background: var(--background-secondary);
+    max-width: 175px;
+
+    .aside-section {
+      display: flex;
+
+
+      .aside-infos-section {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .section-name {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        background-color: var(--background-tertiary);
+        padding: 10px;
+        margin-right: 10px;
+        font-weight: 700;
+        font-size: 14px;
+        color: var(--text-secondary);
+        text-align: center;
+      }
+
+      div {
+        margin-bottom: 10px
+      }
+    }
+  }
+
+  .adversary-header {
+    background: var(--background-secondary);
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+
+    .adversary-header-sub-section {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .description {
+    .editor {
+      height: 100%;
+    }
+  }
+
+  .adversary-misc-section {
+    display: flex;
+    column-gap: 24px;
+    padding-bottom: 24px;
+
+    .adversary-misc-sub-section {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+
+      textarea {
+        height: 100px;
+      }
+    }
+  }
+
+  .aptitude-bon-input {
+    margin-top: 0;
+  }
+
+  .aptitude-container {
+    padding-bottom: 0;
+    margin-bottom: 12px;
   }
 }
 
