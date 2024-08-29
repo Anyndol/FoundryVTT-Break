@@ -1,7 +1,7 @@
 {
   "Actor": {
     "types": [ "character", "gmc", "adversary" ],
-    "htmlFields": [ "biography" ],
+    "htmlFields": [ "biography", "notes" ],
     "templates": {
       "baseActor": {
         "aptitudes": {
@@ -71,7 +71,8 @@
           "accessories": [],
           "rightHand": null,
           "leftHand": null
-        }
+        },
+        "notes": ""
       }
     },
     "character": {
@@ -99,8 +100,7 @@
         "gems": 0,
         "coins": 0,
         "stones": 0
-      },
-      "notes": ""
+      }
     },
     "gmc": {
       "biography": "",
@@ -108,11 +108,10 @@
     },
     "adversary": {
       "templates": [ "baseActor" ],
-      "htmlFields": [ "notes" ],
+      "htmlFields": [ ],
       "menace": "",
       "rank": 0,
       "description": "",
-      "notes": "",
       "misc": {
         "habitat": "",
         "gearInfo": "",
