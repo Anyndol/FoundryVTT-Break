@@ -22,7 +22,7 @@ export class BreakMiscellaneousSheet extends BreakItemSheet {
       secrets: this.document.isOwner,
       async: true
     });
-    context.isCombustible = true;
+    context.isMiscellaneous = true;
     return context;
   }
 

@@ -31,6 +31,7 @@ import { BreakAccessorySheet } from "./module/items/accessory-sheet.js";
 import { BreakKitSheet } from "./module/items/kit-sheet.js";
 import { BreakWayfindingSheet } from "./module/items/wayfinding-sheet.js";
 import { BreakIlluminationSheet } from "./module/items/illumination-sheet.js";
+import { BreakShieldSheet } from "./module/items/shield-sheet.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -95,6 +96,7 @@ Hooks.once("init", async function() {
   Items.registerSheet("break", BreakKitSheet, { types: ['kit'], makeDefault: true });
   Items.registerSheet("break", BreakWayfindingSheet, { types: ['wayfinding'], makeDefault: true });
   Items.registerSheet("break", BreakIlluminationSheet, { types: ['illumination'], makeDefault: true });
+  Items.registerSheet("break", BreakShieldSheet, { types: ['shield'], makeDefault: true });
 
   // Register system settings
   game.settings.register("break", "macroShorthand", {

@@ -22,7 +22,7 @@ export class BreakAccessorySheet extends BreakItemSheet {
       secrets: this.document.isOwner,
       async: true
     });
-    context.isCombustible = true;
+    context.isAccessory = true;
     return context;
   }
 

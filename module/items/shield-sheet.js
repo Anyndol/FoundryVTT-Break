@@ -1,11 +1,11 @@
 import { BreakItemSheet } from "./item-sheet.js";
 
-export class BreakKitSheet extends BreakItemSheet {
+export class BreakShieldSheet extends BreakItemSheet {
 
   /** @inheritdoc */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ["break", "sheet", "kit"],
+      classes: ["break", "sheet", "shield"],
       template: "systems/break/templates/items/kit-sheet.hbs",
       width: 600,
       height: 480,
@@ -22,30 +22,7 @@ export class BreakKitSheet extends BreakItemSheet {
       secrets: this.document.isOwner,
       async: true
     });
-    context.isKit = true;
+    context.isShield = true;
     return context;
-  }
-
-  /* -------------------------------------------- */
-
-  /** @inheritdoc */
-  activateListeners(html) {
-    super.activateListeners(html);
-
-    if ( !this.isEditable ) return;
-  }
-
-  /** @inheritdoc */
-  async _onDrop(event) {
-    const data = TextEditor.getDragEventData(event);
-    if (data.type !== "Item") return;
-  }
-
-  /* -------------------------------------------- */
-
-  /** @override */
-  _getSubmitData(updateData) {
-    let formData = super._getSubmitData(updateData);
-    return formData;
   }
 }

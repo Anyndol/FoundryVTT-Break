@@ -22,7 +22,7 @@ export class BreakCuriositySheet extends BreakItemSheet {
       secrets: this.document.isOwner,
       async: true
     });
-    context.isCombustible = true;
+    context.isCuriosity = true;
     return context;
   }
 

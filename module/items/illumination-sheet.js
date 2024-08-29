@@ -22,7 +22,7 @@ export class BreakIlluminationSheet extends BreakItemSheet {
       secrets: this.document.isOwner,
       async: true
     });
-    context.isCombustible = true;
+    context.isIllumination = true;
     return context;
   }
 
