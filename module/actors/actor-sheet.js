@@ -18,7 +18,7 @@ export class BreakActorSheet extends ActorSheet {
       classes: ["break", "sheet", "actor"],
       template: "systems/break/templates/actors/actor-sheet.html",
       width: 750,
-      height: 850,
+      height: 870,
       tabs: [{navSelector: ".tabs", contentSelector: ".sheet-body", initial: "identity"}],
       scrollY: [".content"],
       dragDrop: [{dragSelector: ".directory-item.document", dropSelector: null, permissions: {drop: () => false}},
