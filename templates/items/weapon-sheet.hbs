@@ -9,12 +9,20 @@
                     <label>{{localize "BREAK.ExtraDamage"}}</label>
                     <input name="system.extraDamage" value="{{item.system.extraDamage}}" placeholder="0" type="number" style="width:32px; text-align:center;margin-left: 6px;"/>
                 </div>
+                <div style="display:flex; align-items: center;flex: 0;">
+                    <label>{{localize "BREAK.AttackBonus"}}</label>
+                    <input name="system.attackBonus" value="{{item.system.attackBonus}}" placeholder="0" type="number" style="width:32px; text-align:center;margin-left: 6px;" />
+                </div>
             {{/if}}
             {{#if isRanged}}
                 <p style="flex: 0;font-weight:600;font-size:14px;">{{localize "BREAK.RangedProperties"}}</p>
                 <div style="display:flex; align-items: center;flex: 0;">
                     <label>{{localize "BREAK.Ranged"}} {{localize "BREAK.ExtraDamage"}}</label>
                     <input name="system.rangedExtraDamage" value="{{item.system.rangedExtraDamage}}" placeholder="0" type="number" style="width:32px; text-align:center;margin-left: 6px;"/>
+                </div>
+                <div style="display:flex; align-items: center;flex: 0;">
+                    <label>{{localize "BREAK.Ranged"}} {{localize "BREAK.AttackBonus"}}</label>
+                    <input name="system.rangedAttackBonus" value="{{item.system.rangedAttackBonus}}" placeholder="0" type="number" style="width:32px; text-align:center;margin-left: 6px;"/>
                 </div>
             {{/if}}
             {{> "systems/break/templates/items/parts/weapon-details.hbs"}}

@@ -193,9 +193,11 @@
 
     },
     "weapon": {
-      "templates": ["baseItem"],
+      "templates": [ "baseItem" ],
       "extraDamage": 0,
       "rangedExtraDamage": 0,
+      "attackBonus": 0,
+      "rangedAttackBonus": 0,
       "range": 0,
       "loadingTime": 0,
       "weaponType1": null,
@@ -203,9 +205,10 @@
       "abilities": []
     },
     "weapon-type": {
-      "templates": ["baseItem"],
+      "templates": [ "baseItem" ],
       "ranged": false,
       "extraDamage": 0,
+      "attackBonus": 0,
       "range": 0,
       "loadingTime": 0,
       "abilities": []

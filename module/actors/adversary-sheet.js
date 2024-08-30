@@ -68,7 +68,9 @@ export class BreakAdversarySheet extends ActorSheet {
         isRanged: w.system.weaponType1?.system.ranged || w.system.weaponType2?.system.ranged,
         isMelee: (w.system.weaponType1 && !w.system.weaponType1.system.ranged) || (w.system.weaponType2 && !w.system.weaponType2.system.ranged),
         rangedExtraDamage: w.system.rangedExtraDamage,
-        extraDamage: w.system.extraDamage
+        extraDamage: w.system.extraDamage,
+        rangedAttackBonus: w.system.rangedAttackBonus,
+        attackBonus: w.system.attackBonus
       }
     });
     if (context.actor.system.equipment.armor && context.actor.system.equipment.armor.system.speedLimit != null && context.actor.system.equipment.armor.system.speedLimit != "") {
