@@ -5,12 +5,16 @@
             <div class="section-header">{{localize "BREAK.Details"}}</div>
             <div style="display:flex; align-items: center;flex: 0;">
                 <label>{{localize "BREAK.ExtraDamage"}}</label>
-                <input name="system.extraDamage" value="{{item.system.extraDamage}}" placeholder="0" type="number" style="width:32px; text-align:center;margin-left: 6px;"/>
+                <input name="system.extraDamage" value="{{item.system.extraDamage}}" placeholder="0" type="number" style="width:32px; text-align:center;margin-left: 6px;" />
+            </div>
+            <div style="display:flex; align-items: center;flex: 0;">
+                <label>{{localize "BREAK.AttackBonus"}}</label>
+                <input name="system.attackBonus" value="{{item.system.attackBonus}}" placeholder="0" type="number" style="width:32px; text-align:center;margin-left: 6px;" />
             </div>
             {{> "systems/break/templates/items/parts/weapon-details.hbs"}}
             <div style="display:flex; align-items: center;flex: 0;">
                 <label>{{localize "BREAK.Ranged"}}</label>
-                <input type="checkbox" {{#if item.system.ranged}}checked{{/if}} name="system.ranged" />
+                <input type="checkbox" {{#if item.system.ranged}} checked{{/if}} name="system.ranged" />
             </div>
             {{> "systems/break/templates/items/parts/item-abilities.hbs"}}
         </div>

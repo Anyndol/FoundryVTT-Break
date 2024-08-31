@@ -62,6 +62,8 @@ export class BreakWeaponSheet extends BreakItemSheet {
     const updates = {};
     let lowerExtraDamage = 0;
     let lowerRangedExtraDamage = 0;
+    let higherAttackBonus = 0;
+    let higherRangedAttackBonus = 0;
     let higherSlots = 0;
     let itemValue = 0;
     let higherRange = 0;
@@ -69,15 +71,21 @@ export class BreakWeaponSheet extends BreakItemSheet {
 
     const checkValues = (type) => {
       if(type) {
-        if(type.system.ranged) {
-          if(type.system.extraDamage < lowerRangedExtraDamage || lowerRangedExtraDamage == 0)
+        if (type.system.ranged) {
+          if (type.system.extraDamage < lowerRangedExtraDamage || lowerRangedExtraDamage == 0)
             lowerRangedExtraDamage = type.system.extraDamage
-          if(type.system.range > higherRange)
+          if (type.system.attackBonus > higherRangedAttackBonus)
+            higherRangedAttackBonus = type.system.attackBonus
+          if (type.system.range > higherRange)
             higherRange = type.system.range
-          if(type.system.loadingTime < lowerLoadingTime || lowerLoadingTime == 0)
+          if (type.system.loadingTime < lowerLoadingTime || lowerLoadingTime == 0)
             lowerLoadingTime = type.system.loadingTime
-        } else if(!type.system.ranged && (type.system.extraDamage < lowerExtraDamage || lowerExtraDamage == 0)) {
-          lowerExtraDamage = type.system.extraDamage
+        }
+        else {
+          if (type.system.extraDamage < lowerExtraDamage || lowerExtraDamage == 0)
+            lowerExtraDamage = type.system.extraDamage
+          if (type.system.attackBonus > higherAttackBonus)
+            higherAttackBonus = type.system.attackBonus
         }
         if(type.system.slots > higherSlots) {
           higherSlots = type.system.slots;
@@ -96,6 +104,8 @@ export class BreakWeaponSheet extends BreakItemSheet {
       itemValue *= 2;
     updates["system.extraDamage"] = lowerExtraDamage;
     updates["system.rangedExtraDamage"] = lowerRangedExtraDamage;
+    updates["system.attackBonus"] = higherAttackBonus;
+    updates["system.rangedAttackBonus"] = higherRangedAttackBonus;
     updates["system.slots"] = higherSlots;
     updates["system.loadingTime"] = lowerLoadingTime;
     updates["system.range"] = higherRange;
