@@ -6,7 +6,7 @@ export class BreakMiscellaneousSheet extends BreakItemSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["break", "sheet", "miscellaneous"],
-      template: "systems/break/templates/items/miscellaneous-sheet.hbs",
+      template: "systems/break/templates/items/base-gear-sheet.hbs",
       width: 600,
       height: 480,
       dragDrop: [{dragSelector: null, dropSelector: null}]
