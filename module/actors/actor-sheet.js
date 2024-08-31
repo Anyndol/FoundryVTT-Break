@@ -97,6 +97,11 @@ export class BreakActorSheet extends ActorSheet {
       secrets: this.document.isOwner,
       async: true
     });
+    context.notesHTML = await TextEditor.enrichHTML(context.data.system.notes, {
+      secrets: this.document.isOwner,
+      async: true
+    });
+
 
     context.actor.system.hearts.value = context.actor.system.hearts.value ?? context.actor.system.hearts.max;
     for(let i = 0; i < RANK_XP.length; i++){
