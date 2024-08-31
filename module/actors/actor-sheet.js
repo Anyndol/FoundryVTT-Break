@@ -154,7 +154,7 @@ export class BreakActorSheet extends ActorSheet {
       && !equippedItemIds.includes(i._id) && i.bag == this.selectedBag).map(i => ({ ...i, _id: i._id, equippable: ["armor", "weapon", "outfit", "accessory", "shield"].includes(i.type) }));
     const precision = 2;
     const factor = Math.pow(10, precision);
-    context.freeInventorySlots = Math.round((context.actor.system.slots - context.bagContent.reduce((ac, cv) => ac + cv.system.slots * cv.system.quantity, 0)) * factor) / factor;
+    context.usedInventorySlots = Math.round(context.bagContent.reduce((ac, cv) => ac + cv.system.slots * cv.system.quantity, 0) * factor) / factor;
     console.log(this);
     console.log(this.actor.items);
     return context;
