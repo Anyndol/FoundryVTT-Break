@@ -137,6 +137,10 @@
   /* Tooltip arrow */
   /* Show the tooltip text when you mouse over the tooltip container */
 }
+.break.sheet textarea {
+  resize: none;
+  overflow: auto;
+}
 .break.sheet .window-content {
   height: 100%;
   padding: 15px;
@@ -629,10 +633,6 @@
 .break.sheet.adversary .adversary-misc-section .adversary-misc-sub-section {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-}
-.break.sheet.adversary .adversary-misc-section .adversary-misc-sub-section textarea {
-  height: 100px;
 }
 .break.sheet.adversary .aptitude-bon-input {
   margin-top: 0;

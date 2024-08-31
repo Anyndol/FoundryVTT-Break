@@ -82,6 +82,17 @@ export class BreakAdversarySheet extends ActorSheet {
     context.attackBonus = context.actor.system.attack.value + context.actor.system.attack.bon;
     context.speedRating = context.actor.system.speed.value + context.actor.system.speed.bon;
 
+    //Fix line break issue with textarea input
+    context.actor.system.misc.habitat = context.actor.system.misc.habitat.replaceAll("\n", "&#10;")
+    context.actor.system.misc.gearInfo = context.actor.system.misc.gearInfo.replaceAll("\n", "&#10;")
+    context.actor.system.misc.communication = context.actor.system.misc.communication.replaceAll("\n", "&#10;")
+    context.actor.system.misc.tactics = context.actor.system.misc.tactics.replaceAll("\n", "&#10;")
+    context.actor.system.misc.indicators = context.actor.system.misc.indicators.replaceAll("\n", "&#10;")
+    context.actor.system.misc.rpNote = context.actor.system.misc.rpNote.replaceAll("\n", "&#10;")
+    context.actor.system.misc.customization = context.actor.system.misc.customization.replaceAll("\n", "&#10;")
+    context.actor.system.misc.yield = context.actor.system.misc.yield.replaceAll("\n", "&#10;")
+    context.actor.system.misc.reskin = context.actor.system.misc.reskin.replaceAll("\n", "&#10;")
+
     console.log(context);
 
     return context;

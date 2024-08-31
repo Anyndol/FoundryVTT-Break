@@ -9,6 +9,11 @@
 }
 
 .break.sheet {
+  textarea {
+    resize: none;
+    overflow: auto;
+  }
+
   .window-content {
     height: 100%;
     padding: 15px;
@@ -571,11 +576,6 @@
     .adversary-misc-sub-section {
       display: flex;
       flex-direction: column;
-      flex-grow: 1;
-
-      textarea {
-        height: 100px;
-      }
     }
   }
 

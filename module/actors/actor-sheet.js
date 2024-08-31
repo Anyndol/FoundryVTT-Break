@@ -155,6 +155,7 @@ export class BreakActorSheet extends ActorSheet {
     const precision = 2;
     const factor = Math.pow(10, precision);
     context.usedInventorySlots = Math.round(context.bagContent.reduce((ac, cv) => ac + cv.system.slots * cv.system.quantity, 0) * factor) / factor;
+    context.actor.system.purviews = context.actor.system.purviews.replaceAll("\n", "&#10;")
     console.log(this);
     console.log(this.actor.items);
     return context;
