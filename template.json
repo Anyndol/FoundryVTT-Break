@@ -72,6 +72,7 @@
           "rightHand": null,
           "leftHand": null
         },
+        "size": "Small",
         "notes": ""
       }
     },
@@ -109,8 +110,8 @@
     "adversary": {
       "templates": [ "baseActor" ],
       "htmlFields": [ ],
-      "menace": "",
-      "rank": 0,
+      "menace": "Mook",
+      "rank": 1,
       "description": "",
       "misc": {
         "habitat": "",
@@ -119,7 +120,9 @@
         "tactics": "",
         "indicators": "",
         "rpNote": "",
-        "customization": ""
+        "customization": "",
+        "yield": "",
+        "reskin": ""
       }
     }
   },

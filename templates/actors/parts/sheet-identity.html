@@ -15,10 +15,18 @@
             <input name="system.calling" type="text" value="{{actor.system.calling}}" placeholder="{{ localize 'BREAK.Calling' }}" />
         </div>
     </div>
-    <div class="input root">
-        <label class="identity-header-label">{{ localize 'BREAK.Species' }}</label>
-        <div class="input wrapper">
-            <input name="system.species" type="text" value="{{actor.system.species}}" placeholder="{{ localize 'BREAK.Species' }}" />
+    <div style="display: inline-flex;">
+        <div class="input root">
+            <label class="identity-header-label">{{ localize 'BREAK.Species' }}</label>
+            <div class="input wrapper">
+                <input name="system.species" type="text" value="{{actor.system.species}}" placeholder="{{ localize 'BREAK.Species' }}" />
+            </div>
+        </div>
+        <div class="input root">
+            <label class="identity-header-label">{{ localize 'BREAK.Size' }}</label>
+            <div class="input wrapper">
+                <input name="system.size" type="text" value="{{actor.system.size}}" placeholder="{{ localize 'BREAK.Size' }}" />
+            </div>
         </div>
     </div>
     <div class="input root">
@@ -42,7 +50,7 @@
     <div class="input root">
         <label class="identity-header-label">{{ localize 'BREAK.Purviews' }}</label>
         <div class="input wrapper">
-            <textarea rows="6" name="system.purviews" type="text" value="{{actor.system.purviews}}" placeholder="{{ localize 'BREAK.Purviews' }}">{{actor.system.purviews}}</textarea>
+            <textarea rows="6" name="system.purviews" type="text" placeholder="{{ localize 'BREAK.Purviews' }}">{{{actor.system.purviews}}}</textarea>
         </div>
     </div>
     <!--<div class="input root" style="min-height: 90px;">
