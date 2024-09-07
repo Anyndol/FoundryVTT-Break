@@ -194,6 +194,14 @@
   margin-left: 6px;
   font-size: 14px;
 }
+.break.sheet .selectcalling {
+  flex-grow: 1;
+  width: 100%;
+}
+.break.sheet .selectspecies {
+  flex-grow: 1;
+  width: 100%;
+}
 .break.sheet .aptitude-container {
   border-bottom: 1px solid;
   padding-bottom: 12px;

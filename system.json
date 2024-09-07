@@ -10,6 +10,9 @@
   "authors": [
     {
       "name": "Anyndol"
+    },
+    {
+      "name": "Valkyrie"
     }
   ],
   "esmodules": ["break.js"],

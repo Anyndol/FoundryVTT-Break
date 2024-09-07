@@ -4,65 +4,64 @@
     "htmlFields": [ "biography", "notes" ],
     "templates": {
       "baseActor": {
-        "aptitudes": {
-          "Might": {
-            "value": 10,
-            "description": "BREAK.MightDesc",
-            "label": "BREAK.Might",
-            "bon": 0,
-            "trait": 0,
-            "color": "rgb(238, 61, 52) !important"
-          },
-          "Deftness": {
-            "value": 10,
-            "description": "BREAK.DeftnessDesc",
-            "label": "BREAK.Deftness",
-            "bon": 0,
-            "trait": 0,
-            "color": "rgb(244, 127, 38) !important;"
-          },
-          "Grit": {
-            "value": 10,
-            "description": "BREAK.GritDesc",
-            "label": "BREAK.Grit",
-            "bon": 0,
-            "trait": 0,
-            "color": "rgb(93, 186, 72) !important"
-          },
-          "Insight": {
-            "value": 10,
-            "description": "BREAK.InsightDesc",
-            "label": "BREAK.Insight",
-            "bon": 0,
-            "trait": 0,
-            "color": "rgb(23, 126, 194) !important"
-          },
-          "Aura": {
-            "value": 10,
-            "description": "BREAK.AuraDesc",
-            "label": "BREAK.Aura",
-            "bon": 0,
-            "trait": 0,
-            "color": "rgb(108, 60, 148) !important"
-          }
+        "attack": {
+          "value": 0,
+          "bon": 0
         },
         "defense": {
           "value": 0,
           "bon": 0
         },
-        "hearts": {
-          "value": 10,
-          "min": 0,
-          "max": 10,
-          "bon": 0
-        },
-        "attack": {
-          "value": 0,
-          "bon": 0
-        },
         "speed": {
-          "bon": 0,
-          "value": 1
+          "value": 1,
+          "bon": 0
+        },
+        "hearts": {
+          "value": null,
+          "max": null,
+          "bon": 0
+        },
+        "aptitudes": {
+          "might": {
+            "base": 10,
+            "bon": 0,
+            "trait": 0,
+            "description": "BREAK.APTITUDE.MightDesc",
+            "label": "BREAK.APTITUDE.Might",
+            "color": "rgb(238, 61, 52) !important"
+          },
+          "deftness": {
+            "base": 10,
+            "bon": 0,
+            "trait": 0,
+            "description": "BREAK.APTITUDE.DeftnessDesc",
+            "label": "BREAK.APTITUDE.Deftness",
+            "color":"rgb(244, 127, 38) !important;"
+          },
+          "grit": {
+            "base": 10,
+            "bon": 0,
+            "trait": 0,
+            "description": "BREAK.APTITUDE.GritDesc",
+            "label": "BREAK.APTITUDE.Grit",
+            "color":"rgb(93, 186, 72) !important"
+          },
+          "insight": {
+            "base": 10,
+            "bon": 0,
+            "trait": 0,
+            "description": "BREAK.APTITUDE.InsightDesc",
+            "label": "BREAK.APTITUDE.Insight",
+            "color":"rgb(23, 126, 194) !important"
+          },
+          "aura": {
+            "base": 10,
+            "bon": 0,
+            "trait": 0,
+            "description": "BREAK.APTITUDE.AuraDesc",
+            "label": "BREAK.APTITUDE.Aura",
+            "color":"rgb(108, 60, 148) !important"
+          }
         },
         "abilities": [],
         "equipment": {
@@ -72,26 +71,42 @@
           "rightHand": null,
           "leftHand": null
         },
-        "size": "Small",
+        "size": {
+          "value": "medium",
+          "label": "BREAK.SPECIES.SIZE.Medium"
+        },
+        "allegiance": {
+          "dark": 0,
+          "bright": 0
+        },
         "notes": ""
       }
     },
     "character": {
       "templates": [ "baseActor" ],
       "biography": "",   
-      "calling": "Champion",
       "xp": {
         "rank": 1,
         "current": 0
       },
-      "species": "Tenebrate",
-      "homeland": "Twilight Meridian",
-      "languages": "Low Speech, Fade Song",
-      "history": "Shadow Sea Pirate",
-      "allegiance": {
-        "dark": 0,
-        "bright": 0
+      "calling": {
+        "value": "select",
+        "previous": "select",
+        "label": "BREAK.Calling"
       },
+      "species": {
+        "value": "select",
+        "label": "BREAK.Species"
+      },
+      "homeland": {
+        "value": "select",
+        "label": "BREAK.Homeland",
+        "history": {
+          "value": "select",
+          "label": "BREAK.History"
+        }
+      },
+      "languages": "",
       "description": "",
       "purviews": "",
       "quirk": "",
@@ -113,6 +128,10 @@
       "menace": "Mook",
       "rank": 1,
       "description": "",
+      "menace_type": {
+        "value": "mook",
+        "label": "BREAK.MENACE.Menace_Type"
+      },
       "misc": {
         "habitat": "",
         "gearInfo": "",
