@@ -109,6 +109,7 @@ export class BreakAdversarySheet extends ActorSheet {
 
     html.find("i.attack-ranged").on("click", this._onRollAttack.bind(this));
     html.find("i.attack-melee").on("click", this._onRollAttack.bind(this));
+    html.find("a.item-link").on("click", this._onLinkItem.bind(this));
 
     // Everything below here is only needed if the sheet is editable
     if ( !this.isEditable ) return;
@@ -190,6 +191,26 @@ export class BreakAdversarySheet extends ActorSheet {
 
     return options;
   }
+
+  async _onDeleteItem(element) {
+    const id = element.dataset?.id ?? element.currentTarget?.attributes?.getNamedItem("data-id")?.value;
+    this.actor.deleteItem(id);
+  }
+
+  async _onDisplayItem(element) {
+    const id = element.dataset.id;
+    const item = this.document.items.get(id);
+    item.sheet.render(true);
+  }
+
+  async _onLinkItem(event) {
+    event.preventDefault();
+    const button = event.currentTarget.closest("[data-id]");
+    const id = button.dataset.id;
+    const item = this.document.items.get(id);
+    await item.sendToChat();
+  }
+
 
   /* -------------------------------------------- */
 
