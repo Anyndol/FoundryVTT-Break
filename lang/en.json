@@ -341,22 +341,5 @@
     "Used": "Used",
     "Reskin": "Reskin",
     "Yield": "Yield"
-  },
-
-  
-
-
-  "ENSURE_UNUSED": {
-    "BREAK.Might": "Might",
-    "BREAK.MightDesc": "Smash, crush, lift",
-    "BREAK.Deftness": "Deftness",
-    "BREAK.DeftnessDesc": "Dodge, sneak, leap",
-    "BREAK.Grit": "Grit",
-    "BREAK.GritDesc": "Cling, persist, press on",
-    "BREAK.Insight": "Insight",
-    "BREAK.InsightDesc": "Notice, know, remember",
-    "BREAK.Aura": "Aura",
-    "BREAK.AuraDesc": "Persuade, inspire, terrify",
-    "BREAK.History": "History"
   }
 }

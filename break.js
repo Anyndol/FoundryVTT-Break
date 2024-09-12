@@ -80,6 +80,7 @@ Hooks.once("init", async function() {
   Items.registerSheet("break", BreakAbilitySheet, {types:['ability'], makeDefault: true });
   Items.registerSheet("break", BreakWeaponSheet, {types:['weapon'], makeDefault: true });
   Items.registerSheet("break", BreakArmorSheet, {types:['armor'], makeDefault: true });
+  Items.registerSheet("break", BreakShieldSheet, { types: ['shield'], makeDefault: true });
   Items.registerSheet("break", BreakWeaponTypeSheet, {types:['weapon-type'], makeDefault: true });
   Items.registerSheet("break", BreakArmorTypeSheet, {types:['armor-type'], makeDefault: true });
   Items.registerSheet("break", BreakInjurySheet, {types:['injury'], makeDefault: true });
@@ -96,7 +97,6 @@ Hooks.once("init", async function() {
   Items.registerSheet("break", BreakKitSheet, { types: ['kit'], makeDefault: true });
   Items.registerSheet("break", BreakWayfindingSheet, { types: ['wayfinding'], makeDefault: true });
   Items.registerSheet("break", BreakIlluminationSheet, { types: ['illumination'], makeDefault: true });
-  Items.registerSheet("break", BreakShieldSheet, { types: ['shield'], makeDefault: true });
 
   // Register system settings
   game.settings.register("break", "macroShorthand", {
