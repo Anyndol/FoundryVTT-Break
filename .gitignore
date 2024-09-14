@@ -12,3 +12,4 @@ releases/
 
 # BREAK
 packs/
+!packs/_source/
