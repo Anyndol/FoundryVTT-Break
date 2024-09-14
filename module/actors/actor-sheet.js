@@ -3,7 +3,33 @@ import { RANK_XP} from "../constants.js";
 import BREAK from "../constants.js";
 import { BreakItem } from "../items/item.js";
 
-const allowedItemTypes = ["quirk", "ability", "gift", "accessory", "armor", "book", "combustible", "consumable", "curiosity", "illumination", "kit", "miscellaneous", "otherworld", "outfit", "shield", "wayfinding", "weapon"]
+const allowedItemTypes = [
+// Equipment
+  "weapon",
+  "armor",
+  "shield",
+// Inventory
+  "gift",
+  "accessory",
+  "book",
+  "combustible",
+  "consumable",
+  "curiosity",
+  "illumination",
+  "kit",
+  "miscellaneous",
+  "otherworld",
+  "outfit",
+  "wayfinding",
+// Status
+  "calling",
+  "species",
+  "homeland",
+  "history",
+  "quirk",
+  "ability",
+  "advancement"
+]
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -324,7 +350,29 @@ export class BreakActorSheet extends ActorSheet {
   async _onAddItemCustom(event) {
     event.preventDefault();
     return Item.implementation.createDialog({}, {
-      parent: this.actor, pack: this.actor.pack, types: ["weapon", "armor", "shield", "outfit", "accessory", "wayfinding", "illumination", "kit", "book", "consumable", "combustible", "miscellaneous", "curiosity", "otherworld"]
+      parent: this.actor, pack: this.actor.pack, types: [
+        "weapon",
+        "armor",
+        "shield",
+        "outfit",
+        "accessory",
+        "wayfinding",
+        "illumination",
+        "kit",
+        "book",
+        "consumable",
+        "combustible",
+        "miscellaneous",
+        "curiosity",
+        "otherworld",
+        "calling",
+        "species",
+        "homeland",
+        "history",
+        "quirk",
+        "ability",
+        "advancement"
+      ]
     });
   }
 

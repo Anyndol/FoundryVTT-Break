@@ -51,6 +51,9 @@
       "weapon": "Arma",
       "armor": "Armadura",
       "shield": "Escudo",
+      "weapon-type": "Tipo de arma",
+      "armor-type": "Tipo de armadura",
+      "shield-type": "Tipo de escudo",
       "outfit": "Atuendo",
       "accessory": "Accesorio",
       "wayfinding": "Orientación",
@@ -63,12 +66,13 @@
       "curiosity": "Curiosidad o artilugio",
       "otherworld": "De otro mundo",
       "gear": "Objeto",
-      "quirk": "Peculiaridad",
-      "ability": "Habilidad",
-      "calling": "Vocación",
       "gift": "Don",
-      "weapon-type": "Tipo de arma",
-      "armor-type": "Tipo de armadura"
+      "calling": "Vocación",
+      "species": "<Species>",
+      "homeland": "<Homeland>",
+      "history": "<History>",
+      "quirk": "Peculiaridad",
+      "ability": "Habilidad"
     }
   },
 
@@ -107,6 +111,7 @@
 
     "Homeland": "Hogar",
     "History": "Historia",
+    "Histories": "<Histories>",
     "HOMELAND": {
       "Wistful_Dark": "<Wistful Dark>",
       "Twilight_Meridian": "<Twilight Meridian>",
@@ -222,6 +227,7 @@
     },
 
     "Languages": "Idiomas",
+    "BonusLanguages": "<Bonus Languages>",
     "Description": "Descripción",
     "Purviews": "Competencias",
     "Base": "Base",
@@ -339,6 +345,7 @@
     "Disadvantages": "Disadvantages",
     "Notes": "Notas",
     "Reskin": "<RESKIN>",
-    "Yield": "<YIELD>"
+    "Yield": "<YIELD>",
+    "StartingGear": "<Starting Gear>"
   }
 }

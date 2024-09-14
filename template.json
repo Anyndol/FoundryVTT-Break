@@ -146,7 +146,34 @@
     }
   },
   "Item": {
-    "types": ["weapon", "armor", "shield", "outfit", "accessory", "wayfinding", "illumination", "kit", "book", "consumable", "combustible", "miscellaneous", "curiosity", "otherworld", "weapon-type", "armor-type", "quirk", "ability", "calling", "gift", "injury"],
+    "types": [
+      "weapon",
+      "armor",
+      "shield",
+      "weapon-type",
+      "armor-type",
+      "shield-type",
+      "outfit",
+      "accessory",
+      "wayfinding",
+      "illumination",
+      "kit",
+      "book",
+      "consumable",
+      "combustible",
+      "miscellaneous",
+      "curiosity",
+      "otherworld",
+      "gift",
+      "injury",
+      "calling",
+      "species",
+      "homeland",
+      "history",
+      "quirk",
+      "ability",
+      "advancement"
+    ],
     "htmlFields": ["description"],
     "templates": {
       "baseItem": {
@@ -160,10 +187,6 @@
         "quantity": 1
       }
     },
-    "ability": {
-      "subtype": "",
-      "description": ""
-    },
     "outfit": {
       "templates": ["baseItem"]
     },
@@ -171,10 +194,14 @@
       "templates": ["baseItem"],
       "defenseBonus": 0,
       "speedLimit": null,
-      "type": null
+      "type": null,
+      "abilities": []
     },
     "shield": {
-      "templates": ["baseItem"]
+      "templates": ["baseItem"],
+      "defenseBonus": 0,
+      "type": null,
+      "abilities": []
     },
     "accessory": {
       "templates": ["baseItem"]
@@ -206,12 +233,48 @@
     "otherworld": {
       "templates": ["baseItem"]
     },
+    "calling": {
+      "name": "",
+      "description": "",
+      "overview": "",
+      "startingAbilities": [],
+      "advancementTable": null,
+      "armorAllowances": [],
+      "shieldAllowances": [],
+      "weaponAllowances": [],
+      "abilities": []
+    },
+    "species": {
+      "name": "",
+      "description": "",
+      "overview": "",
+      "size": "",
+      "innateAbilities": [],
+      "maturativeAbility": null
+    },
+    "homeland": {
+      "name": "",
+      "bonusLanguages": "",
+      "histories": []
+    },
+    "history": {
+      "name": "",
+      "description": "",
+      "purviews": [],
+      "startingGear": []
+    },
     "quirk": {
       "description": "",
       "advantages": "",
       "disadvantages": ""
     },
-    "calling": {
+    "ability": {
+      "subtype": "",
+      "category": "",
+      "alignment": 0,
+      "description": ""
+    },
+    "advancement": {
 
     },
     "weapon": {

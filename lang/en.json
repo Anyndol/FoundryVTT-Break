@@ -51,6 +51,9 @@
       "weapon": "Weapon",
       "armor": "Armor",
       "shield": "Shield",
+      "weapon-type": "Weapon type",
+      "armor-type": "Armor type",
+      "shield-type": "Shield type",
       "outfit": "Outfit",
       "accessory": "Accessory",
       "wayfinding": "Wayfinding",
@@ -62,14 +65,14 @@
       "miscellaneous": "Miscellaneous",
       "curiosity": "Curiosity or gadget",
       "otherworld": "Otherworldly",
-      "quirk": "Quirk",
-      "ability": "Ability",
-      "calling": "Calling",
       "gift": "Gift",
-      "weapon-type": "Weapon type",
-      "armor-type": "Armor type",
       "injury": "Injury",
-      "species": "Species"
+      "calling": "Calling",
+      "species": "Species",
+      "homeland": "Homeland",
+      "history": "History",
+      "quirk": "Quirk",
+      "ability": "Ability"
     }
   },
 
@@ -108,6 +111,7 @@
 
     "Homeland": "Homeland",
     "History": "History",
+    "Histories": "Histories",
     "HOMELAND": {
       "Wistful_Dark": "Wistful Dark",
       "Twilight_Meridian": "Twilight Meridian",
@@ -221,8 +225,10 @@
         "Large": "Large"
       }
     },
+    
 
     "Languages": "Languages",
+    "BonusLanguages": "Bonus Languages",
     "Description": "Description",
     "Purviews": "Purviews",
     "Base": "Base",
@@ -340,6 +346,7 @@
     "Notes": "Notes",
     "Used": "Used",
     "Reskin": "Reskin",
-    "Yield": "Yield"
+    "Yield": "Yield",
+    "StartingGear": "Starting Gear"
   }
 }

@@ -1,24 +1,21 @@
-/**
- * A BREAK!! system
- * Author: Anyndel
- */
-
 // Import Modules
 import { BreakActor } from "./module/actors/actor.js";
 import { BreakItem } from "./module/items/item.js";
-import { BreakActorSheet } from "./module/actors/actor-sheet.js";
 import { preloadHandlebarsTemplates } from "./module/templates.js";
 import { createbreakMacro } from "./module/macro.js";
 import { BreakToken, BreakTokenDocument } from "./module/token.js";
-import { BreakAbilitySheet } from "./module/items/ability-sheet.js";
-import { BreakWeaponSheet } from "./module/items/weapon-sheet.js";
+import { BreakActorSheet } from "./module/actors/actor-sheet.js";
 import { BreakAdversarySheet } from "./module/actors/adversary-sheet.js";
-import { BreakWeaponTypeSheet } from "./module/items/weapon-type-sheet.js";
+////// EQUIPMENT
+import { BreakWeaponSheet } from "./module/items/weapon-sheet.js";
 import { BreakArmorSheet } from "./module/items/armor-sheet.js";
+import { BreakShieldSheet } from "./module/items/shield-sheet.js";
+import { BreakWeaponTypeSheet } from "./module/items/weapon-type-sheet.js";
 import { BreakArmorTypeSheet } from "./module/items/armor-type-sheet.js";
+import { BreakShieldTypeSheet } from "./module/items/shield-type-sheet.js";
+////// INVENTORY
 import { BreakInjurySheet } from "./module/items/injury-sheet.js";
 import { ActiveEffectsPanel } from "./module/apps/active-effects-list.js";
-import { BreakQuirkSheet } from "./module/items/quirk-sheet.js";
 import { BreakGiftSheet } from "./module/items/gift-sheet.js";
 import { BreakBookSheet } from "./module/items/book-sheet.js";
 import { BreakCombustibleSheet } from "./module/items/combustible-sheet.js";
@@ -31,7 +28,14 @@ import { BreakAccessorySheet } from "./module/items/accessory-sheet.js";
 import { BreakKitSheet } from "./module/items/kit-sheet.js";
 import { BreakWayfindingSheet } from "./module/items/wayfinding-sheet.js";
 import { BreakIlluminationSheet } from "./module/items/illumination-sheet.js";
-import { BreakShieldSheet } from "./module/items/shield-sheet.js";
+////// STATUS
+import { BreakCallingSheet } from "./module/items/calling-sheet.js";
+import { BreakSpeciesSheet } from "./module/items/species-sheet.js";
+import { BreakHomelandSheet } from "./module/items/homeland-sheet.js";
+import { BreakHistorySheet } from "./module/items/history-sheet.js";
+import { BreakQuirkSheet } from "./module/items/quirk-sheet.js";
+import { BreakAbilitySheet } from "./module/items/ability-sheet.js";
+import { BreakAdvancementSheet } from "./module/items/advancement-sheet.js";
 
 /* -------------------------------------------- */
 /*  Foundry VTT Initialization                  */
@@ -77,14 +81,14 @@ Hooks.once("init", async function() {
   Actors.registerSheet("break", BreakActorSheet, {types:['character'], makeDefault: true });
   Actors.registerSheet("break", BreakAdversarySheet, {types:['adversary'], makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("break", BreakAbilitySheet, {types:['ability'], makeDefault: true });
+/////// EQUIPMENT
   Items.registerSheet("break", BreakWeaponSheet, {types:['weapon'], makeDefault: true });
   Items.registerSheet("break", BreakArmorSheet, {types:['armor'], makeDefault: true });
   Items.registerSheet("break", BreakShieldSheet, { types: ['shield'], makeDefault: true });
   Items.registerSheet("break", BreakWeaponTypeSheet, {types:['weapon-type'], makeDefault: true });
   Items.registerSheet("break", BreakArmorTypeSheet, {types:['armor-type'], makeDefault: true });
-  Items.registerSheet("break", BreakInjurySheet, {types:['injury'], makeDefault: true });
-  Items.registerSheet("break", BreakQuirkSheet, { types: ['quirk'], makeDefault: true });
+  Items.registerSheet("break", BreakShieldTypeSheet, {types:['shield-type'], makeDefault: true });
+/////// INVENTORY
   Items.registerSheet("break", BreakGiftSheet, { types: ['gift'], makeDefault: true });
   Items.registerSheet("break", BreakBookSheet, { types: ['book'], makeDefault: true });
   Items.registerSheet("break", BreakCombustibleSheet, { types: ['combustible'], makeDefault: true });
@@ -97,6 +101,15 @@ Hooks.once("init", async function() {
   Items.registerSheet("break", BreakKitSheet, { types: ['kit'], makeDefault: true });
   Items.registerSheet("break", BreakWayfindingSheet, { types: ['wayfinding'], makeDefault: true });
   Items.registerSheet("break", BreakIlluminationSheet, { types: ['illumination'], makeDefault: true });
+/////// STATUS
+  Items.registerSheet("break", BreakInjurySheet, {types:['injury'], makeDefault: true });
+  Items.registerSheet("break", BreakCallingSheet, {types:['calling'], makeDefault: true });
+  Items.registerSheet("break", BreakSpeciesSheet, {types:['species'], makeDefault: true });
+  Items.registerSheet("break", BreakHomelandSheet, {types:['homeland'], makeDefault: true });
+  Items.registerSheet("break", BreakHistorySheet, {types:['history'], makeDefault: true });
+  Items.registerSheet("break", BreakQuirkSheet, { types: ['quirk'], makeDefault: true });
+  Items.registerSheet("break", BreakAbilitySheet, {types:['ability'], makeDefault: true });
+  Items.registerSheet("break", BreakAdvancementSheet, {types:['advancement'], makeDefault: true });
 
   // Register system settings
   game.settings.register("break", "macroShorthand", {
