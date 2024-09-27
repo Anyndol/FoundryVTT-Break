@@ -168,6 +168,7 @@
       "injury",
       "calling",
       "species",
+      "size",
       "homeland",
       "history",
       "quirk",
@@ -248,9 +249,20 @@
       "name": "",
       "description": "",
       "overview": "",
-      "size": "",
+      "size": null,
       "innateAbilities": [],
       "maturativeAbility": null
+    },
+    "size": {
+      "name": "",
+      "mightModifier": 0,
+      "deftnessModifier": 0,
+      "defenseModifier": 0,
+      "inventory": 0,
+      "meleeRestrictions": [],
+      "armorRestrictions": [],
+      "shieldRestrictions": [],
+      "missileRestrictions": []
     },
     "homeland": {
       "name": "",
@@ -275,7 +287,7 @@
       "description": ""
     },
     "advancement": {
-
+      "table": null
     },
     "weapon": {
       "templates": [ "baseItem" ],
@@ -302,6 +314,11 @@
       "templates": ["baseItem"],
       "defenseBonus": 0,
       "speedLimit": null
+    },
+    "shield-type": {
+      "templates": ["baseItem"],
+      "defenseBonus": 0,
+      "speedPenalty": 0
     },
     "injury": {
       "description": "",

@@ -2,11 +2,19 @@ export const RANK_XP = [0,6,12,24,36,48,72,96,132,168]
 
 const BREAK = {}
 
+BREAK.max_rank = 10;
+
 BREAK.ability_types = {
     calling: "BREAK.Calling",
     species: "BREAK.Species",
     weapon: "BREAK.Weapon",
     armor: "BREAK.Armor"
+}
+
+BREAK.sizes = {
+    small: "BREAK.SPECIES.SIZE.Small",
+    medium: "BREAK.SPECIES.SIZE.Medium",
+    large: "BREAK.SPECIES.SIZE.Large"
 }
 
 BREAK.languages = {
@@ -275,42 +283,6 @@ BREAK.species = {
         innate_abilities: ["not_flesh_and_blood", "personal_analytics"],
         maturative_abilities: [],
         quirk_table: "bio_mechanoid"
-    }
-}
-
-BREAK.sizes = {
-    small: {
-        label: "BREAK.SPECIES.SIZE.Small",
-        might: -1,
-        deftness: 1,
-        defense: 1,
-        inventory: 8,
-        melee_restrictions: [],
-        armor_restrictions: [],
-        shield_restrictions: [],
-        missile_restrictions: []
-    },
-    medium: {
-        label: "BREAK.SPECIES.SIZE.Medium",
-        might: 0,
-        deftness: 0,
-        defense: 0,
-        inventory: 10,
-        melee_restrictions: [],
-        armor_restrictions: [],
-        shield_restrictions: [],
-        missile_restrictions: []
-    },
-    large: {
-        label: "BREAK.SPECIES.SIZE.Large",
-        might: 1,
-        deftness: 0,
-        defense: -1,
-        inventory: 12,
-        melee_restrictions: [],
-        armor_restrictions: [],
-        shield_restrictions: [],
-        missile_restrictions: []
     }
 }
 

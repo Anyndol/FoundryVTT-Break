@@ -31,6 +31,7 @@ import { BreakIlluminationSheet } from "./module/items/illumination-sheet.js";
 ////// STATUS
 import { BreakCallingSheet } from "./module/items/calling-sheet.js";
 import { BreakSpeciesSheet } from "./module/items/species-sheet.js";
+import { BreakSizeSheet } from "./module/items/size-sheet.js";
 import { BreakHomelandSheet } from "./module/items/homeland-sheet.js";
 import { BreakHistorySheet } from "./module/items/history-sheet.js";
 import { BreakQuirkSheet } from "./module/items/quirk-sheet.js";
@@ -105,6 +106,7 @@ Hooks.once("init", async function() {
   Items.registerSheet("break", BreakInjurySheet, {types:['injury'], makeDefault: true });
   Items.registerSheet("break", BreakCallingSheet, {types:['calling'], makeDefault: true });
   Items.registerSheet("break", BreakSpeciesSheet, {types:['species'], makeDefault: true });
+  Items.registerSheet("break", BreakSizeSheet, {types:['size'], makeDefault: true });
   Items.registerSheet("break", BreakHomelandSheet, {types:['homeland'], makeDefault: true });
   Items.registerSheet("break", BreakHistorySheet, {types:['history'], makeDefault: true });
   Items.registerSheet("break", BreakQuirkSheet, { types: ['quirk'], makeDefault: true });

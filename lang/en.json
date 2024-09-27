@@ -69,10 +69,12 @@
       "injury": "Injury",
       "calling": "Calling",
       "species": "Species",
+      "size": "Size",
       "homeland": "Homeland",
       "history": "History",
       "quirk": "Quirk",
-      "ability": "Ability"
+      "ability": "Ability",
+      "advancement": "Advancement"
     }
   },
 
@@ -89,6 +91,7 @@
       "MightDesc": "Smash, crush, lift",
       "Deftness": "Deftness",
       "DeftnessDesc": "Dodge, sneak, leap",
+      "DeftnessShort": "Deft.",
       "Grit": "Grit",
       "GritDesc": "Cling, persist, press on",
       "Insight": "Insight",
@@ -225,7 +228,61 @@
         "Large": "Large"
       }
     },
+
+    "Ability": "Ability",
+    "Abilities": "Abilities",
+    "ABILITIES": {
+      "Innate": "Innate Abilities",
+      "Maturative": "Maturative Ability",
+      "StartingShort": "Start.",
+      "StandardShort": "Stand.",
+      "AdvancedShort": "Adv.",
+      "StartingLong": "Starting Abilities",
+      "StandardLong": "Standard Abilities",
+      "AdvancedLong": "Advanced Abilities",
+      "ElectiveLong": "Elective Abilities"
+    },
     
+    "Inventory": "Inventory",
+    "Gear": "Gear",
+    "GEAR": {
+      "ExtraDamage": "Extra damage",
+      "RangedExtraDamage": "Ranged extra damage",
+      
+      "RangedProperties": "Ranged properties",
+      "MeleeProperties": "Melee properties",
+      "ArmorProperties": "Armor properties",
+      "GearProperties": "Gear properties",
+      "StartingGear": "Starting Gear",
+
+      "MeleeRestrictions": "Melee Restrictions",
+      "ArmorRestrictions": "Armor Restrictions",
+      "ShieldRestrictions": "Shield Restrictions",
+      "MissileRestrictions": "Missile Restrictions",
+
+      "MeleeAllowances": "Melee Allowances",
+      "ArmorAllowances": "Armor Allowances",
+      "ShieldAllowances": "Shield Allowances",
+      "MissileAllowances": "Missile Allowances",
+
+      "TYPE": {
+        "Ranged": "Ranged",
+        "Armor": "Armor"
+      },
+      "SUBTYPE": {
+        "Standard": "Standard",
+        "Concealed": "Concealed",
+        "Quick": "Quick",
+        "Master": "Master",
+        "Mighty": "Mighty",
+        "Arc": "Arc",
+        "Lash": "Lash",
+        "Thrown": "Thrown",
+        "Drawn": "Drawn",
+        "MechanicalSmall": "Mechanical (Small)",
+        "MechanicalLarge": "Mechanical (Large)"
+      }
+    },
 
     "Languages": "Languages",
     "BonusLanguages": "Bonus Languages",
@@ -235,13 +292,15 @@
     "Name": "Name",
     "Trait": "Trait",
     "Quirk": "Quirk",
-    "Abilities": "Abilities",
-    "Ability": "Ability",
+    "QuirkTable": "Quirk Table",
+    "Innate": "Innate",
+    "Maturative": "Maturative",
     "RankXp": "Rank & XP",
     "Allegiance": "Allegiance",
     "Rank": "Rank",
     "CurrentXp": "Current XP",
     "TotalXpNextRank": "Total XP for next rank",
+    "XP": "XP",
     "DarkAllegiancePoints": "Dark allegiance points",
     "BrightAllegiancePoints": "Bright allegiance points",
     "Dark": "Dark",
@@ -256,7 +315,7 @@
     "HeartsDescription": "Protecting me from injury",
     "AttackBonusDescription": "Add to my Attack rolls",
     "CombatValues": "Combat Values",
-    "Defense": "Defense Rating",
+    "Defense": "Defense",
     "DefenseRating": "Defense Rating",
     "DefenseRatingDescription": "Best this to strike me",
     "Speed": "Speed",
@@ -269,7 +328,6 @@
     "Areas": "Areas",
     "SpeedRatingDescription": "Decides how many Areas I can move",
     "Combat": "Combat",
-    "Inventory": "Inventory",
     "Success": "Success",
     "Failure": "Failure",
     "SpecialSuccess": "Special success!",
@@ -289,32 +347,13 @@
     "Attack": "Attack",
     "Slots": "Slots",
     "Details": "Details",
-    "ExtraDamage": "Extra damage",
-    "RangedExtraDamage": "Ranged extra damage",
-    "Standard": "Standard",
-    "Concealed": "Concealed",
-    "Quick": "Quick",
-    "Master": "Master",
-    "Mighty": "Mighty",
-    "Arc": "Arc",
-    "Lash": "Lash",
-    "Thrown": "Thrown",
-    "Drawn": "Drawn",
-    "MechanicalSmall": "Mechanical (Small)",
-    "MechanicalLarge": "Mechanical (Large)",
     "Range": "Range",
     "Add": "Add",
     "Weapon": "Weapon",
     "Weapons": "Weapons",
     "Action": "Action",
     "LoadingTime": "Loading time",
-    "Ranged": "Ranged",
-    "RangedProperties": "Ranged properties",
-    "MeleeProperties": "Melee properties",
-    "ArmorProperties": "Armor properties",
-    "GearProperties": "Gear properties",
     "ExtraAttackRollResult": "Extra damage!",
-    "Armor": "Armor",
     "MaxSpeed": "Max. speed",
     "Equipment": "Equipment",
     "Outfit": "Outfit",
@@ -337,7 +376,6 @@
     "Advantages": "Advantages",
     "Disadvantages": "Disadvantages",
     "Habitat": "Habitat",
-    "Gear": "Gear",
     "Communication": "Communication",
     "Tactics": "Tactics",
     "Indicators": "Indicators",
@@ -347,6 +385,7 @@
     "Used": "Used",
     "Reskin": "Reskin",
     "Yield": "Yield",
-    "StartingGear": "Starting Gear"
+    "AdvancementTable": "Advancement Table",
+    "Modifiers": "Modifiers"
   }
 }

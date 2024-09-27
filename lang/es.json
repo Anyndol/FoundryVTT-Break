@@ -62,6 +62,7 @@
       "book": "Libro",
       "consumable": "Consumible",
       "combustible": "Combustible o químico",
+      "size": "<Size>",
       "miscellaneous": "Miscelaneo",
       "curiosity": "Curiosidad o artilugio",
       "otherworld": "De otro mundo",
@@ -72,7 +73,8 @@
       "homeland": "<Homeland>",
       "history": "<History>",
       "quirk": "Peculiaridad",
-      "ability": "Habilidad"
+      "ability": "Habilidad",
+      "advancement": "<Advancement>"
     }
   },
 
@@ -89,6 +91,7 @@
       "MightDesc": "Aplastar, destruir, levantar",
       "Deftness": "Habilidad",
       "DeftnessDesc": "Esquivar, acechar, saltar",
+      "DeftnessShort": "Deft.",
       "Grit": "Aguante",
       "GritDesc": "Aguantar, persistir, seguir adelante",
       "Insight": "Perspicacia",
@@ -226,6 +229,22 @@
       }
     },
 
+    
+    "Ability": "Habilidad",
+    "Abilities": "Habilidades",
+    "ABILITIES": {
+      "Innate": "<Innate Abilities>",
+      "Maturative": "<Maturative Ability>",
+      "StartingShort": "<Start.>",
+      "StandardShort": "<Stand.>",
+      "AdvancedShort": "<Adv.>",
+      "StartingLong": "<Starting Abilities>",
+      "StandardLong": "<Standard Abilities>",
+      "AdvancedLong": "<Advanced Abilities>",
+      "ElectiveLong": "<Elective Abilities>"
+    },
+    
+
     "Languages": "Idiomas",
     "BonusLanguages": "<Bonus Languages>",
     "Description": "Descripción",
@@ -234,13 +253,15 @@
     "Name": "Nombre",
     "Trait": "Rasgo",
     "Quirk": "Peculiaridad",
-    "Abilities": "Habilidades",
-    "Ability": "Habilidad",
+    "QuirkTable": "<Quirk Table>",
+    "Innate": "<Innate>",
+    "Maturative": "<Maturative>",
     "RankXp": "Rango & XP",
     "Allegiance": "Lealtad",
     "Rank": "Rango",
     "CurrentXp": "XP Actual",
     "TotalXpNextRank": "XP total para el siguiente rango",
+    "XP": "<XP>",
     "DarkAllegiancePoints": "Puntos de lealtad oscura",
     "BrightAllegiancePoints": "Puntos de lealtad luminosa",
     "Dark": "Oscuridad",
@@ -346,6 +367,12 @@
     "Notes": "Notas",
     "Reskin": "<RESKIN>",
     "Yield": "<YIELD>",
-    "StartingGear": "<Starting Gear>"
+    "StartingGear": "<Starting Gear>",
+    "AdvancementTable": "<Advancement Table>",
+    "Modifiers": "<Modifiers>",
+    "MeleeRestrictions": "<Melee Restrictions>",
+    "ArmorRestrictions": "<Armor Restrictions>",
+    "ShieldRestrictions": "<Shield Restrictions>",
+    "MissileRestrictions": "<Missile Restrictions>"
   }
 }

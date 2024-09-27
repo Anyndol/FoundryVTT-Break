@@ -24,6 +24,7 @@ const allowedItemTypes = [
 // Status
   "calling",
   "species",
+  "size",
   "homeland",
   "history",
   "quirk",
@@ -367,6 +368,7 @@ export class BreakActorSheet extends ActorSheet {
         "otherworld",
         "calling",
         "species",
+        "size",
         "homeland",
         "history",
         "quirk",

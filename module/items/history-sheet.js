@@ -22,19 +22,6 @@ export class BreakHistorySheet extends BreakItemSheet {
         html.find(".add-purview").on("click", this.addPurview.bind(this));
 
         html.on('change', '.purview-input', this.updatePurview.bind(this));
-
-    //     html.forEach
-    
-
-    //   console.log("DEBUG: Adding listeners");
-    //   document.addEventListener('DOMContentLoaded', () => {
-    //     console.log("DEBUG: Content loaded event");
-    //     const inputs = document.querySelectorAll('.purview-input');
-    //     inputs.forEach((input, index) => {
-    //         console.log("DEBUG: Got an input");
-    //         input.addEventListener('change', () => this.updatePurview(index));
-    //     })
-    //   })
     }
 
     async deletePurview(event) {
