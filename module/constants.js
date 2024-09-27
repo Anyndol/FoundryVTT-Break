@@ -7,8 +7,8 @@ BREAK.max_rank = 10;
 BREAK.ability_types = {
     calling: "BREAK.Calling",
     species: "BREAK.Species",
-    weapon: "BREAK.Weapon",
-    armor: "BREAK.Armor"
+    weapon: "BREAK.GEAR.TYPE.Weapon",
+    armor: "BREAK.GEAR.TYPE.Armor"
 }
 
 BREAK.sizes = {

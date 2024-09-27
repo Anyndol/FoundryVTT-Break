@@ -201,6 +201,7 @@
     "shield": {
       "templates": ["baseItem"],
       "defenseBonus": 0,
+      "speedPenalty": null,
       "type": null,
       "abilities": []
     },

@@ -266,6 +266,7 @@
       "MissileAllowances": "Missile Allowances",
 
       "TYPE": {
+        "Weapon": "Weapon",
         "Ranged": "Ranged",
         "Armor": "Armor"
       },
@@ -320,6 +321,7 @@
     "DefenseRatingDescription": "Best this to strike me",
     "Speed": "Speed",
     "SpeedRating": "Speed Rating",
+    "SpeedPenalty": "Speed Penalty",
     "SLOW": "Slow",
     "AVERAGE": "Average",
     "FAST": "Fast",
@@ -349,7 +351,6 @@
     "Details": "Details",
     "Range": "Range",
     "Add": "Add",
-    "Weapon": "Weapon",
     "Weapons": "Weapons",
     "Action": "Action",
     "LoadingTime": "Loading time",

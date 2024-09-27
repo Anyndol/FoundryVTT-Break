@@ -2,7 +2,7 @@
     {{> "systems/break/templates/items/generic-header.hbs"}}
     <div style="display:flex; column-gap: 24px;">
         <div class="flexcol" style="flex: 1;">
-            <div class="section-header">{{localize "BREAK.MeleeRestrictions"}}</div>
+            <div class="section-header">{{localize "BREAK.GEAR.MeleeRestrictions"}}</div>
             <div class="restriction-wrapper" style="flex: 0; align-items: flex-start;">
                 {{#if hasMeleeRestrictions}}
                 {{#each meleeRestrictions}}
@@ -15,7 +15,7 @@
                 <label>Drag a melee weapon type...</label>
                 {{/if}}
             </div>
-            <div class="section-header">{{localize "BREAK.ArmorRestrictions"}}</div>
+            <div class="section-header">{{localize "BREAK.GEAR.ArmorRestrictions"}}</div>
             <div class="restriction-wrapper" style="flex: 0; align-items: flex-start;">
                 {{#if hasArmorRestrictions}}
                 {{#each armorRestrictions}}
@@ -28,7 +28,7 @@
                 <label>Drag an armor type...</label>
                 {{/if}}
             </div>
-            <div class="section-header">{{localize "BREAK.ShieldRestrictions"}}</div>
+            <div class="section-header">{{localize "BREAK.GEAR.ShieldRestrictions"}}</div>
             <div class="restriction-wrapper" style="flex: 0; align-items: flex-start;">
                 {{#if hasShieldRestrictions}}
                 {{#each shieldRestrictions}}
@@ -41,7 +41,7 @@
                 <label>Drag a shield type...</label>
                 {{/if}}
             </div>
-            <div class="section-header">{{localize "BREAK.MissileRestrictions"}}</div>
+            <div class="section-header">{{localize "BREAK.GEAR.MissileRestrictions"}}</div>
             <div class="restriction-wrapper" style="flex: 0; align-items: flex-start;">
                 {{#if hasMissileRestrictions}}
                 {{#each missileRestrictions}}
