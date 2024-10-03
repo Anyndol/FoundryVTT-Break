@@ -28,17 +28,29 @@ export class BreakActorSheet extends ActorSheet {
 
   _onOpenContextMenu(element) {
     const item = this.document.items.get(element.dataset.id);
-    if ( !item || (item instanceof Promise) ) return;
+    if (!item || (item instanceof Promise)) return;
+
+    item.equippable = element.dataset.equippable;
     ui.context.menuItems = this._getContextOptions(item);
   }
 
   _getContextOptions(item) {
     const options = [
       {
-        name: "BREAK.ContextMenuEdit",
-        icon: "<i class='fas fa-edit fa-fw'></i>",
+        name: "BREAK.Equip",
+        icon: "<i class='fa-solid fa-shield'></i>",
+        condition: () => item.equippable === 'true',
+        callback: li => {
+          const id = li[0].dataset?.id ?? li[0].currentTarget?.attributes?.getNamedItem("data-id")?.value;
+          const item = this.document.items.get(id);
+          this._onEquipItem(item);
+        }
+      },
+      {
+        name: "BREAK.SendToChat",
+        icon: "<i class='fa-solid fa-fw fa-comment-alt'></i>",
         condition: () => item.isOwner,
-        callback: li => this._onDisplayItem(li[0])
+        callback: li => this._onSendToChat(li[0])
       },
       {
         name: "BREAK.ContextMenuDelete",
@@ -149,15 +161,16 @@ export class BreakActorSheet extends ActorSheet {
     }
 
     const equipment = context.actor.system.equipment;
-    const equippedItemIds = [equipment.armor?._id, equipment.outfit?._id, equipment.rightHand?._id, equipment.leftHand?._id, ...equipment.accessories.map(i => i._id)];
+    const equippedItemIds = [equipment.armor?._id, equipment.outfit?._id, ...equipment.weapon.map(i => i._id), ...equipment.accessory.map(i => i._id)];
     context.bagContent = context.actor.items.filter(i => !["ability", "quirk", "gift"].includes(i.type)
       && !equippedItemIds.includes(i._id) && i.bag == this.selectedBag).map(i => ({ ...i, _id: i._id, equippable: ["armor", "weapon", "outfit", "accessory", "shield"].includes(i.type) }));
     const precision = 2;
     const factor = Math.pow(10, precision);
     context.usedInventorySlots = Math.round(context.bagContent.reduce((ac, cv) => ac + cv.system.slots * cv.system.quantity, 0) * factor) / factor;
     context.actor.system.purviews = context.actor.system.purviews.replaceAll("\n", "&#10;")
-    console.log(this);
-    console.log(this.actor.items);
+
+    console.log(context);
+
     return context;
   }
 
@@ -233,7 +246,15 @@ export class BreakActorSheet extends ActorSheet {
         this.actor.update({"system.equipment.armor": {...item, _id: item._id}});
         return;
       case "outfit":
-        //this.actor.update({"system.equipment.outfit": item});
+        this.actor.update({ "system.equipment.outfit": { ...item, _id: item._id } });
+        return;
+      case "weapon":
+        this.actor.system.equipment.weapon.push({ ...item, _id: item._id }) 
+        this.actor.update({ "system.equipment.weapon": this.actor.system.equipment.weapon });
+        return;
+      case "accessory":
+        this.actor.system.equipment.accessory.push({ ...item, _id: item._id })
+        this.actor.update({ "system.equipment.accessory": this.actor.system.equipment.accessory });
         return;
     }
   }
@@ -241,10 +262,10 @@ export class BreakActorSheet extends ActorSheet {
   async _onUnequipItem(event) {
     event.preventDefault();
     const button = event.currentTarget;
+    const id = button.dataset.itemId;
     const type = button.dataset.type;
-    const updates = {};
-    updates[`system.equipment.${type}`] = null;
-    this.actor.update(updates);
+
+    this.actor.unequipItem(id, type);
   }
 
   async _onDeleteItem(element) {
@@ -252,10 +273,10 @@ export class BreakActorSheet extends ActorSheet {
     this.actor.deleteItem(id);
   }
 
-  async _onDisplayItem(element) {
+  async _onSendToChat(element) {
     const id = element.dataset.id;
     const item = this.document.items.get(id);
-    item.sheet.render(true);
+    await item.sendToChat();
   }
 
   async _onLinkItem(event) {
@@ -263,7 +284,7 @@ export class BreakActorSheet extends ActorSheet {
     const button = event.currentTarget.closest("[data-id]");
     const id = button.dataset.id;
     const item = this.document.items.get(id);
-    await item.sendToChat();
+    item.sheet.render(true);
   }
 
   async _onAddItemCustom(event) {

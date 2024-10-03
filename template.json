@@ -68,9 +68,8 @@
         "equipment": {
           "armor": null,
           "outfit": null,
-          "accessories": [],
-          "rightHand": null,
-          "leftHand": null
+          "accessory": [],
+          "weapon": []
         },
         "size": "Small",
         "notes": ""

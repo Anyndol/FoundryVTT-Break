@@ -1,6 +1,6 @@
 import { BreakItem } from "../items/item.js";
 
-const allowedItemTypes = ["ability","accessory", "armor", "weapon"]
+const allowedItemTypes = ["ability", "accessory", "armor", "book", "combustible", "consumable", "curiosity", "illumination", "kit", "miscellaneous", "otherworld", "outfit", "shield", "wayfinding", "weapon"]
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -48,8 +48,6 @@ export class BreakAdversarySheet extends ActorSheet {
 
   /** @inheritdoc */
   async getData(options) {
-    const source = this.actor.toObject();
-    const actorData = this.actor.toObject(false);
     const context = await super.getData(options);
     context.shorthand = !!game.settings.get("break", "macroShorthand");
     context.notesHTML = await TextEditor.enrichHTML(context.actor.system.notes, {
@@ -78,6 +76,12 @@ export class BreakAdversarySheet extends ActorSheet {
     }
     context.defenseRating = +context.actor.system.defense.value + +context.actor.system.defense.bon + (context.actor.system.equipment.armor ? +context.actor.system.equipment.armor.system.defenseBonus : 0) + (context.speedRating == 2 ? 2 : +context.speedRating >= 3 ? 4 : 0);
     const equipment = context.actor.system.equipment;
+    const equippedItemIds = [equipment.armor?._id, equipment.outfit?._id, ...equipment.weapon.map(i => i._id), ...equipment.accessory.map(i => i._id)];
+    context.bagContent = context.actor.items.filter(i => !["ability", "quirk", "gift"].includes(i.type)
+      && !equippedItemIds.includes(i._id) && i.bag == this.selectedBag).map(i => ({ ...i, _id: i._id, equippable: ["armor", "weapon", "outfit", "accessory", "shield"].includes(i.type) }));
+    const precision = 2;
+    const factor = Math.pow(10, precision);
+    context.usedInventorySlots = Math.round(context.bagContent.reduce((ac, cv) => ac + cv.system.slots * cv.system.quantity, 0) * factor) / factor;
 
     context.attackBonus = context.actor.system.attack.value + context.actor.system.attack.bon;
     context.speedRating = context.actor.system.speed.value + context.actor.system.speed.bon;
@@ -109,13 +113,19 @@ export class BreakAdversarySheet extends ActorSheet {
 
     html.find("i.attack-ranged").on("click", this._onRollAttack.bind(this));
     html.find("i.attack-melee").on("click", this._onRollAttack.bind(this));
-    html.find("a.item-link").on("click", this._onLinkItem.bind(this));
 
     // Everything below here is only needed if the sheet is editable
     if ( !this.isEditable ) return;
 
     html.find("button.hearts.clickable").on("click", this._onModifyHearts.bind(this));
+
     html.find("i.delete-weapon").on("click", this._onDeleteItem.bind(this));
+    html.find("i.unequip-item").on("click", this._onUnequipItem.bind(this));
+    html.find("a.item-link").on("click", this._onLinkItem.bind(this));
+
+    html.find("a.add-item-custom").on("click", this._onAddItemCustom.bind(this));
+    html.find("a.adjustment-button").on("click", this._onAdjustItemQuantity.bind(this));
+    html.find("input.item-quantity").on("change", this._onChangeItemInput.bind(this));
 
     // Add draggable for Macro creation
     html.find(".aptitudes a.aptitude-roll").each((i, a) => {
@@ -148,6 +158,41 @@ export class BreakAdversarySheet extends ActorSheet {
 
   }
 
+  async _onEquipItem(item) {
+    switch (item.type) {
+      case "armor":
+        this.actor.update({ "system.equipment.armor": { ...item, _id: item._id } });
+        return;
+      case "outfit":
+        this.actor.update({ "system.equipment.outfit": { ...item, _id: item._id } });
+        return;
+      case "weapon":
+        this.actor.system.equipment.weapon.push({ ...item, _id: item._id })
+        this.actor.update({ "system.equipment.weapon": this.actor.system.equipment.weapon });
+        return;
+      case "accessory":
+        this.actor.system.equipment.accessory.push({ ...item, _id: item._id })
+        this.actor.update({ "system.equipment.accessory": this.actor.system.equipment.accessory });
+        return;
+    }
+  }
+
+  async _onUnequipItem(event) {
+    event.preventDefault();
+    const button = event.currentTarget;
+    const type = button.dataset.type;
+    const updates = {};
+    if (button.dataset.itemId != null) {
+      var itemIndex = this.actor.system.equipment[type].findIndex((element) => element._id == button.dataset.itemId);
+      this.actor.system.equipment[type].splice(itemIndex, 1)
+      updates[`system.equipment.${type}`] = this.actor.system.equipment[type];
+    }
+    else {
+      updates[`system.equipment.${type}`] = null;
+    }
+    this.actor.update(updates);
+  }
+
   async _onDeleteItem(element) {
     const id = element.dataset?.id ?? element.currentTarget?.attributes?.getNamedItem("data-id")?.value;
     this.actor.deleteItem(id);
@@ -170,16 +215,28 @@ export class BreakAdversarySheet extends ActorSheet {
   _onOpenContextMenu(element) {
     const item = this.document.items.get(element.dataset.id);
     if (!item || (item instanceof Promise)) return;
+
+    item.equippable = element.dataset.equippable;
     ui.context.menuItems = this._getContextOptions(item);
   }
 
   _getContextOptions(item) {
     const options = [
       {
-        name: "BREAK.ContextMenuEdit",
-        icon: "<i class='fas fa-edit fa-fw'></i>",
+        name: "BREAK.Equip",
+        icon: "<i class='fa-solid fa-shield'></i>",
+        condition: () => item.equippable === 'true',
+        callback: li => {
+          const id = li[0].dataset?.id ?? li[0].currentTarget?.attributes?.getNamedItem("data-id")?.value;
+          const item = this.document.items.get(id);
+          this._onEquipItem(item);
+        }
+      },
+      {
+        name: "BREAK.SendToChat",
+        icon: "<i class='fa-solid fa-fw fa-comment-alt'></i>",
         condition: () => item.isOwner,
-        callback: li => this._onDisplayItem(li[0])
+        callback: li => this._onSendToChat(li[0])
       },
       {
         name: "BREAK.ContextMenuDelete",
@@ -197,10 +254,10 @@ export class BreakAdversarySheet extends ActorSheet {
     this.actor.deleteItem(id);
   }
 
-  async _onDisplayItem(element) {
+  async _onSendToChat(element) {
     const id = element.dataset.id;
     const item = this.document.items.get(id);
-    item.sheet.render(true);
+    await item.sendToChat();
   }
 
   async _onLinkItem(event) {
@@ -208,7 +265,38 @@ export class BreakAdversarySheet extends ActorSheet {
     const button = event.currentTarget.closest("[data-id]");
     const id = button.dataset.id;
     const item = this.document.items.get(id);
-    await item.sendToChat();
+    item.sheet.render(true);
+  }
+
+  async _onAddItemCustom(event) {
+    event.preventDefault();
+    return Item.implementation.createDialog({}, {
+      parent: this.actor, pack: this.actor.pack, types: ["weapon", "armor", "shield", "outfit", "accessory", "wayfinding", "illumination", "kit", "book", "consumable", "combustible", "miscellaneous", "curiosity", "otherworld"]
+    });
+  }
+
+  async _onAdjustItemQuantity(event) {
+    event.preventDefault();
+    const button = event.currentTarget;
+    const { action } = button.dataset;
+    const input = button.parentElement.querySelector("input");
+    const min = input.min ? Number(input.min) : -Infinity;
+    const max = input.max ? Number(input.max) : Infinity;
+    let value = Number(input.value);
+    if (isNaN(value)) return;
+    value += action === "increase" ? 1 : -1;
+    input.value = Math.clamp(value, min, max);
+    input.dispatchEvent(new Event("change"));
+  }
+
+  async _onChangeItemInput(event) {
+    event.preventDefault();
+    const input = event.target;
+    const itemId = input.closest("[data-id]")?.dataset.id;
+    const item = this.document.items.get(itemId);
+    if (!item) return;
+    const result = parseInputDelta(input, item);
+    if (result !== undefined) item.update({ [input.dataset.name]: result });
   }
 
 

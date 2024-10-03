@@ -48,9 +48,30 @@ export class BreakActor extends Actor {
   async deleteItem(id) {
     const item = this.items.find(i => i._id == id);
     if(item) {
+      this.unequipItem(id, item.type)
       item.delete()
     }
     return this
+  }
+
+  async unequipItem(id, type)
+  {
+    const updates = {};
+    if (Array.isArray(this.system.equipment[type])) {
+      var itemIndex = this.system.equipment[type].findIndex((element) => element._id == id);
+      if (itemIndex != -1)
+      {
+        this.system.equipment[type].splice(itemIndex, 1)
+        updates[`system.equipment.${type}`] = this.system.equipment[type];
+      }
+    }
+    else {
+      if (this.system.equipment[type]._id === id) {
+        updates[`system.equipment.${type}`] = null;
+      }
+    }
+
+    this.update(updates);
   }
 
   async rollAptitude(aptitudeId) {

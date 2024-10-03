@@ -200,5 +200,7 @@
   "BREAK.Notes": "Notas",
   "BREAK.Size": "",
   "BREAK.Reskin": "",
-  "BREAK.Yield": ""
+  "BREAK.Yield": "",
+  "BREAK.Equip": "",
+  "BREAK.UnEquip": ""
 }
