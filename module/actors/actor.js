@@ -66,7 +66,7 @@ export class BreakActor extends Actor {
       }
     }
     else {
-      if (this.system.equipment[type]._id === id) {
+      if (this.system.equipment[type]?._id === id) {
         updates[`system.equipment.${type}`] = null;
       }
     }
