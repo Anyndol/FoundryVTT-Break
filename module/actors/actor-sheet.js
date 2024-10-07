@@ -95,14 +95,28 @@ export class BreakActorSheet extends ActorSheet {
 
   /** @inheritdoc */
   async _onDrop(event) {
-    const t = event.target.closest(".equipment-drag-slot")
-    if(!event.target.closest(".equipment-drag-slot")) return super._onDrop(event);
-    const dragData = event.dataTransfer.getData("application/json");
-    if ( !dragData ) return super._onDrop(event);
-    const id = JSON.parse(dragData).id;
-    const item = this.actor.items.find(i => i._id == id);
-    this._onEquipItem(item);
-    
+    const data = TextEditor.getDragEventData(event);
+    if(data.type !== "Item") return;
+    const draggedItem = await fromUuid(data.uuid);
+
+    if (draggedItem.type === "calling") {
+      this.actor.update({"system.calling": draggedItem.toObject()});
+    } else if(draggedItem.type === "species") {
+      this.actor.update({"system.species": draggedItem.toObject()});
+    } else if(draggedItem.type === "homeland") {
+      this.actor.update({"system.homeland": draggedItem.toObject()});
+    } else if(draggedItem.type === "history") {
+      this.actor.update({"system.history": draggedItem.toObject()});
+    } else {
+      const t = event.target.closest(".equipment-drag-slot")
+      if(!event.target.closest(".equipment-drag-slot")) return super._onDrop(event);
+      const dragData = event.dataTransfer.getData("application/json");
+      if ( !dragData ) return super._onDrop(event);
+      const id = JSON.parse(dragData).id;
+      const item = this.actor.items.find(i => i._id == id);
+      this._onEquipItem(item);
+    }
+
     return true;
   }
 
@@ -458,7 +472,7 @@ export class BreakActorSheet extends ActorSheet {
     let value = Number(input.value);
     if ( isNaN(value) ) return;
     value += action === "increase" ? 1 : -1;
-    input.value = Math.clamp(value, min, max);
+    input.value = Math.min(Math.max(value, min), max);
     input.dispatchEvent(new Event("change"));
   }
 

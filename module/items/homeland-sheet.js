@@ -39,7 +39,6 @@ export class BreakHomelandSheet extends BreakItemSheet {
             secrets: this.document.isOwner,
             async: true
         });
-        this.item.system.bonusLanguages = "";
         context.bonusLanguages = context.item.system.bonusLanguages;
         context.histories = context.item.system.histories ?? [];
         return context;

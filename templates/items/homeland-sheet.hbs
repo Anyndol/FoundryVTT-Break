@@ -3,7 +3,7 @@
     <div style="display:flex;column-gap: 24px;">
         <div class="flexcol" style="flex: 0.75;">
             <div class="section-header">{{localize "BREAK.BonusLanguages"}}</div>
-            <input name="bonus-languages" type="text" value="{{actor.bonusLanguages}}" placeholder="{{ localize 'BREAK.Name' }}" />
+            <input name="system.bonusLanguages" style="flex: 0;" type="text" value="{{item.system.bonusLanguages}}" placeholder="{{ localize 'BREAK.Name' }}" />
             <div class="section-header">{{localize "BREAK.Histories"}}</div>
             <div class="histories-list" style="display: flex; flex-wrap: wrap;flex-grow: 0;">
                 {{#each histories}}
