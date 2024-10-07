@@ -100,11 +100,6 @@ export class BreakSizeSheet extends BreakItemSheet {
                 }
                 break;
         }
-        // if(draggedItem.type === "history") {
-        //     const historyArray = this.item.system.histories ?? [];
-        //     historyArray.push(draggedItem.toObject());
-        //     this.item.update({"system.histories": historyArray});
-        // }
     }
 
     /** @override */

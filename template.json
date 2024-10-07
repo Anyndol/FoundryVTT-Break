@@ -89,27 +89,14 @@
         "rank": 1,
         "current": 0
       },
-      "calling": {
-        "value": "select",
-        "previous": "select",
-        "label": "BREAK.Calling"
-      },
-      "species": {
-        "value": "select",
-        "label": "BREAK.Species"
-      },
-      "homeland": {
-        "value": "select",
-        "label": "BREAK.Homeland",
-        "history": {
-          "value": "select",
-          "label": "BREAK.History"
-        }
-      },
+      "calling": null,
+      "species": null,
+      "homeland": null,
+      "history": null,
+      "quirk": null,
       "languages": "",
       "description": "",
       "purviews": "",
-      "quirk": "",
       "slots": 0,
       "groups": {},
       "currency": {
@@ -239,6 +226,8 @@
       "name": "",
       "description": "",
       "overview": "",
+      "baseSpeed": 1,
+      "baseDefense": 0,
       "startingAbilities": [],
       "advancementTable": null,
       "armorAllowances": [],

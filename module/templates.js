@@ -9,7 +9,7 @@ export const preloadHandlebarsTemplates = async function() {
   const templatePaths = [
     // Attribute list partial.
     "systems/break/templates/actors/parts/sheet-aptitudes.html",
-    "systems/break/templates/actors/parts/sheet-identity.html",
+    "systems/break/templates/actors/parts/sheet-identity.hbs",
     "systems/break/templates/actors/parts/sheet-combat.html",
     "systems/break/templates/actors/parts/sheet-abilities.html",
     "systems/break/templates/actors/parts/sheet-xp.html",

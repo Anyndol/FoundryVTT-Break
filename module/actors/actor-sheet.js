@@ -130,67 +130,70 @@ export class BreakActorSheet extends ActorSheet {
       async: true
     });
 
-    console.log("DEBUG: Starting");
-    
-    function convertToLabelList(col) {
-      let list = {}
-      for (const key in col) {
-        list[key] = col[key].label;
+    for(let i = 0; i < RANK_XP.length; i++){
+      if(RANK_XP[i] <= context.actor.system.xp.current) {
+        context.rank = i + 1;
+      } else {
+        context.xpNextRank = RANK_XP[i] - context.actor.system.xp.current;
+        break;
       }
-      return list;
     }
 
     //////////////////////////////
     ////  CONFIGURE SPECIES & SIZE
-    let species_id = context.actor.system.species.value;
-    let species = BREAK.species[species_id];
+    context.species = context.actor.system.species;
+    context.hasSpecies = context.species != null;
 
-    let size = BREAK.sizes[species.size];
-
-    context.species_list = convertToLabelList(BREAK.species);
-    context.size = size.label;
+    const size = context.hasSpecies ? context.species.system.size : null;
+    context.size = size;
 
     ///////////////////////
     ////  CONFIGURE CALLING
-    let calling_id = context.actor.system.calling.value;
 
-    let calling = BREAK.callings[calling_id];
-    context.actor.system.aptitudes.might.base = calling.stats.might + size.might;
-    context.actor.system.aptitudes.deftness.base = calling.stats.deftness + size.deftness;
-    context.actor.system.aptitudes.grit.base = calling.stats.grit;
-    context.actor.system.aptitudes.insight.base = calling.stats.insight;
-    context.actor.system.aptitudes.aura.base = calling.stats.aura;
+    context.calling = context.actor.system.calling;
+    context.hasCalling = context.calling != null;
 
-    context.actor.system.attack.base = calling.stats.attack;
-    context.actor.system.defense.base = calling.stats.defense + size.defense;
-    context.actor.system.hearts.max = calling.stats.hearts;
-    context.actor.system.speed.value = calling.stats.speed;
+    if (context.hasCalling && context.calling.system.advancementTable != null) {
+      const stats = context.calling.system.advancementTable[context.rank - 1];
 
-    context.calling_list = convertToLabelList(BREAK.callings);
+      context.actor.system.aptitudes.might.base = stats.might + (size ? size.system.mightModifier : 0);
+      context.actor.system.aptitudes.deftness.base = stats.deftness + (size ? size.system.deftnessModifier : 0);
+      context.actor.system.aptitudes.grit.base = stats.grit;
+      context.actor.system.aptitudes.insight.base = stats.insight;
+      context.actor.system.aptitudes.aura.base = stats.aura;
+
+      context.actor.system.attack.value = stats.attack;
+      context.actor.system.hearts.max = stats.hearts;
+
+      context.actor.system.defense.value = context.calling.system.baseDefense + (size ? +size.system.defenseModifier : 0);
+      context.actor.system.speed.value = context.calling.system.baseSpeed;
+    } else {
+      context.actor.system.aptitudes.might.base = 0;
+      context.actor.system.aptitudes.deftness.base = 0;
+      context.actor.system.aptitudes.grit.base = 0;
+      context.actor.system.aptitudes.insight.base = 0;
+      context.actor.system.aptitudes.aura.base = 0;
+
+      context.actor.system.attack.value = 0;
+      context.actor.system.hearts.max = 1;
+
+      context.actor.system.defense.value = 0;
+      context.actor.system.speed.value = 1;
+    }
 
     //////////////////////////////////
     ////  CONFIGURE HOMELAND & HISTORY
-    let homeland_id = context.actor.system.homeland.value;
-    let homeland = BREAK.homelands[homeland_id];
-  
-    context.homeland_list = convertToLabelList(BREAK.homelands);
-    context.history_list = convertToLabelList(homeland.histories);
+    context.homeland = context.actor.system.homeland;
+    context.hasHomeland = context.homeland != null;
+
+    context.history = context.actor.system.history;
+    context.hasHistory = context.history != null;
 
     ///////////////////////////
     ////  CONFIGURE HEARTS & XP
     // Reset player hearts so they don't exceed maximum, in case that changed
-    context.actor.system.hearts.value = context.actor.system.hearts.value ?? context.actor.system.hearts.max;
     let maxHearts = context.actor.system.hearts.max + context.actor.system.hearts.bon;
     context.actor.system.hearts.value = Math.min(context.actor.system.hearts.value, maxHearts);
-
-    for(let i = 0; i < RANK_XP.length; i++){
-      if(RANK_XP[i] <= context.actor.system.xp.current){
-        context.rank = i+1;
-      } else {
-        context.xpNextRank = RANK_XP[i]-context.actor.system.xp.current;
-        break;
-      }
-    }
 
     context.abilities = context.actor.items.filter(i => i.type === "ability");
     context.gifts = context.actor.items.filter(i => i.type === "gift");
@@ -210,12 +213,19 @@ export class BreakActorSheet extends ActorSheet {
       }
     });
 
-    context.attackBonus = context.actor.system.attack.value + context.actor.system.attack.bon;
-    context.defenseRating = +context.actor.system.defense.value + +context.actor.system.defense.bon + (context.actor.system.equipment.armor ? +context.actor.system.equipment.armor.system.defenseBonus : 0) + (context.speedRating == 2 ? 2 : +context.speedRating >= 3 ? 4 : 0);
-    context.speedRating = context.actor.system.speed.value + context.actor.system.speed.bon;
-    if(context.actor.system.equipment.armor && context.actor.system.equipment.armor.system.speedLimit != null && context.actor.system.equipment.armor.system.speedLimit != "") {
-      context.speedRating = +context.actor.system.equipment.armor.system.speedLimit < context.speedRating ? +context.actor.system.equipment.armor.system.speedLimit : context.speedRating;
-    }
+    const attack = context.actor.system.attack;
+    const defense = context.actor.system.defense;
+    const speed = context.actor.system.speed;
+
+    const armor = context.actor.system.equipment.armor;
+    const shield = context.actor.system.equipment.shield;
+
+    context.attackBonus = attack.value + attack.bon;
+    const rawSpeed = speed.value + speed.bon - (shield ? shield.speedPenalty : 0);
+    // Max speed is 3 (Very Fast), or if armor is worn then the armor's speed limit if it's less
+    const maxSpeed = Math.min(((armor && armor.system.speedLimit) ? +armor.system.speedLimit : 3), 3);
+    context.speedRating = Math.min(rawSpeed, maxSpeed);
+    context.defenseRating = defense.value + defense.bon + (armor ? +armor.system.defenseBonus : 0) + (context.speedRating == 2 ? 2 : +context.speedRating >= 3 ? 4 : 0);
 
     let allegiancePoints = +context.actor.system.allegiance.dark + +context.actor.system.allegiance.bright;
     // 0 = None, 1 = Bright, 2 = Twilight, 3 = Bright
@@ -258,6 +268,9 @@ export class BreakActorSheet extends ActorSheet {
     // Everything below here is only needed if the sheet is editable
     if ( !this.isEditable ) return;
 
+    html.find(".select-feature").on("click", this._onSelectFeature.bind(this));
+    html.find(".delete-feature").on("click", this._onDeleteFeature.bind(this));
+
     html.find(".aptitude-container").on("click", ".aptitude-trait", this._onSetTrait.bind(this));
 
     html.find(".delete-gift").on("click", this._onDeleteItem.bind(this));
@@ -297,6 +310,64 @@ export class BreakActorSheet extends ActorSheet {
   }
 
   /* -------------------------------------------- */
+
+  async _onSelectFeature(event) {
+    event.preventDefault();
+    const featureType = event.currentTarget.id;
+    console.log("DEBUG: SELECTING FEATURE: " + featureType);
+
+    function selectFeature(actor, item) {
+      const update = {};
+      update["system." + item.type] = item.toObject();
+      actor.update(update);
+    }
+
+    const buttons = {}
+    for (const item of game.items) {
+      if (item.type === featureType) {
+        buttons[item._id] = {
+          label: item.name,
+          callback: (_) => selectFeature(this.actor, item)
+        }
+      }
+    }
+
+    const content = `
+      <style>
+      #featureSelector .dialog-buttons {
+        flex-direction: column
+      }
+      </style>
+    `
+
+    const options = {
+      id: "featureSelector",
+      resizable: true
+    }
+
+    new Dialog({
+      title: "Feature Selector",
+      content: content,
+      buttons: buttons
+    }, options).render(true);
+  }
+
+  async _onDeleteFeature(event) {
+    event.preventDefault();
+    const featureType = event.currentTarget.id;
+    const deleteableFeatures = [
+      "calling",
+      "species",
+      "homeland",
+      "history"
+    ]
+
+    if (deleteableFeatures.includes(featureType)) {
+      const upd = {};
+      upd["system." + featureType] = null;
+      this.actor.update(upd);
+    }
+  }
 
   async _onSetTrait(event) {
     event.preventDefault();

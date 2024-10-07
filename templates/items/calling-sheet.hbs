@@ -2,6 +2,14 @@
     {{> "systems/break/templates/items/generic-header.hbs"}}
     <div style="display: flex; gap: 15px; flex: 0;">
         <div class="flexcol" style="flex: 1;">
+            <div class="base-speed" style="flex: 0;">
+                <div class="section-header" id="baseSpeed">{{localize "BREAK.Speed"}}</div>
+                <input name="system.baseSpeed" value="{{item.system.baseSpeed}}" placeholder="1" type="number" style="width:32px; text-align:center;margin-left: 6px;"/>
+            </div>
+            <div class="base-defense" style="flex: 0;">
+                <div class="section-header" id="baseDefense">{{localize "BREAK.Defense"}}</div>
+                <input name="system.baseDefense" value="{{item.system.baseDefense}}" placeholder="0" type="number" style="width:32px; text-align:center;margin-left: 6px;"/>
+            </div>
             <div class="starting-ability-drag-slot" id="startingAbilities" style="flex: 0;">
                 <div class="section-header" id="startingAbilities">{{localize "BREAK.ABILITIES.StartingLong"}}</div>
                 {{#if hasStartingAbilities}}
