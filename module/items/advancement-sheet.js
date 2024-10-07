@@ -42,8 +42,8 @@ export class BreakAdvancementSheet extends BreakItemSheet {
     activateListeners(html) {
       super.activateListeners(html);
       if ( !this.isEditable ) return;
-      html.find(".delete-ability").on("click", this.item.onDeleteAbility.bind(this));
 
+      html.find(".delete-ability").on("click", this.item.onDeleteAbility.bind(this));
       html.on('change', '.advancement-input', this.updateAdvancement.bind(this));
     }
 
@@ -60,39 +60,17 @@ export class BreakAdvancementSheet extends BreakItemSheet {
 
         let value = parseInt(element.value, 10);
         switch(stat) {
-            case "attack":
-                this.item.system.table[index].attack = value;
-                break;
-            case "hearts":
-                this.item.system.table[index].hearts = value;
-                break;
-            case "might":
-                this.item.system.table[index].might = value;
-                break;
-            case "deftness":
-                this.item.system.table[index].deftness = value;
-                break;
-            case "grit":
-                this.item.system.table[index].grit = value;
-                break;
-            case "insight":
-                this.item.system.table[index].insight = value;
-                break;
-            case "aura":
-                this.item.system.table[index].aura = value;
-                break;
-            case "startingAbilites":
-                this.item.system.table[index].startingAbilites = value;
-                break;
-            case "standardAbilities":
-                this.item.system.table[index].standardAbilities = value;
-                break;
-            case "advancedAbilities":
-                this.item.system.table[index].advancedAbilities = value;
-                break;
-            case "xp":
-                this.item.system.table[index].xp = value;
-                break;
+            case "attack": this.item.system.table[index].attack = value; break;
+            case "hearts": this.item.system.table[index].hearts = value; break;
+            case "might": this.item.system.table[index].might = value; break;
+            case "deftness": this.item.system.table[index].deftness = value; break;
+            case "grit": this.item.system.table[index].grit = value; break;
+            case "insight": this.item.system.table[index].insight = value; break;
+            case "aura": this.item.system.table[index].aura = value; break;
+            case "startingAbilites": this.item.system.table[index].startingAbilites = value; break;
+            case "standardAbilities": this.item.system.table[index].standardAbilities = value; break;
+            case "advancedAbilities": this.item.system.table[index].advancedAbilities = value; break;
+            case "xp": this.item.system.table[index].xp = value; break;
         }
 
         this.item.update({"system.table": this.item.system.table});

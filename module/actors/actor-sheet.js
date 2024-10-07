@@ -314,7 +314,6 @@ export class BreakActorSheet extends ActorSheet {
   async _onSelectFeature(event) {
     event.preventDefault();
     const featureType = event.currentTarget.id;
-    console.log("DEBUG: SELECTING FEATURE: " + featureType);
 
     function selectFeature(actor, item) {
       const update = {};

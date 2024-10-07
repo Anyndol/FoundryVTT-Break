@@ -100,16 +100,12 @@ export class BreakCallingSheet extends BreakItemSheet {
         if(data.type !== "Item") return;
         const draggedItem = await fromUuid(data.uuid);
 
-        console.log("DEBUG: OnDrop - " + draggedItem.type + ", " + event.target.id);
-
         if (draggedItem.type === "advancement") {
-          console.log("DEBUG: Dropping advancement table " + JSON.stringify(draggedItem.system.table, null, 2));
           this.item.update({"system.advancementTable": draggedItem.system.table});
         } else if(draggedItem.type === "ability") {
           if(event.target.id === "startingAbilities") {
             const sa = this.item.system.startingAbilities ?? [];
             sa.push(draggedItem.toObject());
-            console.log("DEBUG: Starting ability count: " + sa.length);
             this.item.update({"system.startingAbilities": sa});
           } else if (event.target.id === "electiveAbilities") {
             const sa = this.item.system.abilities ?? [];

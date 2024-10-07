@@ -24,15 +24,6 @@
                         {{else}}
                         <button class="select-feature" id="calling" style="margin-left: 0; margin-bottom: 4px; max-width: 32px;"><i class="fa-solid fa-plus" style="margin: 0px;"></i></button>
                         {{/if}}
-                        <!--
-                        <select id="selectcalling" class="selectcalling" name="system.calling.value" data-type="String">
-                            {{#select actor.system.calling.value}}
-                                {{#each calling_list as |calling key|}}
-                                <option value="{{key}}">{{ localize calling }}</option>
-                                {{/each}}
-                            {{/select}}
-                        </select>
-                        -->
                     </div>
                 </div>
             </section>
@@ -60,13 +51,6 @@
                         {{else}}
                         <button class="select-feature" id="species" style="margin-left: 0; margin-bottom: 4px; max-width: 32px;"><i class="fa-solid fa-plus" style="margin: 0px;"></i></button>
                         {{/if}}
-                        {{!-- <select id="selectspecies" class="selectspecies" name="system.species.value" data-type="String">
-                            {{#select actor.system.species.value}}
-                                {{#each species_list as |species key|}}
-                                <option value="{{key}}">{{ localize species }}</option>
-                                {{/each}}
-                            {{/select}}
-                        </select> --}}
                     </div>
                 </div>
             </section>
@@ -91,13 +75,6 @@
             {{else}}
             <button class="select-feature" id="homeland" style="margin-left: 0; margin-bottom: 4px; max-width: 32px;"><i class="fa-solid fa-plus" style="margin: 0px;"></i></button>
             {{/if}}
-            {{!-- <select id="selecthomeland" class="selecthomeland" name="system.homeland.value" data-type="String" style="width: 99%">
-                {{#select actor.system.homeland.value}}
-                    {{#each homeland_list as |homeland key|}}
-                    <option value="{{key}}">{{ localize homeland }}</option>
-                    {{/each}}
-                {{/select}}
-            </select> --}}
         </div>
     </div>
     <!-- LANGUAGES SECTION -->
@@ -118,13 +95,6 @@
             {{else}}
             <button class="select-feature" id="history" style="margin-left: 0; margin-bottom: 4px; max-width: 32px;"><i class="fa-solid fa-plus" style="margin: 0px;"></i></button>
             {{/if}}
-            {{!-- <select id="selecthistory" class="selecthistory" name="system.homeland.history.value" data-type="String" style="width: 99%">
-                {{#select actor.system.homeland.history.value}}
-                    {{#each history_list as |history key|}}
-                    <option value="{{key}}">{{ localize history }}</option>
-                    {{/each}}
-                {{/select}}
-            </select> --}}
         </div>
     </div>
     <!-- PURVIEWS SECTION -->
@@ -134,8 +104,4 @@
             <textarea rows="6" name="system.purviews" type="text" placeholder="{{ localize 'BREAK.Purviews' }}">{{{actor.system.purviews}}}</textarea>
         </div>
     </div>
-    <!--<div class="input root" style="min-height: 90px;">
-        <label>{{ localize 'BREAK.Description' }}</label>
-        {{editor biographyHTML target="system.biography" button=true owner=owner editable=editable}}
-    </div>-->
 </div>

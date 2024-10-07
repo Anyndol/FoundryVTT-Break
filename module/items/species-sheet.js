@@ -30,7 +30,6 @@ export class BreakSpeciesSheet extends BreakItemSheet {
     async onDeleteInnateAbility(event) {
       event.preventDefault();
       const index = parseInt(event.currentTarget.id.split('-')[1], 10);
-      console.log("DEBUG: Deleting innate ability with id: " + event.currentTarget.id);
       this.item.system.innateAbilities.splice(index, 1);
       this.item.update({"system.innateAbilities": this.item.system.innateAbilities});
     }

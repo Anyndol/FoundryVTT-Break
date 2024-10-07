@@ -26,8 +26,6 @@ export class BreakSizeSheet extends BreakItemSheet {
         let kind = idParts[0];
         let itemIndex = parseInt(idParts[1], 10);
 
-        console.log("DEBUG: deleteRestriction (" + kind + "), (" + itemIndex + ")");
-
         switch(kind) {
             case "melee":
                 this.item.system.meleeRestrictions.splice(itemIndex, 1);

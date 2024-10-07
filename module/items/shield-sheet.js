@@ -53,14 +53,14 @@ export class BreakShieldSheet extends BreakItemSheet {
   }
 
   _onSetShieldType() {
-    const armorType = this.item.system.type?.system;
+    const shieldType = this.item.system.type?.system;
     const updates = {};
-    if(armorType.speedPenalty != null) {
-      updates["system.speedPenalty"] = armorType.speedPenalty;
+    if(shieldType.speedPenalty != null) {
+      updates["system.speedPenalty"] = shieldType.speedPenalty;
     }
-    updates["system.defenseBonus"] = armorType.defenseBonus;
-    updates["system.slots"] = armorType.slots;
-    updates["system.value"] = armorType.value;
+    updates["system.defenseBonus"] = shieldType.defenseBonus;
+    updates["system.slots"] = shieldType.slots;
+    updates["system.value"] = shieldType.value;
     this.item.update(updates);
   }
 }
