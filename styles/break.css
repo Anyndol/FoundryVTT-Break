@@ -194,6 +194,14 @@
   margin-left: 6px;
   font-size: 14px;
 }
+.break.sheet .selectcalling {
+  flex-grow: 1;
+  width: 100%;
+}
+.break.sheet .selectspecies {
+  flex-grow: 1;
+  width: 100%;
+}
 .break.sheet .aptitude-container {
   border-bottom: 1px solid;
   padding-bottom: 12px;
@@ -583,6 +591,16 @@
   padding-bottom: 10px;
   font-size: 13px;
 }
+.break.sheet .advancement-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  width: 50px;
+  height: 25px;
+  border-right: 1px solid black;
+}
+
 .break.sheet.adversary form {
   display: flex;
   flex-direction: row;

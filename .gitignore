@@ -1,6 +1,7 @@
 # IDE
 .idea/
 .vs/
+.vscode/
 
 # Node Modules
 node_modules/
@@ -8,3 +9,7 @@ package-lock.json
 
 break.lock
 releases/
+
+# BREAK
+packs/
+!packs/_source/

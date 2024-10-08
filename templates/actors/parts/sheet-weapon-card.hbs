@@ -7,13 +7,13 @@
     <div class="weapon-card-column">
         {{#if weapon.isMelee}}
             <div style="display:flex;">
-                <label>{{localize "BREAK.ExtraDamage"}}</label>
+                <label>{{localize "BREAK.GEAR.ExtraDamage"}}</label>
                 <label style="margin-left: auto;">{{{weapon.extraDamage}}}</label>
             </div>
         {{/if}}
         {{#if weapon.isRanged}}
             <div style="display:flex;">
-                <label>{{localize "BREAK.Ranged"}} {{localize "BREAK.ExtraDamage"}}</label>
+                <label>{{localize "BREAK.GEAR.TYPE.Ranged"}} {{localize "BREAK.GEAR.ExtraDamage"}}</label>
                 <label style="margin-left: auto;">{{{weapon.rangedExtraDamage}}}</label>
             </div>
         {{/if}}
@@ -27,7 +27,7 @@
         {{/if}}
         {{#if weapon.isRanged}}
         <div style="display:flex;">
-            <label>{{localize "BREAK.Ranged"}} {{localize "BREAK.AttackBonus"}}</label>
+            <label>{{localize "BREAK.GEAR.TYPE.Ranged"}} {{localize "BREAK.AttackBonus"}}</label>
             <label style="margin-left: auto;">+{{{sum weapon.rangedAttackBonus @root.attackBonus 0}}}</label>
         </div>
         {{/if}}
