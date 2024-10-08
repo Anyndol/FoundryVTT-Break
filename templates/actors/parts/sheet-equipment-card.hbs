@@ -1,6 +1,12 @@
-<div>
-    <p style="font-size:15px;margin: 0;">{{item.name}}</p>
+<div data-id="{{item._id}}">
+    <a class="item-link" style="display: block; font-size: 15px; margin: 0;">{{item.name}}</a>
     {{#if item.system.type}}
-        <p style="font-size:12px; margin: 0;">{{item.system.type.name}}</p>
+    <span style="font-size: 12px; margin: 0;">{{item.system.type.name}}</span>
+    {{/if}}
+    {{#if item.system.weaponType1}}
+    <span style="font-size: 12px; margin: 0;">{{item.system.weaponType1.name}}</span>
+    {{/if}}
+    {{#if item.system.weaponType2}}
+    <span style="font-size: 12px; margin: 0;"> + {{item.system.weaponType2.name}}</span>
     {{/if}}
 </div>
