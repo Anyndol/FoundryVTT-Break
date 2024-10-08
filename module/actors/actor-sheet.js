@@ -1,8 +1,36 @@
 import { parseInputDelta } from "../../utils/utils.mjs";
 import { RANK_XP} from "../constants.js";
+import BREAK from "../constants.js";
 import { BreakItem } from "../items/item.js";
 
-const allowedItemTypes = ["quirk", "ability", "gift", "accessory", "armor", "book", "combustible", "consumable", "curiosity", "illumination", "kit", "miscellaneous", "otherworld", "outfit", "shield", "wayfinding", "weapon"]
+const allowedItemTypes = [
+// Equipment
+  "weapon",
+  "armor",
+  "shield",
+// Inventory
+  "gift",
+  "accessory",
+  "book",
+  "combustible",
+  "consumable",
+  "curiosity",
+  "illumination",
+  "kit",
+  "miscellaneous",
+  "otherworld",
+  "outfit",
+  "wayfinding",
+// Status
+  "calling",
+  "species",
+  "size",
+  "homeland",
+  "history",
+  "quirk",
+  "ability",
+  "advancement"
+]
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -79,14 +107,28 @@ export class BreakActorSheet extends ActorSheet {
 
   /** @inheritdoc */
   async _onDrop(event) {
-    const t = event.target.closest(".equipment-drag-slot")
-    if(!event.target.closest(".equipment-drag-slot")) return super._onDrop(event);
-    const dragData = event.dataTransfer.getData("application/json");
-    if ( !dragData ) return super._onDrop(event);
-    const id = JSON.parse(dragData).id;
-    const item = this.actor.items.find(i => i._id == id);
-    this._onEquipItem(item);
-    
+    const data = TextEditor.getDragEventData(event);
+    if(data.type !== "Item") return;
+    const draggedItem = await fromUuid(data.uuid);
+
+    if (draggedItem.type === "calling") {
+      this.actor.update({"system.calling": draggedItem.toObject()});
+    } else if(draggedItem.type === "species") {
+      this.actor.update({"system.species": draggedItem.toObject()});
+    } else if(draggedItem.type === "homeland") {
+      this.actor.update({"system.homeland": draggedItem.toObject()});
+    } else if(draggedItem.type === "history") {
+      this.actor.update({"system.history": draggedItem.toObject()});
+    } else {
+      const t = event.target.closest(".equipment-drag-slot")
+      if(!event.target.closest(".equipment-drag-slot")) return super._onDrop(event);
+      const dragData = event.dataTransfer.getData("application/json");
+      if ( !dragData ) return super._onDrop(event);
+      const id = JSON.parse(dragData).id;
+      const item = this.actor.items.find(i => i._id == id);
+      this._onEquipItem(item);
+    }
+
     return true;
   }
 
@@ -114,16 +156,70 @@ export class BreakActorSheet extends ActorSheet {
       async: true
     });
 
-
-    context.actor.system.hearts.value = context.actor.system.hearts.value ?? context.actor.system.hearts.max;
     for(let i = 0; i < RANK_XP.length; i++){
-      if(RANK_XP[i] <= context.actor.system.xp.current){
-        context.rank = i+1;
+      if(RANK_XP[i] <= context.actor.system.xp.current) {
+        context.rank = i + 1;
       } else {
-        context.xpNextRank = RANK_XP[i]-context.actor.system.xp.current;
+        context.xpNextRank = RANK_XP[i] - context.actor.system.xp.current;
         break;
       }
     }
+
+    //////////////////////////////
+    ////  CONFIGURE SPECIES & SIZE
+    context.species = context.actor.system.species;
+    context.hasSpecies = context.species != null;
+
+    const size = context.hasSpecies ? context.species.system.size : null;
+    context.size = size;
+
+    ///////////////////////
+    ////  CONFIGURE CALLING
+
+    context.calling = context.actor.system.calling;
+    context.hasCalling = context.calling != null;
+
+    if (context.hasCalling && context.calling.system.advancementTable != null) {
+      const stats = context.calling.system.advancementTable[context.rank - 1];
+
+      context.actor.system.aptitudes.might.base = stats.might + (size ? size.system.mightModifier : 0);
+      context.actor.system.aptitudes.deftness.base = stats.deftness + (size ? size.system.deftnessModifier : 0);
+      context.actor.system.aptitudes.grit.base = stats.grit;
+      context.actor.system.aptitudes.insight.base = stats.insight;
+      context.actor.system.aptitudes.aura.base = stats.aura;
+
+      context.actor.system.attack.value = stats.attack;
+      context.actor.system.hearts.max = stats.hearts;
+
+      context.actor.system.defense.value = context.calling.system.baseDefense + (size ? +size.system.defenseModifier : 0);
+      context.actor.system.speed.value = context.calling.system.baseSpeed;
+    } else {
+      context.actor.system.aptitudes.might.base = 0;
+      context.actor.system.aptitudes.deftness.base = 0;
+      context.actor.system.aptitudes.grit.base = 0;
+      context.actor.system.aptitudes.insight.base = 0;
+      context.actor.system.aptitudes.aura.base = 0;
+
+      context.actor.system.attack.value = 0;
+      context.actor.system.hearts.max = 1;
+
+      context.actor.system.defense.value = 0;
+      context.actor.system.speed.value = 1;
+    }
+
+    //////////////////////////////////
+    ////  CONFIGURE HOMELAND & HISTORY
+    context.homeland = context.actor.system.homeland;
+    context.hasHomeland = context.homeland != null;
+
+    context.history = context.actor.system.history;
+    context.hasHistory = context.history != null;
+
+    ///////////////////////////
+    ////  CONFIGURE HEARTS & XP
+    // Reset player hearts so they don't exceed maximum, in case that changed
+    let maxHearts = context.actor.system.hearts.max + context.actor.system.hearts.bon;
+    context.actor.system.hearts.value = Math.min(context.actor.system.hearts.value, maxHearts);
 
     context.abilities = context.actor.items.filter(i => i.type === "ability");
     context.gifts = context.actor.items.filter(i => i.type === "gift");
@@ -143,14 +239,23 @@ export class BreakActorSheet extends ActorSheet {
       }
     });
 
-    context.attackBonus = context.actor.system.attack.value + context.actor.system.attack.bon;
-    context.speedRating = context.actor.system.speed.value + context.actor.system.speed.bon;
-    if(context.actor.system.equipment.armor && context.actor.system.equipment.armor.system.speedLimit != null && context.actor.system.equipment.armor.system.speedLimit != "") {
-      context.speedRating = +context.actor.system.equipment.armor.system.speedLimit < context.speedRating ? +context.actor.system.equipment.armor.system.speedLimit : context.speedRating;
-    }
-    context.defenseRating = +context.actor.system.defense.value + +context.actor.system.defense.bon + (context.actor.system.equipment.armor ? +context.actor.system.equipment.armor.system.defenseBonus : 0) + (context.speedRating == 2 ? 2 : +context.speedRating >= 3 ? 4 : 0);
+    const attack = context.actor.system.attack;
+    const defense = context.actor.system.defense;
+    const speed = context.actor.system.speed;
 
-    if(+context.actor.system.allegiance.dark <= 1 && +context.actor.system.allegiance.bright <= 1){
+    const armor = context.actor.system.equipment.armor;
+    const shield = context.actor.system.equipment.shield;
+
+    context.attackBonus = attack.value + attack.bon;
+    const rawSpeed = speed.value + speed.bon - (shield ? shield.speedPenalty : 0);
+    // Max speed is 3 (Very Fast), or if armor is worn then the armor's speed limit if it's less
+    const maxSpeed = Math.min(((armor && armor.system.speedLimit) ? +armor.system.speedLimit : 3), 3);
+    context.speedRating = Math.min(rawSpeed, maxSpeed);
+    context.defenseRating = defense.value + defense.bon + (armor ? +armor.system.defenseBonus : 0) + (context.speedRating == 2 ? 2 : +context.speedRating >= 3 ? 4 : 0);
+
+    let allegiancePoints = +context.actor.system.allegiance.dark + +context.actor.system.allegiance.bright;
+    // 0 = None, 1 = Bright, 2 = Twilight, 3 = Bright
+    if(+allegiancePoints <= 1){
       context.allegiance = 0;
     } else if(+context.actor.system.allegiance.dark > +context.actor.system.allegiance.bright+1){
       context.allegiance = 1;
@@ -188,6 +293,9 @@ export class BreakActorSheet extends ActorSheet {
 
     // Everything below here is only needed if the sheet is editable
     if ( !this.isEditable ) return;
+
+    html.find(".select-feature").on("click", this._onSelectFeature.bind(this));
+    html.find(".delete-feature").on("click", this._onDeleteFeature.bind(this));
 
     html.find(".aptitude-container").on("click", ".aptitude-trait", this._onSetTrait.bind(this));
 
@@ -228,6 +336,63 @@ export class BreakActorSheet extends ActorSheet {
   }
 
   /* -------------------------------------------- */
+
+  async _onSelectFeature(event) {
+    event.preventDefault();
+    const featureType = event.currentTarget.id;
+
+    function selectFeature(actor, item) {
+      const update = {};
+      update["system." + item.type] = item.toObject();
+      actor.update(update);
+    }
+
+    const buttons = {}
+    for (const item of game.items) {
+      if (item.type === featureType) {
+        buttons[item._id] = {
+          label: item.name,
+          callback: (_) => selectFeature(this.actor, item)
+        }
+      }
+    }
+
+    const content = `
+      <style>
+      #featureSelector .dialog-buttons {
+        flex-direction: column
+      }
+      </style>
+    `
+
+    const options = {
+      id: "featureSelector",
+      resizable: true
+    }
+
+    new Dialog({
+      title: "Feature Selector",
+      content: content,
+      buttons: buttons
+    }, options).render(true);
+  }
+
+  async _onDeleteFeature(event) {
+    event.preventDefault();
+    const featureType = event.currentTarget.id;
+    const deleteableFeatures = [
+      "calling",
+      "species",
+      "homeland",
+      "history"
+    ]
+
+    if (deleteableFeatures.includes(featureType)) {
+      const upd = {};
+      upd["system." + featureType] = null;
+      this.actor.update(upd);
+    }
+  }
 
   async _onSetTrait(event) {
     event.preventDefault();
@@ -290,7 +455,30 @@ export class BreakActorSheet extends ActorSheet {
   async _onAddItemCustom(event) {
     event.preventDefault();
     return Item.implementation.createDialog({}, {
-      parent: this.actor, pack: this.actor.pack, types: ["weapon", "armor", "shield", "outfit", "accessory", "wayfinding", "illumination", "kit", "book", "consumable", "combustible", "miscellaneous", "curiosity", "otherworld"]
+      parent: this.actor, pack: this.actor.pack, types: [
+        "weapon",
+        "armor",
+        "shield",
+        "outfit",
+        "accessory",
+        "wayfinding",
+        "illumination",
+        "kit",
+        "book",
+        "consumable",
+        "combustible",
+        "miscellaneous",
+        "curiosity",
+        "otherworld",
+        "calling",
+        "species",
+        "size",
+        "homeland",
+        "history",
+        "quirk",
+        "ability",
+        "advancement"
+      ]
     });
   }
 
@@ -304,7 +492,7 @@ export class BreakActorSheet extends ActorSheet {
     let value = Number(input.value);
     if ( isNaN(value) ) return;
     value += action === "increase" ? 1 : -1;
-    input.value = Math.clamp(value, min, max);
+    input.value = Math.min(Math.max(value, min), max);
     input.dispatchEvent(new Event("change"));
   }
 

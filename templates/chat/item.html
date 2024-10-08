@@ -32,7 +32,7 @@
         <!-- Details -->
         <!-- Price -->
         {{#if isGear}}
-        <h3 class="title-section">{{localize "BREAK.GearProperties"}}</h3>
+        <h3 class="title-section">{{localize "BREAK.GEAR.GearProperties"}}</h3>
         <div>
             <span class="property-label">{{localize "BREAK.Price"}}: </span>
             <i class="fas fa-gem"></i>
@@ -47,13 +47,13 @@
         <!-- Weapon -->
         {{#if isWeapon}}
         {{#if isMelee}}
-        <h3 class="title-section">{{localize "BREAK.MeleeProperties"}}</h3>
-        <p><span class="property-label">{{localize "BREAK.ExtraDamage"}}: </span>{{extraDamage}}</p>
+        <h3 class="title-section">{{localize "BREAK.GEAR.MeleeProperties"}}</h3>
+        <p><span class="property-label">{{localize "BREAK.GEAR.ExtraDamage"}}: </span>{{extraDamage}}</p>
         {{/if}}
 
         {{#if isRanged}}
-        <h3 class="title-section">{{localize "BREAK.RangedProperties"}}</h3>
-        <p><span class="property-label">{{localize "BREAK.RangedExtraDamage"}}: </span>{{rangedExtraDamage}}</p>
+        <h3 class="title-section">{{localize "BREAK.GEAR.RangedProperties"}}</h3>
+        <p><span class="property-label">{{localize "BREAK.GEAR.RangedExtraDamage"}}: </span>{{rangedExtraDamage}}</p>
         <p><span class="property-label">{{localize "BREAK.Range"}}: </span>{{rangedExtraDamage}} {{localize "BREAK.Areas"}}</p>
         <p><span class="property-label">{{localize "BREAK.LoadingTime"}}: </span>{{loadingTime}} {{localize "BREAK.Action"}}</p>
         {{/if}}
@@ -69,7 +69,7 @@
 
         <!-- Armor -->
         {{#if isArmor}}
-        <h3 class="title-section">{{localize "BREAK.ArmorProperties"}}</h3>
+        <h3 class="title-section">{{localize "BREAK.GEAR.ArmorProperties"}}</h3>
         <p><span class="property-label">{{localize "BREAK.DefenseRating"}}: </span>{{defenseBonus}}</p>
         {{#when "" 'eq' speedLimit}} <p><span class="property-label">{{localize "BREAK.MaxSpeed"}}: </span> {{localize "BREAK.None"}}</p> {{/when}}
         {{#when "0" 'eq' speedLimit}} <p><span class="property-label">{{localize "BREAK.MaxSpeed"}}: </span> {{localize "BREAK.SLOW"}}</p> {{/when}}

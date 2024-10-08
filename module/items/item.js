@@ -13,10 +13,35 @@ export class BreakItem extends Item {
     event.preventDefault();
     const button = event.currentTarget;
     const id = button.dataset.id;
+
     const itemIndex = this.item.system.abilities?.findIndex(i => i._id == id);
     if(itemIndex >= 0) {
       this.item.system.abilities.splice(itemIndex, 1);
       this.item.update({"system.abilities": this.item.system.abilities});
+    }
+  }
+
+  async onDeleteGear(event) {
+    event.preventDefault();
+    const button = event.currentTarget;
+    const id = button.dataset.id;
+
+    const itemIndex = this.item.system.gear?.findIndex(i => i._id == id);
+    if(itemIndex >= 0) {
+      this.item.system.gear.splice(itemIndex, 1);
+      this.item.update({"system.gear": this.item.system.gear});
+    }
+  }
+
+  async onDeleteStartingGear(event) {
+    event.preventDefault();
+    const button = event.currentTarget;
+    const id = button.dataset.id;
+
+    const itemIndex = this.item.system.startingGear?.findIndex(i => i._id == id);
+    if(itemIndex >= 0) {
+      this.item.system.startingGear.splice(itemIndex, 1);
+      this.item.update({"system.startingGear": this.item.system.startingGear});
     }
   }
 
