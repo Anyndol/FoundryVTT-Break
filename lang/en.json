@@ -242,13 +242,13 @@
       "AdvancedLong": "Advanced Abilities",
       "ElectiveLong": "Elective Abilities"
     },
-    
+
     "Inventory": "Inventory",
     "Gear": "Gear",
     "GEAR": {
       "ExtraDamage": "Extra damage",
       "RangedExtraDamage": "Ranged extra damage",
-      
+
       "RangedProperties": "Ranged properties",
       "MeleeProperties": "Melee properties",
       "ArmorProperties": "Armor properties",
@@ -387,6 +387,8 @@
     "Reskin": "Reskin",
     "Yield": "Yield",
     "AdvancementTable": "Advancement Table",
-    "Modifiers": "Modifiers"
+    "Modifiers": "Modifiers",
+    "Equip": "Equip",
+    "UnEquip": "Unequip"
   }
 }

@@ -229,7 +229,7 @@
       }
     },
 
-    
+
     "Ability": "Habilidad",
     "Abilities": "Habilidades",
     "ABILITIES": {
@@ -243,13 +243,13 @@
       "AdvancedLong": "<Advanced Abilities>",
       "ElectiveLong": "<Elective Abilities>"
     },
-    
+
     "Inventory": "Inventario",
     "Gear": "Equipo",
     "GEAR": {
       "ExtraDamage": "Daño extra",
       "RangedExtraDamage": "Daño extra a distancia",
-      
+
       "RangedProperties": "Propiedades a distancia",
       "MeleeProperties": "Propiedades cuerpo a cuerpo",
       "ArmorProperties": "Armor properties",
@@ -388,6 +388,8 @@
     "Reskin": "<RESKIN>",
     "Yield": "<YIELD>",
     "AdvancementTable": "<Advancement Table>",
-    "Modifiers": "<Modifiers>"
+    "Modifiers": "<Modifiers>",
+    "Equip": "<Equip>",
+    "UnEquip": "<UnEquip>"
   }
 }
