@@ -167,7 +167,7 @@ export class BreakActorSheet extends ActorSheet {
 
     //////////////////////////////
     ////  CONFIGURE SPECIES & SIZE
-    context.species = context.actor.system.species;
+    context.species = typeof context.actor.system.species !== "string" ? context.actor.system.species : null;
     context.hasSpecies = context.species != null;
 
     const size = context.hasSpecies ? context.species.system.size : null;
@@ -176,9 +176,41 @@ export class BreakActorSheet extends ActorSheet {
     ///////////////////////
     ////  CONFIGURE CALLING
 
-    context.calling = context.actor.system.calling;
+    context.calling = typeof context.actor.system.calling !== "string" ?  context.actor.system.calling : null;
     context.hasCalling = context.calling != null;
-
+    
+    ////TEMPORAL DATA MIGRATION HACK
+      if(context.actor.system.aptitudes.Might != null) {
+        context.actor.system.aptitudes.might.value = context.actor.system.aptitudes.Might.value;
+        context.actor.system.aptitudes.might.bon = context.actor.system.aptitudes.Might.bon;
+        context.actor.system.aptitudes.might.trait = context.actor.system.aptitudes.Might.trait;
+        delete context.actor.system.aptitudes.Might;
+      }
+      if(context.actor.system.aptitudes.Deftness != null) {
+        context.actor.system.aptitudes.deftness.value = context.actor.system.aptitudes.Deftness.value;
+        context.actor.system.aptitudes.deftness.bon = context.actor.system.aptitudes.Deftness.bon;
+        context.actor.system.aptitudes.deftness.trait = context.actor.system.aptitudes.Deftness.trait;
+        delete context.actor.system.aptitudes.Deftness;
+      }
+      if(context.actor.system.aptitudes.Grit != null) {
+        context.actor.system.aptitudes.grit.value = context.actor.system.aptitudes.Grit.value;
+        context.actor.system.aptitudes.grit.bon = context.actor.system.aptitudes.Grit.bon;
+        context.actor.system.aptitudes.grit.trait = context.actor.system.aptitudes.Grit.trait;
+        delete context.actor.system.aptitudes.Grit;
+      }
+      if(context.actor.system.aptitudes.Insight != null) {
+        context.actor.system.aptitudes.insight.value = context.actor.system.aptitudes.Insight.value;
+        context.actor.system.aptitudes.insight.bon = context.actor.system.aptitudes.Insight.bon;
+        context.actor.system.aptitudes.insight.trait = context.actor.system.aptitudes.Insight.trait;
+        delete context.actor.system.aptitudes.Insight;
+      }
+      if(context.actor.system.aptitudes.Aura != null) {
+        context.actor.system.aptitudes.aura.value = context.actor.system.aptitudes.Aura.value;
+        context.actor.system.aptitudes.aura.bon = context.actor.system.aptitudes.Aura.bon;
+        context.actor.system.aptitudes.aura.trait = context.actor.system.aptitudes.Aura.trait;
+        delete context.actor.system.aptitudes.Aura;
+      }
+    ////
     if (context.hasCalling && context.calling.system.advancementTable != null) {
       const stats = context.calling.system.advancementTable[context.rank - 1];
 
@@ -193,7 +225,7 @@ export class BreakActorSheet extends ActorSheet {
 
       context.actor.system.defense.value = context.calling.system.baseDefense + (size ? +size.system.defenseModifier : 0);
       context.actor.system.speed.value = context.calling.system.baseSpeed;
-    } else {
+    } /*else {
       context.actor.system.aptitudes.might.base = 0;
       context.actor.system.aptitudes.deftness.base = 0;
       context.actor.system.aptitudes.grit.base = 0;
@@ -205,14 +237,15 @@ export class BreakActorSheet extends ActorSheet {
 
       context.actor.system.defense.value = 0;
       context.actor.system.speed.value = 1;
-    }
+    }*/
+    console.log(context.actor.system.aptitudes)
 
     //////////////////////////////////
     ////  CONFIGURE HOMELAND & HISTORY
-    context.homeland = context.actor.system.homeland;
+    context.homeland = typeof context.actor.system.homeland !== "string" ?  context.actor.system.homeland : null;
     context.hasHomeland = context.homeland != null;
 
-    context.history = context.actor.system.history;
+    context.history = typeof context.actor.system.history !== "string" ?  context.actor.system.history : null;
     context.hasHistory = context.history != null;
 
     ///////////////////////////

@@ -88,12 +88,21 @@
       "path": "lang/es.json"
     }
   ],
+  "documentTypes": {
+    "Actor": {
+      "character": {
+        "htmlFields": ["biography", "notes"]
+      }
+    }
+  },
   "compatibility": {
     "minimum": "11",
     "verified": "12"
   },
-  "gridDistance": 1,
-  "gridUnits": "area",
+  "grid": {
+    "distance": 1,
+    "units": "area"
+  },
   "primaryTokenAttribute": "hearts",
   "secondaryTokenAttribute": "power"
 }
