@@ -8,4 +8,4 @@ FoundryVTT-Break is an independent product published under BREAK!! RPG’s Non-C
 
 # Please keep in mind this system is barely in alpha state and most features will be missing or incomplete
 
-You can keep up to date with future changes on the thread of the [official BREAK!! discord server](https://discord.gg/C6PwTHZ6)
+You can keep up to date with future changes on the thread of the [official BREAK!! discord server](https://discord.gg/yyuqcKgq)
