@@ -210,15 +210,35 @@ export class BreakActorSheet extends ActorSheet {
         context.actor.system.aptitudes.aura.trait = context.actor.system.aptitudes.Aura.trait;
         delete context.actor.system.aptitudes.Aura;
       }
+      if(context.actor.system.aptitudes.might.base != null) {
+        context.actor.system.aptitudes.might.value = context.actor.system.aptitudes.might.base;
+        delete context.actor.system.aptitudes.might.base;
+      }
+      if(context.actor.system.aptitudes.deftness.base != null) {
+        context.actor.system.aptitudes.deftness.value = context.actor.system.aptitudes.deftness.base;
+        delete context.actor.system.aptitudes.deftness.base;
+      }
+      if(context.actor.system.aptitudes.grit.base != null) {
+        context.actor.system.aptitudes.grit.value = context.actor.system.aptitudes.grit.base;
+        delete context.actor.system.aptitudes.grit.base;
+      }
+      if(context.actor.system.aptitudes.insight.base != null) {
+        context.actor.system.aptitudes.insight.value = context.actor.system.aptitudes.insight.base;
+        delete context.actor.system.aptitudes.insight.base;
+      }
+      if(context.actor.system.aptitudes.aura.base != null) {
+        context.actor.system.aptitudes.aura.value = context.actor.system.aptitudes.aura.base;
+        delete context.actor.system.aptitudes.aura.base;
+      }
     ////
     if (context.hasCalling && context.calling.system.advancementTable != null) {
       const stats = context.calling.system.advancementTable[context.rank - 1];
 
-      context.actor.system.aptitudes.might.base = stats.might + (size ? size.system.mightModifier : 0);
-      context.actor.system.aptitudes.deftness.base = stats.deftness + (size ? size.system.deftnessModifier : 0);
-      context.actor.system.aptitudes.grit.base = stats.grit;
-      context.actor.system.aptitudes.insight.base = stats.insight;
-      context.actor.system.aptitudes.aura.base = stats.aura;
+      context.actor.system.aptitudes.might.value = stats.might + (size ? size.system.mightModifier : 0);
+      context.actor.system.aptitudes.deftness.value = stats.deftness + (size ? size.system.deftnessModifier : 0);
+      context.actor.system.aptitudes.grit.value = stats.grit;
+      context.actor.system.aptitudes.insight.value = stats.insight;
+      context.actor.system.aptitudes.aura.value = stats.aura;
 
       context.actor.system.attack.value = stats.attack;
       context.actor.system.hearts.max = stats.hearts;

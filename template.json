@@ -23,7 +23,7 @@
         },
         "aptitudes": {
           "might": {
-            "base": 10,
+            "value": 10,
             "bon": 0,
             "trait": 0,
             "description": "BREAK.APTITUDE.MightDesc",
@@ -31,7 +31,7 @@
             "color": "rgb(238, 61, 52) !important"
           },
           "deftness": {
-            "base": 10,
+            "value": 10,
             "bon": 0,
             "trait": 0,
             "description": "BREAK.APTITUDE.DeftnessDesc",
@@ -39,7 +39,7 @@
             "color":"rgb(244, 127, 38) !important;"
           },
           "grit": {
-            "base": 10,
+            "value": 10,
             "bon": 0,
             "trait": 0,
             "description": "BREAK.APTITUDE.GritDesc",
@@ -47,7 +47,7 @@
             "color":"rgb(93, 186, 72) !important"
           },
           "insight": {
-            "base": 10,
+            "value": 10,
             "bon": 0,
             "trait": 0,
             "description": "BREAK.APTITUDE.InsightDesc",
@@ -55,7 +55,7 @@
             "color":"rgb(23, 126, 194) !important"
           },
           "aura": {
-            "base": 10,
+            "value": 10,
             "bon": 0,
             "trait": 0,
             "description": "BREAK.APTITUDE.AuraDesc",
