@@ -69,7 +69,7 @@ function applyContestPenalty(base, target, range) {
     return -range;
 }
 
-export async function roll(flavor, rollType, targetValue, advantageType, bonusType, customBonus, statBonus = 0) {
+export async function roll(flavor, rollType, targetValue, advantageType, bonusType, customBonus, statBonus = 0, extraDamage = -1) {
     let rollFormula = "1d20";
     const baseRoll = new Roll("1d20")
     await baseRoll.evaluate();
@@ -166,9 +166,23 @@ export async function roll(flavor, rollType, targetValue, advantageType, bonusTy
         rollFormula +=  customBonusResult > 0 ? " + " + customBonusResult : " "+customBonusResult;
     }
 
-    const resultText = rollType !== RollType.ATTACK ? 
-    getResultText(calculateRollResult(targetValue, definitiveRoll.total, definitiveRoll.total + statBonus + bonusTotal + customBonusResult)) 
-    : targetValue > 0 && definitiveRoll.total+statBonus+bonusTotal+customBonusResult > targetValue ? game.i18n.format("BREAK.ExtraAttackRollResult") : null;
+    let resultText = "";
+    if(rollType === RollType.ATTACK) {
+        const rollResult = definitiveRoll.total+statBonus+bonusTotal+customBonusResult
+        if(targetValue >= 0) {
+            if(rollResult > targetValue) {
+                resultText = game.i18n.format("BREAK.Hit");
+                if(extraDamage >= 0 && rollResult > extraDamage) {
+                    resultText += "\n" + game.i18n.format("BREAK.ExtraAttackRollResult")
+                }
+            } else {
+                resultText = game.i18n.format("BREAK.Miss");
+            }
+        }
+    } else {
+        resultText = getResultText(calculateRollResult(targetValue, definitiveRoll.total, definitiveRoll.total + statBonus + bonusTotal + customBonusResult));
+    }
+    console.log(this);
     return definitiveRoll.toMessage({
         user: game.user.id,
         speaker: ChatMessage.getSpeaker({ actor: this }),

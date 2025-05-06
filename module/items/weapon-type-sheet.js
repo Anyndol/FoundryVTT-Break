@@ -22,8 +22,10 @@ export class BreakWeaponTypeSheet extends BreakItemSheet {
       secrets: this.document.isOwner,
       async: true
     });
+    context.isMelee = !this.item.system.ranged;
     context.isRanged = this.item.system.ranged;
     context.abilities = this.item.system.abilities;
+    console.log(context.isMelee);
     return context;
   }
 

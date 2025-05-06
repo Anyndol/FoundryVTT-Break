@@ -20,6 +20,7 @@ export class BreakHomelandSheet extends BreakItemSheet {
       html.find(".delete-history").on("click", this.onDeleteHistory.bind(this));
     }
 
+
     async onDeleteHistory(event) {
         event.preventDefault();
         const button = event.currentTarget;
