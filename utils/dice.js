@@ -170,7 +170,7 @@ export async function roll(flavor, rollType, targetValue, advantageType, bonusTy
     if(rollType === RollType.ATTACK) {
         const rollResult = definitiveRoll.total+statBonus+bonusTotal+customBonusResult
         if(targetValue >= 0) {
-            if(rollResult > targetValue) {
+            if(rollResult >= targetValue) {
                 resultText = game.i18n.format("BREAK.Hit");
                 if(extraDamage >= 0 && rollResult > extraDamage) {
                     resultText += "\n" + game.i18n.format("BREAK.ExtraAttackRollResult")
