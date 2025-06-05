@@ -295,3 +295,14 @@ Hooks.once('canvasInit', (canvas) => {
     }
   });
 });
+
+//Fix issue where if you use Enter key in a input it trigger a click on the next button
+window.addEventListener('keydown', function (e) {
+  if (e.keyIdentifier == 'U+000A' || e.keyIdentifier == 'Enter' || e.keyCode == 13) {
+    if (e.target.nodeName == 'INPUT' && (e.target.type == 'text' || e.target.type == 'number')) {
+      e.preventDefault();
+
+      return false;
+    }
+  }
+}, true);
