@@ -400,8 +400,19 @@ export class BreakActorSheet extends ActorSheet {
       actor.update(update);
     }
 
+    function getItemsList(featureType, actor) {
+      switch (featureType) {
+        case "history":
+          return actor.system.homeland?.system?.histories && actor.system.homeland.system.histories.length > 0 ? actor.system.homeland.system.histories : game.items;
+        default:
+          return game.items;
+      }
+    }
+
     const buttons = {}
-    for (const item of game.items) {
+    const items = getItemsList(featureType, this.actor);
+
+    for (const item of items) {
       if (item.type === featureType) {
         buttons[item._id] = {
           label: item.name,
