@@ -44,7 +44,7 @@ export class BreakAdvancementSheet extends BreakItemSheet {
       if ( !this.isEditable ) return;
 
       html.find(".delete-ability").on("click", this.item.onDeleteAbility.bind(this));
-      html.on('change', '.advancement-input', this.updateAdvancement.bind(this));
+      html.on('blur', '.advancement-input', this.updateAdvancement.bind(this));
     }
 
     async updateAdvancement(event) {
@@ -73,7 +73,7 @@ export class BreakAdvancementSheet extends BreakItemSheet {
             case "xp": this.item.system.table[index].xp = value; break;
         }
 
-        this.item.update({"system.table": this.item.system.table});
+      this.item.update({ "system.table": this.item.system.table }, { render: false });
     }
 
     /** @inheritdoc */

@@ -74,7 +74,15 @@ export class BreakAdversarySheet extends ActorSheet {
     if (context.actor.system.equipment.armor && context.actor.system.equipment.armor.system.speedLimit != null && context.actor.system.equipment.armor.system.speedLimit != "") {
       context.speedRating = +context.actor.system.equipment.armor.system.speedLimit < context.speedRating ? +context.actor.system.equipment.armor.system.speedLimit : context.speedRating;
     }
-    context.defenseRating = +context.actor.system.defense.value + +context.actor.system.defense.bon + (context.actor.system.equipment.armor ? +context.actor.system.equipment.armor.system.defenseBonus : 0) + (context.speedRating == 2 ? 2 : +context.speedRating >= 3 ? 4 : 0);
+
+    context.sizes = this.getSizes();
+
+    const size = context.sizes.length > 0 && context.actor.system.size ? context.sizes.find(item => item.name === context.actor.system.size) : null;
+
+    context.actor.system.aptitudes.might.trait = size ? size.system.mightModifier : 0;
+    context.actor.system.aptitudes.deftness.trait = size ? size.system.deftnessModifier : 0;
+
+    context.defenseRating = +context.actor.system.defense.value + +context.actor.system.defense.bon + (context.actor.system.equipment.armor ? +context.actor.system.equipment.armor.system.defenseBonus : 0) + (context.speedRating == 2 ? 2 : +context.speedRating >= 3 ? 4 : 0) + (size ? +size.system.defenseModifier : 0);
     const equipment = context.actor.system.equipment;
     const equippedItemIds = [equipment.armor?._id, equipment.outfit?._id, ...equipment.weapon.map(i => i._id), ...equipment.accessory.map(i => i._id)];
     context.bagContent = context.actor.items.filter(i => !["ability", "quirk", "gift"].includes(i.type)
@@ -100,6 +108,21 @@ export class BreakAdversarySheet extends ActorSheet {
     console.log(context);
 
     return context;
+  }
+
+  getSizes() {
+    const sizes = [];
+    for (const item of game.items) {
+      if (item.type === "size") {
+        sizes.push(item);
+      }
+    }
+
+    return sizes;
+  }
+
+  getSize(id) {
+    return context.sizes.find(item => item._id === id);
   }
 
   /* -------------------------------------------- */
