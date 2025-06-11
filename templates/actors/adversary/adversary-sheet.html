@@ -7,10 +7,15 @@
 
                     <div style="display: flex; flex-direction: column; flex-grow: 1; ">
                         <div class="adversary-header-sub-section">
-                            <input name="name" type="text" value="{{actor.name}}" placeholder="Name"/>
-                            <input name="system.menace" type="text" value="{{actor.system.menace}}"/>
-                            <input name="system.size" type="text" value="{{actor.system.size}}"/>
-                            <label style="margin: 0 10px 0 5px;">{{localize "BREAK.Rank"}}</label>
+                            <input name="name" type="text" value="{{actor.name}}" placeholder="Name" />
+                            <input name="system.menace" type="text" value="{{actor.system.menace}}" />
+                            {{#select system.size}}
+                            <select name="system.size">
+                                {{#each sizes as |size key|}}
+                                <option value="{{size.name}}" {{#when ../actor.system.size 'eq' size.name}}selected{{/when}}>{{size.name}}</option>
+                                {{/each}}
+                            </select>
+                            {{/select}}                            <label style="margin: 0 10px 0 5px;">{{localize "BREAK.Rank"}}</label>
                             <input name="system.rank" type="text" value="{{actor.system.rank}}" placeholder="0" />
                         </div>
                         <textarea name="system.description" type="text" placeholder="..." style=" height: 100%;" value="{{actor.system.description}}">{{actor.system.description}}</textarea>
