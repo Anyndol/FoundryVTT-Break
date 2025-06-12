@@ -11,7 +11,7 @@
                 </div>
                 {{/if}}
                 {{#unless actor.system.equipment.armor}}
-                Drag an armor
+                Equip an armor
                 {{/unless}}
             </div>
         </div>
@@ -25,7 +25,7 @@
                 </div>
                 {{/if}}
                 {{#unless actor.system.equipment.outfit}}
-                Drag an outfit
+                Equip an outfit
                 {{/unless}}
             </div>
         </div>
@@ -36,12 +36,12 @@
         {{#each actor.system.equipment.weapon}}
         <div style="display:flex;margin-bottom:10px;align-items:center;">
             {{> "systems/break/templates/actors/parts/sheet-equipment-card.hbs" item=this}}
-            <i style="margin-left:10px;"  class="fas fa-shield-slash clickable unequip-item" data-type="weapon" data-item-id="{{this._id}}"></i>
+            <i style="margin-left:10px;" class="fas fa-shield-slash clickable unequip-item" data-type="weapon" data-item-id="{{this._id}}"></i>
         </div>
         {{/each}}
         {{/if}}
         {{#unless actor.system.equipment.weapon}}
-        Drag a weapon
+        Equip a weapon
         {{/unless}}
     </div>
     <p style="flex: 0;font-weight:600;font-size:16px;margin-top:16px;">{{localize "BREAK.Accessories"}}</p>
@@ -55,7 +55,7 @@
         {{/each}}
         {{/if}}
         {{#unless actor.system.equipment.accessory}}
-        Drag an accessory
+        Equip an accessory
         {{/unless}}
     </div>
 </div>
