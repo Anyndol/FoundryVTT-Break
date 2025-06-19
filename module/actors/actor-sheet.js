@@ -396,7 +396,7 @@ export class BreakActorSheet extends ActorSheet {
 
     function selectFeature(actor, item) {
       const update = {};
-      update["system." + item.type] = item.toObject();
+      update["system." + item.type] = item;
       actor.update(update);
     }
 
