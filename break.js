@@ -78,7 +78,7 @@ Hooks.once("init", async function() {
   CONFIG.Token.objectClass = BreakToken;
 
   // Register sheet application classes
-  Actors.unregisterSheet("core", ActorSheet);
+  Actors.unregisterSheet("core", foundry.applications.sheets.ActorSheetV2);
   Actors.registerSheet("break", BreakActorSheet, {types:['character'], makeDefault: true });
   Actors.registerSheet("break", BreakAdversarySheet, {types:['adversary'], makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);

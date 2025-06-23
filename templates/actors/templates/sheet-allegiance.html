@@ -5,7 +5,7 @@
             <div style="display: flex; align-items: center;">
                 <div class="aptitude-value-circle">
                     <div class="aptitude-value-inner-circle">
-                        <input class="aptitude-base-value circle-input" name="system.allegiance.dark" value="{{actor.system.allegiance.dark}}" />
+                        <input class="aptitude-base-value circle-input" name="system.allegiance.dark" value="{{document.system.allegiance.dark}}" />
                     </div>
                 </div>
                 <div style="margin-left: 8px;">
@@ -17,7 +17,7 @@
             <div style="display: flex; align-items: center;">
                 <div class="aptitude-value-circle">
                     <div class="aptitude-value-inner-circle">
-                        <input class="aptitude-base-value circle-input" name="system.allegiance.bright" value="{{actor.system.allegiance.bright}}" />
+                        <input class="aptitude-base-value circle-input" name="system.allegiance.bright" value="{{document.system.allegiance.bright}}" />
                     </div>
                 </div>
                 <div style="margin-left: 8px;">
@@ -28,19 +28,19 @@
             </div>
         </div>
         <div style="border-right: 1px solid black; padding-right: 24px;">
-            <div style="display: flex;">
+            <div style="display: flex; align-items: center;">
                 <input type="checkbox" disabled {{#when allegiance 'eq' 0}}checked{{/when}} />
                 <label>{{localize "BREAK.None"}}</label>
             </div>
-            <div style="display: flex;">
+            <div style="display: flex; align-items: center;">
                 <input type="checkbox" disabled {{#when allegiance 'eq' 1}}checked{{/when}} />
                 <label>{{localize "BREAK.Dark"}}</label>
             </div>
-            <div style="display: flex;">
+            <div style="display: flex; align-items: center;">
                 <input type="checkbox" disabled {{#when allegiance 'eq' 2}}checked{{/when}} />
                 <label>{{localize "BREAK.Twilight"}}</label>
             </div>
-            <div style="display: flex;">
+            <div style="display: flex; align-items: center;">
                 <input type="checkbox" disabled {{#when allegiance 'eq' 3}}checked{{/when}} />
                 <label>{{localize "BREAK.Bright"}}</label>
             </div>
@@ -49,9 +49,11 @@
             <label>{{localize "BREAK.Gifts"}}</label>
             <div style="display: flex; column-gap: 8px; flex-wrap: wrap;">
                 {{#each gifts}}
-                    <div style="display: flex; margin-bottom: 6px;align-items: center; width: 33%;">
-                        <label>{{this.name}}</label>
-                        <button class="delete-gift" data-id="{{this._id}}" style="max-width: 32px;margin-left: auto;"><i class="fas fa-trash" style="margin: 0px;"></i></button>
+                    <div style="display: flex; margin-bottom: 6px;align-items: center; width: 33%;" data-id="{{this._id}}">
+                        <a class="item-link">{{this.name}}</a>
+                        <a style="margin-left: 6px;" class="item-control interface-only" data-context-menu>
+                            <i class="fas fa-ellipsis-vertical"></i>
+                        </a>
                     </div>
                 {{/each}}
             </div>

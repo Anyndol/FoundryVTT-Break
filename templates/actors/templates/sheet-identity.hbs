@@ -1,13 +1,13 @@
 <div class="flexcol" style="width: 100%;">
     <div class="section-header">{{localize "BREAK.Identity"}}</div>
-    <div style="text-align: center;">
-        <img class="profile portrait" src="{{actor.img}}" data-tooltip="{{actor.name}}" data-edit="img" />
+    <div style="display: flex; justify-content:center;">
+        <img class="profile portrait" src="{{document.img}}" title="{{document.name}}" data-edit="img" />
     </div>
     <!-- NAME SECTION -->
     <div class="input root">
         <label class="identity-header-label">{{ localize 'BREAK.Name' }}</label>
         <div class="input wrapper">
-            <input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'BREAK.Name' }}" />
+            <input name="name" type="text" value="{{document.name}}" placeholder="{{ localize 'BREAK.Name' }}" />
         </div>
     </div>
     <!-- CALLING & RANK SECTION -->
@@ -19,10 +19,11 @@
                     <div class="input wrapper">
                         {{#if hasCalling}}
                         <label class="tooltip" id="calling-label">{{calling.name}}<span class="tooltiptext">{{{calling.system.description}}}</span></label>
-                        <button class="delete-feature" id="calling" style="margin-left: auto; margin-bottom: 4px; max-width: 32px; margin-right: 4px;"><i class="fas fa-trash" style="margin: 0px;"></i></button>
-                        <button class="select-feature" id="calling" style="margin-bottom: 4px; max-width: 32px; margin-right: 4px;"><i class="fa-solid fa-plus" style="margin: 0px;"></i></button>
+                        <a class="item-control interface-only" style="margin-left: auto;" data-context-menu data-id="{{calling._id}}">
+                            <i class="fas fa-ellipsis-vertical"></i>
+                        </a>
                         {{else}}
-                        <button class="select-feature" id="calling" style="margin-left: 0; margin-bottom: 4px; max-width: 32px;"><i class="fa-solid fa-plus" style="margin: 0px;"></i></button>
+                        <button class="select-feature" id="calling">{{localize 'BREAK.PickOrDrag'}} {{localize 'BREAK.Calling'}}</i></button>
                         {{/if}}
                     </div>
                 </div>
@@ -46,10 +47,11 @@
                     <div class="input wrapper">
                         {{#if hasSpecies}}
                         <label class="tooltip" id="species-label">{{species.name}}<span class="tooltiptext">{{{species.system.description}}}</span></label>
-                        <button class="delete-feature" id="species" style="margin-left: auto; margin-bottom: 4px; max-width: 32px; margin-right: 4px;"><i class="fas fa-trash" style="margin: 0px;"></i></button>
-                        <button class="select-feature" id="species" style="margin-bottom: 4px; max-width: 32px; margin-right: 4px;"><i class="fa-solid fa-plus" style="margin: 0px;"></i></button>
+                        <a class="item-control interface-only" style="margin-left: auto;" data-context-menu data-id="{{species._id}}">
+                            <i class="fas fa-ellipsis-vertical"></i>
+                        </a>
                         {{else}}
-                        <button class="select-feature" id="species" style="margin-left: 0; margin-bottom: 4px; max-width: 32px;"><i class="fa-solid fa-plus" style="margin: 0px;"></i></button>
+                        <button class="select-feature" id="species">{{localize 'BREAK.PickOrDrag'}} {{localize 'BREAK.Species'}}</button>
                         {{/if}}
                     </div>
                 </div>
@@ -70,10 +72,11 @@
         <div class="input wrapper">
             {{#if hasHomeland}}
             <label class="tooltip" id="homeland-label">{{homeland.name}}<span class="tooltiptext">{{{homeland.system.description}}}</span></label>
-            <button class="delete-feature" id="homeland" style="margin-left: auto; margin-bottom: 4px; max-width: 32px; margin-right: 4px;"><i class="fas fa-trash" style="margin: 0px;"></i></button>
-            <button class="select-feature" id="homeland" style="margin-bottom: 4px; max-width: 32px; margin-right: 4px;"><i class="fa-solid fa-plus" style="margin: 0px;"></i></button>
+            <a class="item-control interface-only" style="margin-left: auto;" data-context-menu data-id="{{homeland._id}}">
+                <i class="fas fa-ellipsis-vertical"></i>
+            </a>
             {{else}}
-            <button class="select-feature" id="homeland" style="margin-left: 0; margin-bottom: 4px; max-width: 32px;"><i class="fa-solid fa-plus" style="margin: 0px;"></i></button>
+            <button class="select-feature" id="homeland">{{localize 'BREAK.PickOrDrag'}} {{localize 'BREAK.Homeland'}}</button>
             {{/if}}
         </div>
     </div>
@@ -81,7 +84,7 @@
     <div class="input root">
         <label class="identity-header-label">{{ localize 'BREAK.Languages' }}</label>
         <div class="input wrapper">
-            <input name="system.languages" type="text" value="{{actor.system.languages}}" placeholder="{{ localize 'BREAK.Languages' }}" />
+            <input name="system.languages" type="text" value="{{document.system.languages}}" placeholder="{{ localize 'BREAK.Languages' }}" />
         </div>
     </div>
     <!-- HISTORY SECTION -->
@@ -90,10 +93,11 @@
         <div class="input wrapper">
             {{#if hasHistory}}
             <label class="tooltip" id="history-label">{{history.name}}<span class="tooltiptext">{{{history.system.description}}}</span></label>
-            <button class="delete-feature" id="history" style="margin-left: auto; margin-bottom: 4px; max-width: 32px; margin-right: 4px;"><i class="fas fa-trash" style="margin: 0px;"></i></button>
-            <button class="select-feature" id="history" style="margin-bottom: 4px; max-width: 32px; margin-right: 4px;"><i class="fa-solid fa-plus" style="margin: 0px;"></i></button>
+            <a class="item-control interface-only" style="margin-left: auto;" data-context-menu data-id="{{history._id}}">
+                <i class="fas fa-ellipsis-vertical"></i>
+            </a>
             {{else}}
-            <button class="select-feature" id="history" style="margin-left: 0; margin-bottom: 4px; max-width: 32px;"><i class="fa-solid fa-plus" style="margin: 0px;"></i></button>
+            <button class="select-feature" id="history">{{localize 'BREAK.PickOrDrag'}} {{localize 'BREAK.History'}}</button>
             {{/if}}
         </div>
     </div>
@@ -101,7 +105,7 @@
     <div class="input root">
         <label class="identity-header-label">{{ localize 'BREAK.Purviews' }}</label>
         <div class="input wrapper">
-            <textarea rows="6" name="system.purviews" type="text" placeholder="{{ localize 'BREAK.Purviews' }}">{{{actor.system.purviews}}}</textarea>
+            <textarea style="width: 100%;" rows="6" name="system.purviews" type="text" placeholder="{{ localize 'BREAK.Purviews' }}">{{{document.system.purviews}}}</textarea>
         </div>
     </div>
 </div>

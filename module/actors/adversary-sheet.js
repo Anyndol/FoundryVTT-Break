@@ -50,7 +50,7 @@ export class BreakAdversarySheet extends ActorSheet {
   async getData(options) {
     const context = await super.getData(options);
     context.shorthand = !!game.settings.get("break", "macroShorthand");
-    context.notesHTML = await TextEditor.enrichHTML(context.actor.system.notes, {
+    context.notesHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(context.actor.system.notes, {
       secrets: this.document.isOwner,
       async: true
     });

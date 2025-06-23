@@ -11,6 +11,12 @@ BREAK.ability_types = {
     armor: "BREAK.GEAR.TYPE.Armor"
 }
 
+BREAK.ability_levels = {
+    starting: "BREAK.ABILITIES.Starting",
+    standard: "BREAK.ABILITIES.Standard",
+    advanced: "BREAK.ABILITIES.Advanced"
+}
+
 BREAK.sizes = {
     small: "BREAK.SPECIES.SIZE.Small",
     medium: "BREAK.SPECIES.SIZE.Medium",

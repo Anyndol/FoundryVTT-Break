@@ -56,7 +56,7 @@ export class EntitySheetHelper {
 
     // Render the document creation form
     const template = "templates/sidebar/document-create.html";
-    const html = await renderTemplate(template, {
+    const html = await foundry.applications.handlebars.renderTemplate(template, {
       name: data.name || game.i18n.format("DOCUMENT.New", {type: label}),
       folder: data.folder,
       folders: folders,

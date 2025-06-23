@@ -4,13 +4,13 @@
         <div style="width:150px;border-right:1px solid grey;">
             <p style="flex: 0;font-weight:600;font-size:16px;">{{localize "BREAK.GEAR.TYPE.Armor"}}</p>
             <div class="equipment-drag-slot" style="display:flex; align-items: center;" id="armorslot">
-                {{#if actor.system.equipment.armor}}
+                {{#if document.system.equipment.armor}}
                 <div style="display:flex;margin-bottom:10px;align-items:center;">
-                    {{> "systems/break/templates/actors/parts/sheet-equipment-card.hbs" item=actor.system.equipment.armor}}
-                    <i class="fas fa-shield-slash clickable unequip-item" style="margin-left:10px; margin-right:12px;" data-type="armor" data-item-id="{{actor.system.equipment.armor._id}}"></i>
+                    {{> "systems/break/templates/actors/templates/sheet-equipment-card.hbs" item=document.system.equipment.armor}}
+                    <i class="fas fa-shield-slash clickable unequip-item" style="margin-left:10px; margin-right:12px;" data-type="armor" data-item-id="{{document.system.equipment.armor._id}}"></i>
                 </div>
                 {{/if}}
-                {{#unless actor.system.equipment.armor}}
+                {{#unless document.system.equipment.armor}}
                 Drag an armor
                 {{/unless}}
             </div>
@@ -18,13 +18,13 @@
         <div style="width:150px;">
             <p style="flex: 0;font-weight:600;font-size:16px;">{{localize "BREAK.Outfit"}}</p>
             <div class="equipment-drag-slot" id="outfitslot">
-                {{#if actor.system.equipment.outfit}}
+                {{#if document.system.equipment.outfit}}
                 <div style="display:flex;margin-bottom:10px;align-items:center;">
-                    {{> "systems/break/templates/actors/parts/sheet-equipment-card.hbs" item=actor.system.equipment.outfit}}
-                    <i style="margin-left:10px;" class="fas fa-shield-slash clickable unequip-item" data-type="outfit" data-item-id="{{actor.system.equipment.outfit._id}}"></i>
+                    {{> "systems/break/templates/actors/templates/sheet-equipment-card.hbs" item=document.system.equipment.outfit}}
+                    <i style="margin-left:10px;" class="fas fa-shield-slash clickable unequip-item" data-type="outfit" data-item-id="{{document.system.equipment.outfit._id}}"></i>
                 </div>
                 {{/if}}
-                {{#unless actor.system.equipment.outfit}}
+                {{#unless document.system.equipment.outfit}}
                 Drag an outfit
                 {{/unless}}
             </div>
@@ -32,29 +32,29 @@
     </div>
     <p style="flex: 0;font-weight:600;font-size:16px;margin-top:16px;">{{localize "BREAK.Weapons"}}</p>
     <div class="equipment-drag-slot" id="weaponsslot" style="margin-top: 16px; border-bottom: 1px solid grey; padding-bottom: 8px; ">
-        {{#if actor.system.equipment.weapon}}
-        {{#each actor.system.equipment.weapon}}
+        {{#if document.system.equipment.weapon}}
+        {{#each document.system.equipment.weapon}}
         <div style="display:flex;margin-bottom:10px;align-items:center;">
-            {{> "systems/break/templates/actors/parts/sheet-equipment-card.hbs" item=this}}
+            {{> "systems/break/templates/actors/templates/sheet-equipment-card.hbs" item=this}}
             <i style="margin-left:10px;"  class="fas fa-shield-slash clickable unequip-item" data-type="weapon" data-item-id="{{this._id}}"></i>
         </div>
         {{/each}}
         {{/if}}
-        {{#unless actor.system.equipment.weapon}}
+        {{#unless document.system.equipment.weapon}}
         Drag a weapon
         {{/unless}}
     </div>
     <p style="flex: 0;font-weight:600;font-size:16px;margin-top:16px;">{{localize "BREAK.Accessories"}}</p>
     <div class="equipment-drag-slot" id="accessoriesslot" style="margin-bottom:16px;">
-        {{#if actor.system.equipment.accessory}}
-        {{#each actor.system.equipment.accessory}}
+        {{#if document.system.equipment.accessory}}
+        {{#each document.system.equipment.accessory}}
         <div style="display:flex;margin-bottom:10px;align-items:center;">
-            {{> "systems/break/templates/actors/parts/sheet-equipment-card.hbs" item=this}}
+            {{> "systems/break/templates/actors/templates/sheet-equipment-card.hbs" item=this}}
             <i style="margin-left:10px;" class="fas fa-shield-slash clickable unequip-item" data-type="accessory" data-item-id="{{this._id}}"></i>
         </div>
         {{/each}}
         {{/if}}
-        {{#unless actor.system.equipment.accessory}}
+        {{#unless document.system.equipment.accessory}}
         Drag an accessory
         {{/unless}}
     </div>

@@ -80,8 +80,8 @@ export class BreakItem extends Item {
     itemData.isRanged = this.system.weaponType1?.system.ranged || this.system.weaponType2?.system.ranged;
     itemData.isMelee = (this.system.weaponType1 && !this.system.weaponType1.system.ranged) || (this.system.weaponType2 && !this.system.weaponType2.system.ranged);
     itemData.isGear = this.type != "quirk" && this.type != "ability" && this.type != "calling" && this.type != "gift" && this.type != "injury";
-
-    const html = await renderTemplate("systems/break/templates/chat/item.html", itemData);
+    foundry
+    const html = await foundry.applications.handlebars.renderTemplate("systems/break/templates/chat/item.html", itemData);
     const chatData = {
       user: game.user.id,
       rollMode: game.settings.get("core", "rollMode"),

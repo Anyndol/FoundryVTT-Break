@@ -17,15 +17,15 @@ export class BreakQuirkSheet extends BreakItemSheet {
   /** @inheritdoc */
   async getData(options) {
     const context = await super.getData(options);
-    context.descriptionHTML = await TextEditor.enrichHTML(context.item.system.description, {
+    context.descriptionHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(context.item.system.description, {
       secrets: this.document.isOwner,
       async: true
     });
-    context.advantagesHTML = await TextEditor.enrichHTML(context.item.system.advantages, {
+    context.advantagesHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(context.item.system.advantages, {
       secrets: this.document.isOwner,
       async: true
     });
-    context.disadvantagesHTML = await TextEditor.enrichHTML(context.item.system.disadvantages, {
+    context.disadvantagesHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(context.item.system.disadvantages, {
       secrets: this.document.isOwner,
       async: true
     });

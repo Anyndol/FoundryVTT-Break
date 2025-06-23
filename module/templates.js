@@ -8,16 +8,16 @@ export const preloadHandlebarsTemplates = async function() {
   // Define template paths to load
   const templatePaths = [
     // Attribute list partial.
-    "systems/break/templates/actors/parts/sheet-aptitudes.html",
-    "systems/break/templates/actors/parts/sheet-identity.hbs",
-    "systems/break/templates/actors/parts/sheet-combat.html",
-    "systems/break/templates/actors/parts/sheet-abilities.html",
-    "systems/break/templates/actors/parts/sheet-xp.html",
-    "systems/break/templates/actors/parts/sheet-allegiance.html",
-    "systems/break/templates/actors/parts/sheet-weapon-card.hbs",
-    "systems/break/templates/actors/parts/sheet-equipment.hbs",
-    "systems/break/templates/actors/parts/sheet-bag-content.hbs",
-    "systems/break/templates/actors/parts/sheet-bags.hbs",
+    "systems/break/templates/actors/templates/sheet-aptitudes.html",
+    "systems/break/templates/actors/templates/sheet-identity.hbs",
+    "systems/break/templates/actors/templates/sheet-combat.html",
+    "systems/break/templates/actors/templates/sheet-abilities.html",
+    "systems/break/templates/actors/templates/sheet-xp.html",
+    "systems/break/templates/actors/templates/sheet-allegiance.html",
+    "systems/break/templates/actors/templates/sheet-weapon-card.hbs",
+    "systems/break/templates/actors/templates/sheet-equipment.hbs",
+    "systems/break/templates/actors/templates/sheet-bag-content.hbs",
+    "systems/break/templates/actors/templates/sheet-bags.hbs",
     "systems/break/templates/actors/adversary/parts/adversary-misc.hbs",
     "systems/break/templates/actors/adversary/parts/sheet-combat.html",
     "systems/break/templates/actors/adversary/parts/simplified-sheet-aptitudes.html",
@@ -31,7 +31,7 @@ export const preloadHandlebarsTemplates = async function() {
     "systems/break/templates/items/parts/armor-details.hbs",
     "systems/break/templates/items/parts/shield-details.hbs",
     "systems/break/templates/items/parts/advancement-table.hbs",
-    "systems/break/templates/actors/parts/sheet-equipment-card.hbs",
+    "systems/break/templates/actors/templates/sheet-equipment-card.hbs",
     "systems/break/templates/system/active-effects-panel.hbs"
   ];
 

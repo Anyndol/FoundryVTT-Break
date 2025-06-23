@@ -79,7 +79,7 @@ export class BreakAdvancementSheet extends BreakItemSheet {
     /** @inheritdoc */
     async getData(options) {
         const context = await super.getData(options);
-        context.descriptionHTML = await TextEditor.enrichHTML(context.item.system.description, {
+        context.descriptionHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(context.item.system.description, {
             secrets: this.document.isOwner,
             async: true
         });

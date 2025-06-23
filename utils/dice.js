@@ -186,7 +186,7 @@ export async function roll(flavor, rollType, targetValue, advantageType, bonusTy
     return definitiveRoll.toMessage({
         user: game.user.id,
         speaker: ChatMessage.getSpeaker({ actor: this }),
-        content: await renderTemplate("systems/break/templates/rolls/roll-check.hbs", 
+        content: await foundry.applications.handlebars.renderTemplate("systems/break/templates/rolls/roll-check.hbs", 
         {
             rollFormula,
             failedRoll,

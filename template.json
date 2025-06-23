@@ -88,11 +88,6 @@
         "rank": 1,
         "current": 0
       },
-      "calling": null,
-      "species": null,
-      "homeland": null,
-      "history": null,
-      "quirk": null,
       "languages": "",
       "description": "",
       "purviews": "",
@@ -157,8 +152,7 @@
       "homeland",
       "history",
       "quirk",
-      "ability",
-      "advancement"
+      "ability"
     ],
     "htmlFields": ["description"],
     "templates": {
@@ -270,12 +264,8 @@
     },
     "ability": {
       "subtype": "",
-      "category": "",
-      "alignment": 0,
+      "level": "",
       "description": ""
-    },
-    "advancement": {
-      "table": null
     },
     "weapon": {
       "templates": [ "baseItem" ],

@@ -46,7 +46,7 @@ export class BreakHistorySheet extends BreakItemSheet {
     /** @inheritdoc */
     async getData(options) {
         const context = await super.getData(options);
-        context.descriptionHTML = await TextEditor.enrichHTML(context.item.system.description, {
+        context.descriptionHTML = await foundry.applications.ux.TextEditor.implementation.enrichHTML(context.item.system.description, {
             secrets: this.document.isOwner,
             async: true
         });
@@ -59,7 +59,7 @@ export class BreakHistorySheet extends BreakItemSheet {
 
     /** @inheritdoc */
     async _onDrop(event) {
-        const data = TextEditor.getDragEventData(event);
+        const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(event);
         if (data.type !== "Item") return;
         const draggedItem = await fromUuid(data.uuid);
 
